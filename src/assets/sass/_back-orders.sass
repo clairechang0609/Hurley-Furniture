@@ -1,0 +1,88 @@
+.order
+    display: flex
+    flex-direction: column
+    width: 1000px
+    background: rgb(255,255,255)
+    margin: 0 auto 50px
+    padding: 50px
+    border: 1px solid rgb(196,172,138)
+    border-radius: 5px
+    .add-product
+        align-self: flex-end
+        margin-bottom: 30px
+        margin-right: 4px
+    table
+        width: 100%
+        text-align: center
+        border-spacing: 3px
+        border-collapse: separate
+        tr
+            th, td
+                line-height: 1.2
+                vertical-align: middle
+                margin: 10px
+            th
+                padding: 10px 5px
+                background: $black
+                color: rgb(255,255,255)
+                font-size: 13px
+                border-radius: 4px
+            td
+                padding: 15px 0
+                background: rgb(255,255,255)
+                border-bottom: 1px solid #000
+                color: rgb(25,25,25)
+                font-size: 13px
+                &.title
+                    text-align: left
+                    padding-left: 20px
+                    line-height: 1.5
+                .container
+                    display: flex
+                    justify-content: center
+                    cursor: pointer
+                    z-index: 0
+                .container input
+                    opacity: 0
+                    cursor: pointer
+                    height: 0
+                    width: 0
+                .checkmark
+                    position: relative
+                    height: 13px
+                    width: 13px
+                    border-radius: 3px
+                    border: 1px solid $black
+                    margin-right: 5px
+                .container input:checked ~ .checkmark
+                    background-color: $dark-beige
+                    border: 1px solid $dark-beige
+                .container input:checked ~ .checkmark::before,
+                .container input:checked ~ .checkmark::after
+                    display: block
+                .container .checkmark::before
+                    content: ''
+                    position: absolute
+                    display: none
+                    left: 2px
+                    top: 4px
+                    width: 0
+                    height: 5px
+                    border: solid $white
+                    border-width: 0 2px 2px 0
+                    -webkit-transform: rotate(-45deg)
+                    -ms-transform: rotate(-45deg)
+                    transform: rotate(-45deg)
+                .container .checkmark::after
+                    content: ''
+                    position: absolute
+                    display: none
+                    left: 6px
+                    top: 1px
+                    width: 0
+                    height: 8px
+                    border: solid $white
+                    border-width: 0 2px 2px 0
+                    -webkit-transform: rotate(45deg)
+                    -ms-transform: rotate(45deg)
+                    transform: rotate(45deg)

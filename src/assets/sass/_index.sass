@@ -1,0 +1,465 @@
+.header
+    .header__banner-home
+        width: 100%
+        height: 470px
+        background-size: cover
+        background-position: bottom 20% center
+        animation: changePic 21s ease-in-out infinite
+        overflow: hidden
+        @include media-w667
+            height: 400px
+
+@include keyframes(changePic)
+    0%
+        background-image: url(https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80)
+    28%
+        background-image: url(https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80)
+    33%
+        background-image: url(https://images.unsplash.com/photo-1526308182272-d2fe5e5947d8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)
+    61%
+        background-image: url(https://images.unsplash.com/photo-1526308182272-d2fe5e5947d8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)
+    66%
+        background-image: url(https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)
+    95%
+        background-image: url(https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)
+    100%
+        background-image: url(https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80)
+
+.contents-home
+    padding: 40px 30px 50px
+    @include media-w767
+        padding: 70px 30px 50px
+    @include media-w568
+        padding: 60px 0 50px
+
+.hp-title
+    position: relative
+    display: flex
+    justify-content: space-between
+    align-items: flex-end
+    transform: translateY(50px)
+    opacity: 0
+    transition: 1s ease-in-out
+    padding: 0 20px 50px;
+    @include media-w568
+        flex-direction: column
+        align-items: center
+    .text
+        width: 80%
+        @include media-w568
+            text-align: center
+        h4
+            font-size: 30px
+            span
+                position: relative
+                display: block
+                font-size: 16px
+                font-weight: 300
+                padding-top: 40px
+                &::before
+                    content: ''
+                    position: absolute
+                    height: 1px
+                    width: 40px
+                    background: $black
+                    top: 15px
+                    left: 0
+                    @include media-w568
+                        left: 50%
+                        transform: translateX(-50%)
+        p
+            text-align: left
+            line-height: 1.7
+            letter-spacing: 0.5px
+            font-size: 14px
+            font-weight: 100
+            padding-top: 20px
+            @include media-w767
+                display: none
+    img
+        position: absolute
+        width: 200px
+        mix-blend-mode: multiply
+        transition: 1s cubic-bezier(0.5, 0, 0.75, 1.5)
+        @include media-w568
+            display: none
+    .more-btn
+        position: relative
+        font-size: 14px
+        font-weight: 100
+        width: 170px
+        height: 40px
+        text-decoration: none
+        border: 1px solid $black
+        color: $black
+        overflow: hidden
+        border-radius: 2px
+        flex-shrink: 0
+        margin-top: 20px
+        @include media-w896
+            width: 140px
+        &::after
+            content: '⇀'
+            position: absolute
+            top: 50%
+            right: 25px
+            transform: translateY(-50%)
+            transition: 0.3s ease-in-out
+            @include media-w896
+                right: 20px
+        span
+            position: absolute
+            top: 0
+            left: 0
+            background: $main-yellow
+            width: 0
+            height: 100px
+            transition: 0.3s ease-in-out
+        p
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+            width: 100px
+            text-align: center
+        &:hover
+            &::after
+                right: 15px
+            span
+                width: 170px
+                @include media-w896
+                    width: 140px
+
+.new
+    padding-bottom: 70px
+    @include media-w568
+        padding-bottom: 60px
+    &__title
+        img
+            &.new-item-01
+                bottom: 10px
+                left: 43%
+                transform: scaleY(0) translateY(50px)
+                @media (max-width: 896px)
+                    left: 50%
+                @media (max-width: 767px)
+                    display: none
+            &.new-item-02
+                top: -30px
+                right: 18%
+                transform: scaleY(0) translateY(50px)
+                @media (max-width: 896px)
+                    display: none
+        &.show
+            img
+                &.new-item-01
+                    transform: scaleY(1) translateY(0)
+                &.new-item-02
+                    transform: scaleY(1) translateY(0)
+    &__content
+            display: flex
+            justify-content: space-between
+            @include media-w767
+                flex-direction: column
+            li
+                width: 33%
+                padding: 1px
+                height: 400px
+                display: flex
+                flex-direction: column
+                justify-content: space-between
+                @include media-w767
+                    width: 100%
+                    padding: 0
+                    height: auto
+                .select
+                    position: relative
+                    height: 49.3%
+                    overflow: hidden
+                    @include media-w767
+                        height: 200px
+                        margin: 2px 0
+                .select-single
+                    position: relative
+                    height: 100%
+                    overflow: hidden
+                    @include media-w767
+                        height: 200px
+                        margin: 2px 0
+                a
+                    width: 100%
+                    height: 100%
+                    position: relative
+                    display: block
+                    background-size: cover
+                    background-position: center
+                    transition: transform 0.5s ease-in-out
+                    &::after
+                        content: ''
+                        position: absolute
+                        display: block
+                        top: 0
+                        left: 0
+                        width: 100%
+                        height: 100%
+                        background: rgba($white, 0.35)
+                        transition: 0.2s ease-in-out
+                        opacity: 1
+                    &:hover
+                        transform: scale(1.1)
+                        &::after
+                            opacity: 0
+                    &.pic-first
+                        background-image: url(../assets/img/2020-06-22-3.21.28.png)
+                        @media (max-width: 767px)
+                            background-image: url(../assets/img/2020-06-22-3.21.28.png)
+                    &.pic-second
+                        background-image: url(../assets/img/2516178_featured_5.jpg)
+                        @media (max-width: 767px)
+                            background-image: url(../assets/img/2516178_featured_5.jpg)
+                    &.pic-third
+                        background-image: url(../assets/img/2020-06-22-3.30.47.png)
+                        @media (max-width: 767px)
+                            background-image: url(../assets/img/2020-06-24-4.53.23.png)
+                            background-position: bottom 20% center
+                    &.pic-fourth
+                        background-image: url(../assets/img/2020-06-22-3.25.38.png)
+                        @media (max-width: 767px)
+                            background-image: url(../assets/img/2020-06-22-3.25.38.png)
+                    &.pic-fifth
+                        background-image: url(../assets/img/2020-06-22-3.28.36.png)
+                        @media (max-width: 767px)
+                            background-image: url(../assets/img/2020-06-22-3.28.36.png)
+                p
+                    position: absolute
+                    font-size: 15px
+                    font-weight: 300
+                    line-height: 1.5
+                    color: $white
+                    text-shadow: 0 0 5px rgba($black, 0.5)
+                    pointer-events: none
+                    &.text-first
+                        left: 20px
+                        top: 15px
+                    &.text-second
+                        right: 20px
+                        bottom: 15px
+                    &.text-third
+                        left: 20px
+                        bottom: 15px
+                    &.text-fourth
+                        right: 20px
+                        bottom: 15px
+                    &.text-fifth
+                        left: 20px
+                        bottom: 15px
+
+.sale
+    padding-bottom: 30px
+    @include media-w568
+        padding-bottom: 20px
+    &__title
+        img
+            &.new-item-03
+                bottom: 15px
+                left: 35%
+                transform: scaleY(0) translateY(50px)
+                @include media-w896
+                    display: none
+            &.new-item-04
+                top: -50px
+                right: 22%
+                transform: scaleY(0) translateY(50px)
+                @include media-w896
+                    left: 40%
+                @include media-w767
+                    display: none
+        &.show
+            img
+                &.new-item-03
+                    transform: scaleY(1) translateY(0)
+                &.new-item-04
+                    transform: scaleY(1) translateY(0)
+    &__content
+        width: 100%
+        padding-bottom: 50px
+        @include media-w568
+            width: 300px
+        .swiper-slide
+            position: relative
+            font-size: 18px
+            display: flex
+            flex-direction: column
+            align-items: center
+            text-decoration: none
+            color: $black
+            .sale-pic
+                width: 100%
+                height: 215px
+                background-size: cover
+                transition: 0.3s ease-in-out
+                @include media-w568
+                    height: 300px
+                &.pic-01
+                    background-image: url(../assets/img/2020-06-23-11.30.42.png)
+                &.pic-02
+                    background-image: url(../assets/img/2020-06-23-12.40.31.jpg);
+                &.pic-03
+                    background-image: url(../assets/img/2020-06-23-12.47.23.jpg)
+                &.pic-04
+                    background-image: url(../assets/img/2020-06-23-12.54.51.jpg)
+                &.pic-05
+                    background-image: url(../assets/img/2020-06-23-1.06.14.jpg)
+                &.pic-06
+                    background-image: url(../assets/img/2020-06-23-1.16.33.jpg)
+                &.pic-07
+                    background-image: url(../assets/img/2020-06-23-1.59.53.jpg)
+                &.pic-08
+                    background-image: url(../assets/img/2020-06-23-2.05.58.jpg)
+                &.pic-09
+                    background-image: url(../assets/img/2020-06-23-2.08.48.jpg)
+                &.pic-10
+                    background-image: url(../assets/img/2020-06-23-2.13.55.jpg)
+            &:hover
+                .pic-01
+                    background-image: url(../assets/img/2020-06-23-12.08.58.png)
+                .pic-02
+                    background-image: url(../assets/img/2020-06-23-12.40.59.jpg)
+                .pic-03
+                    background-image: url(../assets/img/2020-06-23-12.47.41.jpg)
+                .pic-04
+                    background-image: url(../assets/img/2020-06-23-12.54.39.jpg)
+                .pic-05
+                    background-image: url(../assets/img/2020-06-23-1.06.27.jpg)
+                .pic-06
+                    background-image: url(../assets/img/2020-06-23-1.16.43.jpg)
+                .pic-07
+                    background-image: url(../assets/img/2020-06-23-2.00.06.jpg)
+                .pic-08
+                    background-image: url(../assets/img/2020-06-23-2.05.51.jpg)
+                .pic-09
+                    background-image: url(../assets/img/2020-06-23-2.08.38.jpg)
+                .pic-10
+                    background-image: url(../assets/img/2020-06-23-2.13.43.jpg)
+            .product-name
+                width: 100%
+                padding: 20px 0
+                display: flex
+                flex-direction: column
+                align-items: center
+                bottom: 30px
+                background: rgba($gray, 0.2)
+                h5
+                    font-size: 15px
+                    font-weight: 500
+                    color: $dark-beige
+                    margin-bottom: 10px
+                .orign
+                    font-size: 13px
+                    padding-top: 8px
+                    text-decoration: line-through
+                    font-weight: 300
+                    font-style: italic
+                p
+                    display: flex
+                    align-items: center
+                    font-weight: 300
+                    font-style: italic
+                    font-size: 20px
+                    .sale-icon
+                        font-style: initial
+                        font-size: 12px
+                        font-weight: 300
+                        padding: 0 5px
+                        border-radius: 10px
+                        margin-left: 10px
+                        background: $main-yellow
+                        color: $black
+        .swiper-pagination-bullet
+            width: 10px
+            height: 2px
+            border-radius: 0
+        .swiper-pagination-bullet-active
+            background: $black
+
+.selection
+    &__title
+        @include media-w767
+            padding-bottom: 50px
+    &__content
+        width: 100%
+        display: flex
+        justify-content: space-between
+        @include media-w767
+            flex-direction: column
+            align-items: center
+        .select-pic
+            width: 48.5%
+            background-image: url(../assets/img/2020-06-23-3.20.22.png)
+            background-size: cover
+            background-position: center
+            @include media-w896
+                width: 42%
+            @include media-w767
+                width: 100%
+                height: 300px
+                background-image: url(../assets/img/2020-06-24-5.18.28.png)
+                margin-bottom: 40px
+        .select-product
+            width: 48.5%
+            display: flex
+            flex-direction: column
+            align-items: center
+            overflow: hidden
+            @include media-w896
+                width: 55%
+            @include media-w767
+                width: 90%
+            @include media-w414
+                width: 80%
+            > p
+                display: flex
+                flex-direction: column
+                align-items: center
+                font-size: 27px
+                font-weight: 300
+                padding-bottom: 14px
+                > span
+                    margin-top: 10px
+                    display: block
+                    font-size: 15px
+            ul
+                display: flex
+                flex-wrap: wrap
+                justify-content: space-between
+                li
+                    width: 30%
+                    text-align: center
+                    padding-top: 20px
+                    @include media-w568
+                        width: 48%
+                    @include media-w414
+                        width: 100%
+                    a
+                        display: block
+                        text-decoration: none
+                        color: $black
+                        img
+                            transition: 0.5s ease-in-out
+                        &:hover
+                            img
+                                transform: scale(1.1)
+                        p
+                            display: flex
+                            flex-direction: column
+                            align-items: center
+                            font-size: 13px
+                            margin-top: 10px
+                            padding: 10px 0
+                            font-weight: 500
+                            border-top: 1px solid $beige
+                            border-bottom: 1px solid $beige
+                            span
+                                padding-top: 5px
+                                font-size: 12px
+                                font-weight: 300
