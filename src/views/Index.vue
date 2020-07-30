@@ -253,90 +253,7 @@
                 src="https://shoplineimg.com/5cd8dc7015c0710001011ee2/5d5bc7beb19ace0014165345/800x.webp?source_format=jpg"
                 alt="">
         </div>
-        <div class="sale__content swiper-container" v-swiper:mySwiper="swiperOption">
-            <div class="swiper-wrapper">
-                <a href="#" class="swiper-slide">
-                    <div class="sale-pic pic-01"></div>
-                    <div class="product-name">
-                        <h5>夜巡桌燈 by MENU</h5>
-                        <p>NT$8,500<span class="sale-icon">sale</span></p>
-                        <div class="orign">NT$10,000</div>
-                    </div>
-                </a>
-                <a href="#" class="swiper-slide">
-                    <div class="sale-pic pic-02"></div>
-                    <div class="product-name">
-                        <h5>花生鋼腳單椅 by normann</h5>
-                        <p>NT$23,800<span class="sale-icon">sale</span></p>
-                        <div class="orign">NT$29,800</div>
-                    </div>
-                </a>
-                <a href="#" class="swiper-slide">
-                    <div class="sale-pic pic-03"></div>
-                    <div class="product-name">
-                        <h5>包圍咖啡桌(大) by Muuto</h5>
-                        <p>NT$31,800<span class="sale-icon">sale</span></p>
-                        <div class="orign">NT$35,800</div>
-                    </div>
-                </a>
-                <a href="#" class="swiper-slide">
-                    <div class="sale-pic pic-04"></div>
-                    <div class="product-name">
-                        <h5>原型沙發-兩人座 by Muuto</h5>
-                        <p>NT$140,100<span class="sale-icon">sale</span></p>
-                        <div class="orign">NT$150,900</div>
-                    </div>
-                </a>
-                <a href="#" class="swiper-slide">
-                    <div class="sale-pic pic-05"></div>
-                    <div class="product-name">
-                        <h5>浮光吊燈 by Muuto</h5>
-                        <p>NT$15,500 up<span class="sale-icon">sale</span></p>
-                        <div class="orign">NT$16,900 up</div>
-                    </div>
-                </a>
-                <a href="#" class="swiper-slide">
-                    <div class="sale-pic pic-06"></div>
-                    <div class="product-name">
-                        <h5>木纖木腳休閒椅 by Muuto</h5>
-                        <p>NT$31,800<span class="sale-icon">sale</span></p>
-                        <div class="orign">NT$33,800</div>
-                    </div>
-                </a>
-                <a href="#" class="swiper-slide">
-                    <div class="sale-pic pic-07"></div>
-                    <div class="product-name">
-                        <h5>速寫椅凳 by FRAMA</h5>
-                        <p>NT$24,800<span class="sale-icon">sale</span></p>
-                        <div class="orign">NT$28,800</div>
-                    </div>
-                </a><a href="#" class="swiper-slide">
-                    <div class="sale-pic pic-08"></div>
-                    <div class="product-name">
-                        <h5>層列咖啡桌 by Umbra Shift</h5>
-                        <p>NT$21,500<span class="sale-icon">sale</span></p>
-                        <div class="orign">NT$22,900</div>
-                    </div>
-                </a>
-                <a href="#" class="swiper-slide">
-                    <div class="sale-pic pic-09"></div>
-                    <div class="product-name">
-                        <h5>層列邊桌 by Umbra Shift</h5>
-                        <p>NT$15,000<span class="sale-icon">sale</span></p>
-                        <div class="orign">NT$16,800</div>
-                    </div>
-                </a>
-                <a href="#" class="swiper-slide">
-                    <div class="sale-pic pic-10"></div>
-                    <div class="product-name">
-                        <h5>Pacha 波恰休閒椅 by Gubi</h5>
-                        <p>NT$98,800<span class="sale-icon">sale</span></p>
-                        <div class="orign">NT$101,800</div>
-                    </div>
-                </a>
-            </div>
-            <div class="swiper-pagination"></div>
-        </div>
+        <div is="swiper"></div>
       </div>
       <div class="selection">
         <div class="hp-title selection__title">
@@ -399,12 +316,14 @@
 import shopping from '../components/Shoppingcart.vue'
 import search from '../components/Searchbox.vue'
 import gotop from '../components/Gotop.vue'
+import swiper from '../components/Swiper.vue'
 
 export default {
   components: {
     shopping,
     search,
-    gotop
+    gotop,
+    swiper
   },
   data () {
     return {
@@ -413,49 +332,12 @@ export default {
       opensearch: false,
       isLoading: false,
       shoppingCartOpen: false,
-      cart: [],
-      swiperOption: {
-        direction: 'horizontal',
-        speed: 2000,
-        loop: false,
-        autoplay: {
-          delay: 2000,
-          disableOnInteraction: false
-        },
-        slidesPerView: 1,
-        spaceBetween: 5,
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true
-        },
-        breakpoints: {
-          // when window width is >= 896px
-          897: {
-            slidesPerView: 4
-          },
-          // when window width is >= 668px
-          668: {
-            slidesPerView: 3
-          },
-          // when window width is >= 569px
-          569: {
-            slidesPerView: 2
-          }
-        }
-      }
-    }
-  },
-  computed: {
-    swiper () {
-      return this.$refs.mySwiper.$swiper
+      cart: []
     }
   },
   created () {
     this.getCart()
     window.addEventListener('scroll', this.showTitle, true)
-  },
-  mounted () {
-    this.mySwiper.slideTo(1, 1000, true)
   },
   methods: {
     showTitle () {
