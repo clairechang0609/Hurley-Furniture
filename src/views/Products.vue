@@ -109,7 +109,7 @@
     <div class="logo-wrap">
         <div class="logo-frame"></div>
         <h1>
-          <a href="#" class="logo">Hurley Furniture</a>
+          <router-link to="/" class="logo">Hurley Furniture</router-link>
         </h1>
     </div>
     <div class="header">
@@ -246,6 +246,7 @@
           </router-link>
         </li>
       </ul>
+      <div is="pagination" :pages="pagination" @changepage="getProducts"></div>
     </div>
     <div class="footer">
       <div class="text">
@@ -263,12 +264,14 @@
 import shopping from '../components/Shoppingcart.vue'
 import search from '../components/Searchbox.vue'
 import gotop from '../components/Gotop.vue'
+import pagination from '../components/Pagination.vue'
 
 export default {
   components: {
     shopping,
     search,
-    gotop
+    gotop,
+    pagination
   },
   data () {
     return {
@@ -281,7 +284,8 @@ export default {
       isLoading: false,
       shoppingCartOpen: false,
       cart: {},
-      totalPrice: 0
+      totalPrice: 0,
+      pagination: {}
     }
   },
   created () {
@@ -289,17 +293,19 @@ export default {
     this.getCart()
   },
   methods: {
-    getProducts () {
+    getProducts (page = 1) {
       console.log(this.$route.params.category)
       const category = this.$route.params.category
       this.showProducts = []
-      const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/products`
+      const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/products?page=${page}`
       this.isLoading = true
       this.$http
         .get(url)
         .then(response => {
           this.isLoading = false
           this.products = response.data.data
+          console.log(response.data)
+          this.pagination = response.data.meta.pagination
 
           this.products.forEach(product => {
             if (category === product.category) {
@@ -308,6 +314,7 @@ export default {
             } else if (category === 'All-Products') {
               this.showProducts = this.products
               this.category = 'All Products'
+              console.log(this.showProducts.length)
             } else if (category === 'Sale') {
               if (product.price < product.origin_price) {
                 this.showProducts.push(product)

@@ -66,5 +66,5 @@ export default {
 </script>
 
 <style lang="sass">
-    @import '../assets/sass/all.sass';
+    @import '../assets/sass/all.sass'
 </style>

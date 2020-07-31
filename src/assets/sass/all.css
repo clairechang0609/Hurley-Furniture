@@ -1595,6 +1595,11 @@ img {
 .sale__content .swiper-slide {
   position: relative;
   font-size: 18px;
+  text-decoration: none;
+  color: black;
+}
+
+.sale__content .swiper-slide a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

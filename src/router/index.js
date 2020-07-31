@@ -11,44 +11,54 @@ const routes = [
     children: [
       {
         path: '',
+        name: 'index',
         component: () => import('../views/Index.vue')
       },
       {
         path: '/products/:category',
+        name: 'products',
         component: () => import('../views/Products.vue')
       },
       {
         path: '/product/:id',
+        name: 'product',
         component: () => import('../views/Product.vue')
       },
       {
         path: '/cart',
+        name: 'cart',
         component: () => import('../views/Cart.vue')
       },
       {
         path: '/guide',
+        name: 'guide',
         component: () => import('../views/Guide.vue')
       },
       {
         path: '/account',
+        name: 'account',
         component: () => import('../views/Account.vue')
       }
     ]
   },
   {
     path: '/signin',
+    name: 'signin',
     component: () => import('../views/Signin.vue')
   },
   {
     path: '/admin',
+    name: 'admin',
     component: () => import('../views/Dashboard.vue'),
     children: [
       {
         path: 'products',
+        name: 'products',
         component: () => import('../views/dashboard/Products.vue')
       },
       {
         path: 'orders',
+        name: 'orders',
         component: () => import('../views/dashboard/Orders.vue')
       }
     ]

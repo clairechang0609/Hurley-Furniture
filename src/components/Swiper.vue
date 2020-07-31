@@ -1,13 +1,15 @@
 <template>
   <div is="swiper" ref="mySwiper" class="sale__content swiper-container" :options="swiperOption">
-    <a href="#" class="swiper-slide" is="swiper-slide">
+    <div class="swiper-slide" is="swiper-slide">
+      <router-link :to="`/product/4QY1nmbEf3w4b7MUuMS0ywA2ukuAn7U8iZGJjODEk6B54DJDpmDXNi5mYyuI4VQe`">
         <div class="sale-pic pic-01"></div>
         <div class="product-name">
             <h5>夜巡桌燈 by MENU</h5>
             <p>NT$8,500<span class="sale-icon">sale</span></p>
             <div class="orign">NT$10,000</div>
         </div>
-    </a>
+      </router-link>
+    </div>
     <a href="#" class="swiper-slide" is="swiper-slide">
         <div class="sale-pic pic-02"></div>
         <div class="product-name">
