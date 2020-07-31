@@ -1222,6 +1222,7 @@ img {
   text-decoration: none;
   border: 1px solid black;
   color: black;
+  background: rgba(170, 170, 170, 0.2);
   overflow: hidden;
   border-radius: 2px;
   -ms-flex-negative: 0;
@@ -1256,7 +1257,7 @@ img {
   position: absolute;
   top: 0;
   left: 0;
-  background: #fad200;
+  background: #dacdba;
   width: 0;
   height: 100px;
   -webkit-transition: 0.3s ease-in-out;
@@ -1938,8 +1939,8 @@ img {
   margin-top: 10px;
   padding: 10px 0;
   font-weight: 500;
-  border-top: 1px solid #dacdba;
-  border-bottom: 1px solid #dacdba;
+  border-top: 1px solid rgba(170, 170, 170, 0.5);
+  border-bottom: 1px solid rgba(170, 170, 170, 0.5);
 }
 
 .selection__content .select-product ul li a p span {
@@ -2503,7 +2504,7 @@ img {
   position: relative;
   text-align: center;
   font-size: 35px;
-  padding-bottom: 70px;
+  padding-bottom: 50px;
 }
 
 .contents-products h4::before {

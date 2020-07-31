@@ -246,7 +246,6 @@
           </router-link>
         </li>
       </ul>
-      <div is="pagination" :pages="pagination" @changepage="getProducts"></div>
     </div>
     <div class="footer">
       <div class="text">
@@ -264,14 +263,12 @@
 import shopping from '../components/Shoppingcart.vue'
 import search from '../components/Searchbox.vue'
 import gotop from '../components/Gotop.vue'
-import pagination from '../components/Pagination.vue'
 
 export default {
   components: {
     shopping,
     search,
-    gotop,
-    pagination
+    gotop
   },
   data () {
     return {
@@ -284,8 +281,7 @@ export default {
       isLoading: false,
       shoppingCartOpen: false,
       cart: {},
-      totalPrice: 0,
-      pagination: {}
+      totalPrice: 0
     }
   },
   created () {
@@ -293,11 +289,11 @@ export default {
     this.getCart()
   },
   methods: {
-    getProducts (page = 1) {
+    getProducts () {
       console.log(this.$route.params.category)
       const category = this.$route.params.category
       this.showProducts = []
-      const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/products?page=${page}`
+      const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/products?paged=40`
       this.isLoading = true
       this.$http
         .get(url)
@@ -305,7 +301,6 @@ export default {
           this.isLoading = false
           this.products = response.data.data
           console.log(response.data)
-          this.pagination = response.data.meta.pagination
 
           this.products.forEach(product => {
             if (category === product.category) {

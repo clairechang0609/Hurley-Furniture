@@ -313,7 +313,7 @@ export default {
     this.getSingleProduct()
     this.getRelatedProducts()
 
-    const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/products`
+    const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/products?paged=40`
     this.$http.get(url)
       .then(response => {
         this.isLoading = false
