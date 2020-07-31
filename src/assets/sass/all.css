@@ -2604,7 +2604,6 @@ img {
 }
 
 .contents-products .items .item .card-img .add-btn {
-  content: 'Add to Cart';
   position: absolute;
   display: none;
   text-align: center;
@@ -2615,6 +2614,7 @@ img {
   color: white;
   font-weight: 300;
   border: none;
+  border-radius: 0;
   -webkit-transition: 0.3 ease-in-out;
   transition: 0.3 ease-in-out;
 }
@@ -3040,7 +3040,6 @@ img {
 }
 
 .items .item .card-img .add-btn {
-  content: 'Add to Cart';
   position: absolute;
   display: none;
   text-align: center;
@@ -3051,6 +3050,7 @@ img {
   color: white;
   font-weight: 300;
   border: none;
+  border-radius: 0;
   -webkit-transition: 0.3 ease-in-out;
   transition: 0.3 ease-in-out;
 }
@@ -3113,5 +3113,566 @@ img {
   text-decoration: line-through;
   font-weight: 300;
   font-style: italic;
+}
+
+button {
+  background: #dacdba;
+  padding: 5px 12px;
+  border: none;
+  border-radius: 3px;
+}
+
+button.btn-margin {
+  margin: 0 5px;
+}
+
+button:hover {
+  background: #c4ac8a;
+  color: white;
+}
+
+.add-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: auto;
+  height: auto;
+  background: #dacdba;
+  padding-bottom: 50px;
+}
+
+.topbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 30px 50px;
+}
+
+.topbar h1 {
+  display: block;
+  width: 85px;
+  height: 85px;
+  background: url(../assets/img/hurley-furniture-01.svg) no-repeat;
+  text-indent: 101%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.topbar .menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 20px;
+}
+
+.topbar .menu li a {
+  padding: 20px 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.topbar .menu li a:hover {
+  color: #787878;
+}
+
+.topbar .menu li button {
+  margin-left: 10px;
+  border: 1px solid black;
+}
+
+.topbar .menu li button:hover {
+  border: 1px solid #c4ac8a;
+}
+
+.pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 50px;
+}
+
+.pagination li a {
+  text-decoration: none;
+  color: #787878;
+  padding: 10px;
+}
+
+.pagination li a:hover, .pagination li a:focus {
+  color: black;
+}
+
+.pagination li.disabled a {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.5;
+}
+
+.pagination li.active a {
+  color: black;
+}
+
+.signin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 400px;
+  background: white;
+  margin: 100px auto;
+  padding: 50px 70px;
+  border: 1px solid #c4ac8a;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.signin h3 {
+  font-size: 20px;
+}
+
+.signin input, .signin button {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.signin p {
+  font-size: 13px;
+  font-weight: 300;
+  padding-top: 20px;
+  color: #787878;
+}
+
+.product {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 1000px;
+  background: white;
+  margin: 0 auto 50px;
+  padding: 50px;
+  border: 1px solid #c4ac8a;
+  border-radius: 5px;
+}
+
+.product .add-product {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin-bottom: 30px;
+  margin-right: 4px;
+}
+
+.product table {
+  width: 100%;
+  text-align: center;
+  border-spacing: 3px;
+  border-collapse: separate;
+}
+
+.product table tr th, .product table tr td {
+  line-height: 1.2;
+  vertical-align: middle;
+  margin: 10px;
+}
+
+.product table tr th {
+  padding: 10px 5px;
+  background: black;
+  color: white;
+  font-size: 13px;
+  border-radius: 4px;
+}
+
+.product table tr td {
+  padding: 15px 0;
+  background: white;
+  border-bottom: 1px solid #000;
+  color: #191919;
+  font-size: 13px;
+}
+
+.product table tr td .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  z-index: 0;
+}
+
+.product table tr td .container input {
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.product table tr td .checkmark {
+  position: relative;
+  height: 13px;
+  width: 13px;
+  border-radius: 3px;
+  border: 1px solid black;
+  margin-right: 5px;
+}
+
+.product table tr td .container input:checked ~ .checkmark {
+  background-color: #c4ac8a;
+  border: 1px solid #c4ac8a;
+}
+
+.product table tr td .container input:checked ~ .checkmark::before,
+.product table tr td .container input:checked ~ .checkmark::after {
+  display: block;
+}
+
+.product table tr td .container .checkmark::before {
+  content: '';
+  position: absolute;
+  display: none;
+  left: 2px;
+  top: 4px;
+  width: 0;
+  height: 5px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.product table tr td .container .checkmark::after {
+  content: '';
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 1px;
+  width: 0;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.product .form-wrap {
+  position: absolute;
+  display: none;
+  top: 50px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 800px;
+  background: white;
+  padding: 40px;
+  margin-bottom: 50px;
+  border: 1px solid #c4ac8a;
+  border-radius: 5px;
+  z-index: 2000;
+}
+
+.product .form-wrap.show {
+  display: block;
+}
+
+.product .form-wrap .title-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid black;
+}
+
+.product .form-wrap .title-bar h5 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.product .form-wrap .title-bar .close {
+  background: transparent;
+  font-size: 15px;
+}
+
+.product .form-wrap .title-bar .close:hover {
+  color: #969696;
+}
+
+.product .form-wrap .title-bar .close:focus {
+  outline: none;
+}
+
+.product .form-wrap .form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.product .form-wrap .form .pic {
+  width: 40%;
+}
+
+.product .form-wrap .form .content {
+  width: 57%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.product .form-wrap .form img {
+  padding-top: 20px;
+}
+
+.product .form-wrap .form .input-group {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.product .form-wrap .form .input-group.half {
+  width: 48%;
+}
+
+.product .form-wrap .form .input-group label {
+  padding: 15px 0 10px;
+}
+
+.product .form-wrap .form .checkbox-group {
+  padding: 15px 0 10px;
+}
+
+.product .form-wrap .submit-btns {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.product .form-wrap .submit-btns button {
+  margin-left: 5px;
+}
+
+.product .delete-alert {
+  position: fixed;
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 400px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border: 1px solid #c4ac8a;
+  border-radius: 5px;
+  z-index: 2000;
+}
+
+.product .delete-alert.show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.product .delete-alert h5 {
+  font-size: 20px;
+  font-weight: 500;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid black;
+}
+
+.product .delete-alert p {
+  padding: 10px 0 20px;
+}
+
+.product .delete-alert p span {
+  color: #fad200;
+  font-weight: 500;
+}
+
+.product .delete-alert .cancel-btns {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.order {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 1000px;
+  background: white;
+  margin: 0 auto 50px;
+  padding: 50px;
+  border: 1px solid #c4ac8a;
+  border-radius: 5px;
+}
+
+.order .add-product {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin-bottom: 30px;
+  margin-right: 4px;
+}
+
+.order table {
+  width: 100%;
+  text-align: center;
+  border-spacing: 3px;
+  border-collapse: separate;
+}
+
+.order table tr th, .order table tr td {
+  line-height: 1.2;
+  vertical-align: middle;
+  margin: 10px;
+}
+
+.order table tr th {
+  padding: 10px 5px;
+  background: black;
+  color: white;
+  font-size: 13px;
+  border-radius: 4px;
+}
+
+.order table tr td {
+  padding: 15px 0;
+  background: white;
+  border-bottom: 1px solid #000;
+  color: #191919;
+  font-size: 13px;
+}
+
+.order table tr td.title {
+  text-align: left;
+  padding-left: 20px;
+  line-height: 1.5;
+}
+
+.order table tr td .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  z-index: 0;
+}
+
+.order table tr td .container input {
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.order table tr td .checkmark {
+  position: relative;
+  height: 13px;
+  width: 13px;
+  border-radius: 3px;
+  border: 1px solid black;
+  margin-right: 5px;
+}
+
+.order table tr td .container input:checked ~ .checkmark {
+  background-color: #c4ac8a;
+  border: 1px solid #c4ac8a;
+}
+
+.order table tr td .container input:checked ~ .checkmark::before,
+.order table tr td .container input:checked ~ .checkmark::after {
+  display: block;
+}
+
+.order table tr td .container .checkmark::before {
+  content: '';
+  position: absolute;
+  display: none;
+  left: 2px;
+  top: 4px;
+  width: 0;
+  height: 5px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.order table tr td .container .checkmark::after {
+  content: '';
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 1px;
+  width: 0;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 /*# sourceMappingURL=all.css.map */

@@ -41,7 +41,7 @@
             is="shopping"
             :shoppingcart="cart"
             :shoppingcartopen="shoppingCartOpen"
-            @deleteProduct="deleteCartItem"
+            @deleteproduct="deleteCartItem"
             @qtyupdate="qtyUpdate"
             @shoppingcartclose ="shoppingCartClose"
           ></div>
@@ -225,7 +225,7 @@
                   <form class="select_qty">
                       <div class="input-group">
                           <button type="button" class="decrease-btn" @click="productQty = (productQty - 1)"
-                              :disabled="productQty === 0">
+                              :disabled="productQty === 1">
                               <i class="fa fa-minus"></i>
                           </button>
                           <input type="number" class="product-number" :value="productQty"

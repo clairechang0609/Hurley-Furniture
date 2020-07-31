@@ -38,12 +38,12 @@
                     </li>
                 </ul>
                 <div
-                is="shopping"
-                :shoppingcart="cart"
-                :shoppingcartopen="shoppingCartOpen"
-                @deleteProduct="deleteCartItem"
-                @qtyupdate="qtyUpdate"
-                @shoppingcartclose ="shoppingCartClose"
+                    is="shopping"
+                    :shoppingcart="cart"
+                    :shoppingcartopen="shoppingCartOpen"
+                    @deleteproduct="deleteCartItem"
+                    @qtyupdate="qtyUpdate"
+                    @shoppingcartclose ="shoppingCartClose"
                 ></div>
                 <ul class="top__main-menu">
                 <li>

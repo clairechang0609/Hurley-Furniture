@@ -41,7 +41,7 @@
           is="shopping"
           :shoppingcart="cart"
           :shoppingcartopen="shoppingCartOpen"
-          @deleteProduct="deleteCartItem"
+          @deleteproduct="deleteCartItem"
           @qtyupdate="qtyUpdate"
           @shoppingcartclose ="shoppingCartClose"
         ></div>
