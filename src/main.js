@@ -8,7 +8,7 @@ import { ValidationObserver, ValidationProvider, extend, localize } from 'vee-va
 import * as rules from 'vee-validate/dist/rules'
 import TW from 'vee-validate/dist/locale/zh_TW.json'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
-import 'swiper/swiper-bundle.css'
+import 'swiper/css/swiper.css'
 import App from './App.vue'
 import router from './router'
 

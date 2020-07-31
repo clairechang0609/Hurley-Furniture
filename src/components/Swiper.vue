@@ -85,7 +85,7 @@
 
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-import 'swiper/swiper-bundle.css'
+import 'swiper/css/swiper.css'
 export default {
   components: {
     Swiper,
@@ -132,13 +132,10 @@ export default {
   mounted () {
     console.log('Current Swiper instance object', this.swiper)
     this.swiper.slideTo(1, 2000, true)
-    // setInterval(() => {
-    //   this.swiper.slideNext()
-    // }, 2000)
   }
 }
 </script>
 
 <style lang="sass" scoped>
-  @import '../assets/sass/all.sass';
+  @import '../assets/sass/all.sass'
 </style>
