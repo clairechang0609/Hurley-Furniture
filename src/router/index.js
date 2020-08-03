@@ -60,6 +60,16 @@ const routes = [
         path: 'orders',
         name: 'orders',
         component: () => import('../views/dashboard/Orders.vue')
+      },
+      {
+        path: 'coupons',
+        name: 'coupons',
+        component: () => import('../views/dashboard/Coupons.vue')
+      },
+      {
+        path: 'pictures',
+        name: 'pictures',
+        component: () => import('../views/dashboard/Pictures.vue')
       }
     ]
   }

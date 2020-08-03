@@ -18,11 +18,11 @@
                             </li>
                         </ul>
                     </td>
-                    <td class="text-center">NT${{ order.amount | thousands }}</td>
-                    <td class="text-center">{{ order.payment }}</td>
+                    <td>NT${{ order.amount | thousands }}</td>
+                    <td>{{ order.payment }}</td>
                     <td>
                         <label class="container">
-                            <input type="checkbox" v-model="order.paid" @click="editPaid (order), updateOrder()" id="showIt">
+                            <input type="checkbox" v-model="order.paid" @click="editPaid(order), updateOrder()">
                             <span class="checkmark"></span>
                             <p>付款</p>
                         </label>

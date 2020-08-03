@@ -35,7 +35,7 @@
             </table>
             <div class="form-wrap" :class="{ 'show': formShow }">
                 <div class="title-bar">
-                    <h5>{{newProduct?"新增產品":"編輯產品"}}</h5>
+                    <h5>{{ newProduct?"新增產品":"編輯產品" }}</h5>
                     <button type="button" class="close" @click="closeForm()"><i class="fas fa-times"></i></button>
                 </div>
                 <div class="form">
@@ -97,7 +97,7 @@
             </div>
             <div class="delete-alert" :class="{ 'show': deleteShow }">
                 <h5>刪除產品</h5>
-                <p>是否刪除 <span>{{editProduct.title}}</span> (刪除後將無法恢復)。</p>
+                <p>是否刪除 <span>{{ editProduct.title }}</span> (刪除後將無法恢復)。</p>
                 <div class="cancel-btns">
                     <button class="btn-margin" type="button" @click="cancelDelete()">取消</button>
                     <button class="btn-margin" type="button" @click="deleteProduct()">確認</button>
@@ -188,11 +188,11 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/product/${id}`
       this.$http.defaults.headers.common.Authorization = `Bearer ${this.token}`
       this.$http.get(url)
-        .then((response) => {
+        .then(response => {
           this.isLoading = false
           this.editProduct = response.data.data
         })
-        .catch((error) => {
+        .catch(error => {
           this.isLoading = false
           console.log(error)
         })

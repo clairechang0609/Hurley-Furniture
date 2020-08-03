@@ -1,22 +1,23 @@
 <template>
-  <div :class="{'add-background': bgShow}">
     <div class="wrap">
-        <div class="topbar">
-            <h1>Hurley Furniture</h1>
-            <ul class="menu">
-                <li><router-link to="/"> Back Home </router-link></li>
-                <li><router-link to="/admin/products"> Products </router-link></li>
-                <li><router-link to="/admin/orders"> Orders </router-link></li>
-                <li>
-                  <button type="button" class="signout" @click="signOut()">登出</button>
-                </li>
-            </ul>
-        </div>
-        <loading :active.sync="isLoading"></loading>
-        <router-view v-if="isLogin"></router-view>
-        <div is="gotop"></div>
+      <div :class="{'add-background': bgShow}"></div>
+      <div class="topbar">
+          <h1>Hurley Furniture</h1>
+          <ul class="menu">
+              <li><router-link to="/"> Back Home </router-link></li>
+              <li><router-link to="/admin/products"> Products </router-link></li>
+              <li><router-link to="/admin/orders"> Orders </router-link></li>
+              <li><router-link to="/admin/coupons"> Coupons </router-link></li>
+              <li><router-link to="/admin/pictures"> Pictures </router-link></li>
+              <li>
+                <button type="button" class="signout" @click="signOut()">登出</button>
+              </li>
+          </ul>
+      </div>
+      <loading :active.sync="isLoading"></loading>
+      <router-view v-if="isLogin"></router-view>
+      <div is="gotop"></div>
     </div>
-  </div>
 </template>
 
 <script>
