@@ -52,9 +52,8 @@ export default {
             this.$router.push('/admin/products').catch(() => {})
           }
         })
-        .catch(err => {
+        .catch(() => {
           this.isLoading = false
-          console.log(err)
           this.$router.push('/signin')
         })
     },

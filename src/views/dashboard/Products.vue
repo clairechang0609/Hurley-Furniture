@@ -186,7 +186,6 @@ export default {
     getSingleProduct (id) {
       this.isLoading = true
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/product/${id}`
-      this.$http.defaults.headers.common.Authorization = `Bearer ${this.token}`
       this.$http.get(url)
         .then(response => {
           this.isLoading = false
@@ -210,7 +209,6 @@ export default {
         method = 'patch'
       }
 
-      this.$http.defaults.headers.common.Authorization = `Bearer ${this.token}`
       this.$http[method](url, this.editProduct)
         .then(() => {
           this.isLoading = false
@@ -228,7 +226,6 @@ export default {
     deleteProduct () {
       this.isLoading = true
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/product/${this.editProduct.id}`
-      this.$http.defaults.headers.common.Authorization = `Bearer ${this.token}`
 
       this.$http.delete(url)
         .then(response => {
@@ -262,8 +259,6 @@ export default {
       formData.append('file', uploadfile)
 
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/storage`
-      this.$http.defaults.headers.common.Authorization = `Bearer ${this.token}`
-
       this.$http.post(url, formData, {
         header: {
           'Content-Type': 'multipart/form-data'

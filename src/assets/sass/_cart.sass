@@ -66,11 +66,14 @@
         font-size: 27px
         font-weight: 300
         padding-bottom: 20px
-    a
-        font-size: 15px
-        color: $black
-        &:hover
-            color: $dark-beige
+    .pay-completed
+        width: 300px
+        margin: 0 auto
+        a
+            font-size: 15px
+            color: $black
+            &:hover
+                color: $dark-beige
 .checkout-table
     width: 100%
     background: $white
@@ -151,7 +154,7 @@
         background: $dark-beige
         color: $white
     .cart-select
-        width: 55%
+        width: 48%
         border: 1px solid $beige
         display: flex
         flex-direction: column
@@ -178,7 +181,7 @@
                 align-self: flex-start
                 color: $black
     .sum-check
-        width: 40%
+        width: 47%
         border: 1px solid $beige
         display: flex
         flex-direction: column
@@ -196,6 +199,22 @@
                 color: $dark-beige
                 &.delete
                     text-decoration: line-through
+            .coupon-input
+                display: flex
+                input
+                    width: 60%
+                    border-radius: 0
+                    border: 1px solid $dark-beige
+                    &:focus
+                        box-shadow: none
+                button
+                    width: 40%
+                    padding: 5px
+                    border-radius: 0
+                    &:focus
+                        outline: none
+            .coupon-price
+                color: $dark-beige
             .all-sum
                 font-size: 16px
                 font-weight: 500
@@ -286,5 +305,54 @@
         color: $black
         &:hover
             color: $dark-beige
+.checkorder-table
+    width: 85%
+    background: $white
+    border: 1px solid $beige
+    margin: 0 auto 30px
+    tr
+        margin: 0 20px
+        th, td
+            line-height: 1.2
+            text-align: center
+            vertical-align: middle
+            padding: 10px 5px
+            margin: 10px
+            font-size: 13px
+        th
+            color: $dark-beige
+        td
+            border-top: 1px solid $beige
+            color: rgb(25,25,25)
+            &.total-price
+                padding: 15px 5px
+                font-size: 15px
+            img
+                padding-left: 20px
+                width: 100px;
+.checkinfo-table
+    width: 85%
+    background: $white
+    border: 1px solid $beige
+    margin: 0 auto 30px
+    tr
+        margin: 0 20px
+        th, td
+            line-height: 1.2
+            text-align: left
+            vertical-align: middle
+            padding: 10px 20px
+            margin: 10px
+            border-top: 1px solid $beige
+        th
+            color: $dark-beige
+            font-size: 13px
+        td
+            color: rgb(25,25,25)
+            font-size: 14px
+.pay-btn
+    width: 85%
+    padding: 7px 12px
+
 
 

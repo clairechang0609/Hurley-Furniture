@@ -173,13 +173,12 @@ export default {
 
       this.editCoupon.deadline_at = `${this.due_date} ${this.due_time}`
 
-      this.$http.defaults.headers.common.Authorization = `Bearer ${this.token}`
       this.$http[method](url, this.editCoupon)
         .then(() => {
           this.isLoading = false
           this.getCoupons()
         })
-        .catch((error) => {
+        .catch(error => {
           this.isLoading = false
           console.log(error)
         })
@@ -190,8 +189,6 @@ export default {
     deleteCoupon () {
       this.isLoading = true
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/coupon/${this.editProduct.id}`
-      this.$http.defaults.headers.common.Authorization = `Bearer ${this.token}`
-
       this.$http.delete(url)
         .then(response => {
           this.isLoading = false

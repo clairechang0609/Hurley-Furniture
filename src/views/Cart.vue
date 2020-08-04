@@ -266,16 +266,16 @@
                     <div class="cart-select">
                         <h4>選擇送貨及付款方式</h4>
                         <div class="input-wrap">
-                                <label for="delivery-place">送貨地點</label>
-                                <select id="delivery-place" ref="pay">
-                                    <option value="" selected disabled>台灣</option>
-                                </select>
-                                <label for="delivery-method">送貨方式</label>
-                                <select id="delivery-method">
-                                    <option value="" selected disabled>宅配到府</option>
-                                </select>
-                                <span>1. 預購商品會因不同品牌有不同的等待期，請您耐心等候。</span>
-                                <span>2. 提交訂單後，我們會寄送一封確認訂單的 E-mail 到您指定的電子郵件信箱中，再次確認本次訂購內容、金額、付款方式等項目。</span>
+                            <label for="delivery-place">送貨地點</label>
+                            <select id="delivery-place" ref="pay">
+                                <option value="" selected disabled>台灣</option>
+                            </select>
+                            <label for="delivery-method">送貨方式</label>
+                            <select id="delivery-method">
+                                <option value="" selected disabled>宅配到府</option>
+                            </select>
+                            <span>1. 預購商品會因不同品牌有不同的等待期，請您耐心等候。</span>
+                            <span>2. 提交訂單後，我們會寄送一封確認訂單的 E-mail 到您指定的電子郵件信箱中，再次確認本次訂購內容、金額、付款方式等項目。</span>
                         </div>
                     </div>
                     <div class="sum-check">
@@ -293,9 +293,18 @@
                                 <p>優惠促銷：滿一萬免運</p>
                                 <p v-if="totalPrice >= 10000">-NT$ 350</p>
                             </div>
+                            <div class="coupon-price" v-if="coupon.enabled">
+                                <p>優惠券折扣：</p>
+                                <p>-NT$ {{ totalPrice * ((100-coupon.percent) / 100) | thousands }}</p>
+                            </div>
+                            <div class="coupon-input">
+                                <input type="text" v-model="coupon_code" placeholder="請輸入優惠碼">
+                                <button type="button" @click="addCoupon">套用優惠碼</button>
+                            </div>
                             <div class="all-sum">
                                 <p>總金額</p>
-                                <p>NT$ {{ totalPrice + deliveryFee | thousands }}</p>
+                                <p v-if="coupon.enabled">NT$ {{ totalPrice * (coupon.percent / 100) + deliveryFee | thousands }}</p>
+                                <p v-else>NT$ {{ totalPrice + deliveryFee | thousands }}</p>
                             </div>
                             <button type="button" class="checkout" @click="page = 2">前往結帳</button>
                         </div>
@@ -352,7 +361,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="remark">訂單備註</label>
-                                    <textarea id="remark" placeholder="有什麼想告訴我們的嗎？"></textarea>
+                                    <textarea id="remark" v-model="form.message" placeholder="有什麼想告訴我們的嗎？"></textarea>
                                 </div>
                                 <button type="submit" class="submit-btn" @click="page = 3" :disabled="invalid">提交訂單</button>
                             </div>
@@ -364,8 +373,56 @@
                 </div>
             </div>
             <div class="step-three" :class="{ 'show': page === 3 }">
-                <h4>謝謝您的訂單</h4>
-                <a href="#">訂單查詢 →</a>
+                <div v-if="completed" class="pay-completed">
+                    <h4>付款完成，謝謝您的訂單</h4>
+                    <div class="btns">
+                        <a href="#">← 訂單查詢</a>
+                        <router-link to="/products/All-Products">繼續購物 →</router-link>
+                    </div>
+                </div>
+                <div v-else>
+                    <form @submit.prevent="payOrder()">
+                        <table class="checkorder-table">
+                            <tr class="table-title">
+                                <th width="25%"></th>
+                                <th width="25%">品名</th>
+                                <th width="25%">數量</th>
+                                <th width="25%">單價</th>
+                            </tr>
+                            <tr v-for="(product, key) in order.products" :key="key">
+                                <td><img :src="product.product.imageUrl[0]" alt=""></td>
+                                <td>{{ product.product.title }}</td>
+                                <td>{{ product.quantity }}</td>
+                                <td>NT${{ product.product.price | thousands }}</td>
+                            </tr>
+                            <tr v-for="(product, key) in order.products" :key="product + key">
+                                <td></td>
+                                <td></td>
+                                <td>總價</td>
+                                <td class="total-price">NT${{ order.amount | thousands }}</td>
+                            </tr>
+                        </table>
+                        <table class="checkinfo-table">
+                            <tr>
+                                <th width="25%">收件人姓名</th>
+                                <td>{{ form.name }}</td>
+                            </tr>
+                            <tr>
+                                <th>電子信箱</th>
+                                <td>{{ form.email }}</td>
+                            </tr>
+                            <tr>
+                                <th>收件人電話</th>
+                                <td>{{ form.tel }}</td>
+                            </tr>
+                            <tr>
+                                <th>地址</th>
+                                <td>{{ form.address }}</td>
+                            </tr>
+                        </table>
+                        <button type="submit" class="pay-btn">確認付款</button>
+                    </form>
+                </div>
             </div>
         </div>
         <div class="footer footer-white">
@@ -408,7 +465,16 @@ export default {
         email: '',
         tel: '',
         address: '',
-        payment: ''
+        payment: '',
+        coupon: '',
+        message: ''
+      },
+      coupon_code: '',
+      coupon: {},
+      completed: false,
+      orderId: '',
+      order: {
+        user: {}
       }
     }
   },
@@ -484,6 +550,22 @@ export default {
           })
       }
     },
+    addCoupon () {
+      this.isLoading = true
+      const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/coupon/search`
+      this.$http.post(url, { code: this.coupon_code })
+        .then(response => {
+          this.isLoading = false
+          this.coupon = response.data.data
+          this.form.coupon = response.data.data.code
+          console.log(this.coupon)
+          console.log(this.form)
+        })
+        .catch(error => {
+          this.isLoading = false
+          console.log(error.response.data)
+        })
+    },
     createOrder () {
       this.isLoading = true
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/orders`
@@ -493,7 +575,38 @@ export default {
           if (response.data.data.id) {
             this.isLoading = false
             this.getCart()
+            this.orderId = response.data.data.id
+            console.log(response.data.data)
+            console.log(this.orderId)
+            this.getSingleOrder()
           }
+        })
+        .catch(error => {
+          this.isLoading = false
+          console.log(error.response.data.errors)
+        })
+    },
+    getSingleOrder () {
+      this.isLoading = true
+      const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/orders/${this.orderId}`
+      this.$http.get(url)
+        .then((response) => {
+          this.isLoading = false
+          this.order = response.data.data
+          console.log(this.order)
+        })
+        .catch(error => {
+          this.isLoading = false
+          console.log(error)
+        })
+    },
+    payOrder () {
+      this.isLoading = true
+      const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/orders/${this.orderId}/paying`
+      this.$http.post(url)
+        .then(response => {
+          this.getSingleOrder()
+          this.completed = true
         })
         .catch(error => {
           this.isLoading = false

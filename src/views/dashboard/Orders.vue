@@ -57,16 +57,17 @@ export default {
     getOrders (page = 1) {
       this.isLoading = true
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/orders?page=${page}`
+      this.$http.defaults.headers.common.Authorization = `Bearer ${this.token}`
       this.$http.get(url)
         .then(response => {
           this.isLoading = false
           this.orders = response.data.data
           this.pagination = response.data.meta.pagination
-          console.log(response.data)
+          console.log(this.orders)
         })
-        .catch(err => {
+        .catch(error => {
           this.isLoading = false
-          console.log(err)
+          console.log(error)
         })
     },
     editPaid (item) {
@@ -76,13 +77,12 @@ export default {
     updateOrder () {
       this.isLoading = true
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/orders/${this.editOrder.id}/paid`
-      this.$http.defaults.headers.common.Authorization = `Bearer ${this.token}`
       this.$http.patch(url)
         .then(() => {
           this.isLoading = false
           this.getOrders()
         })
-        .catch((error) => {
+        .catch(error => {
           this.isLoading = false
           console.log(error)
         })

@@ -54,16 +54,16 @@ export default {
     getPics (page = 1) {
       this.isLoading = true
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/storage?page=${page}`
+      this.$http.defaults.headers.common.Authorization = `Bearer ${this.token}`
       this.$http.get(url)
         .then(response => {
           this.isLoading = false
           this.pictures = response.data.data
           this.pagination = response.data.meta.pagination
-          console.log(this.pictures)
         })
-        .catch(err => {
+        .catch(error => {
           this.isLoading = false
-          console.log(err)
+          console.log(error)
         })
     },
     openModal (item) {
@@ -74,8 +74,6 @@ export default {
     deletePic () {
       this.isLoading = true
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/storage/${this.editPicture.id}`
-      this.$http.defaults.headers.common.Authorization = `Bearer ${this.token}`
-
       this.$http.delete(url)
         .then(response => {
           this.isLoading = false
@@ -85,7 +83,6 @@ export default {
           this.isLoading = false
           console.log(error)
         })
-
       this.deleteShow = false
       this.shadowOpen = false
     },
