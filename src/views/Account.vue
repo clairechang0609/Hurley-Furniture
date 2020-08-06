@@ -109,7 +109,7 @@
     <div class="logo-wrap">
         <div class="logo-frame"></div>
         <h1>
-        <a href="#" class="logo">Hurley Furniture</a>
+          <router-link to="/" class="logo">Hurley Furniture</router-link>
         </h1>
     </div>
     <div class="header">

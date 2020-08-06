@@ -1,15 +1,15 @@
 <template>
-    <div class="wrap">
-      <div :class="{'add-background': bgShow}"></div>
-      <div class="signin" @keyup.enter="signin()">
-          <h3>登入後台</h3>
-          <input type="email" v-model="user.email" placeholder="email" required autofocus>
-          <input type="password" v-model="user.password" placeholder="password" required>
-          <button type="submit" @click.prevent="signin()">登入</button>
-          <p>© Hurley Furniture 2020</p>
-      </div>
-      <loading :active.sync="isLoading"></loading>
+  <div class="wrap">
+    <div :class="{'add-background': bgShow}"></div>
+    <div class="signin" @keyup.enter="signin()">
+      <h3>登入後台</h3>
+      <input type="email" v-model="user.email" placeholder="email" required autofocus>
+      <input type="password" v-model="user.password" placeholder="password" required>
+      <button type="submit" @click.prevent="signin()">登入</button>
+      <p>© Hurley Furniture 2020</p>
     </div>
+    <loading :active.sync="isLoading"></loading>
+  </div>
 </template>
 
 <script>

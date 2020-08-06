@@ -1,86 +1,18 @@
 <template>
   <div is="swiper" ref="mySwiper" class="sale__content swiper-container" :options="swiperOption">
-    <div class="swiper-slide" is="swiper-slide">
-      <router-link :to="`/product/4QY1nmbEf3w4b7MUuMS0ywA2ukuAn7U8iZGJjODEk6B54DJDpmDXNi5mYyuI4VQe`">
-        <div class="sale-pic pic-01"></div>
+    <div class="swiper-slide" is="swiper-slide" v-for="sale in sales" :key="'sale' + sale.id">
+      <router-link :to="`/product/${sale.id}`" target="_blank">
+        <div class="sale-pic">
+          <img :src="`${sale.img[0]}`" alt="">
+          <img :src="`${sale.img[1]}`" alt="">
+        </div>
         <div class="product-name">
-            <h5>夜巡桌燈 by MENU</h5>
-            <p>NT$8,500<span class="sale-icon">sale</span></p>
-            <div class="orign">NT$10,000</div>
+            <h5>{{ sale.title }}</h5>
+            <p>NT${{ sale.price | thousands }}<span class="sale-icon">sale</span></p>
+            <div class="orign">NT${{ sale.origin_price | thousands }}</div>
         </div>
       </router-link>
     </div>
-    <a href="#" class="swiper-slide" is="swiper-slide">
-        <div class="sale-pic pic-02"></div>
-        <div class="product-name">
-            <h5>花生鋼腳單椅 by normann</h5>
-            <p>NT$23,800<span class="sale-icon">sale</span></p>
-            <div class="orign">NT$29,800</div>
-        </div>
-    </a>
-    <a href="#" class="swiper-slide" is="swiper-slide">
-        <div class="sale-pic pic-03"></div>
-        <div class="product-name">
-            <h5>包圍咖啡桌(大) by Muuto</h5>
-            <p>NT$31,800<span class="sale-icon">sale</span></p>
-            <div class="orign">NT$35,800</div>
-        </div>
-    </a>
-    <a href="#" class="swiper-slide" is="swiper-slide">
-        <div class="sale-pic pic-04"></div>
-        <div class="product-name">
-            <h5>原型沙發-兩人座 by Muuto</h5>
-            <p>NT$140,100<span class="sale-icon">sale</span></p>
-            <div class="orign">NT$150,900</div>
-        </div>
-    </a>
-    <a href="#" class="swiper-slide" is="swiper-slide">
-        <div class="sale-pic pic-05"></div>
-        <div class="product-name">
-            <h5>浮光吊燈 by Muuto</h5>
-            <p>NT$15,500 up<span class="sale-icon">sale</span></p>
-            <div class="orign">NT$16,900 up</div>
-        </div>
-    </a>
-    <a href="#" class="swiper-slide" is="swiper-slide">
-        <div class="sale-pic pic-06"></div>
-        <div class="product-name">
-            <h5>木纖木腳休閒椅 by Muuto</h5>
-            <p>NT$31,800<span class="sale-icon">sale</span></p>
-            <div class="orign">NT$33,800</div>
-        </div>
-    </a>
-    <a href="#" class="swiper-slide" is="swiper-slide">
-        <div class="sale-pic pic-07"></div>
-        <div class="product-name">
-            <h5>速寫椅凳 by FRAMA</h5>
-            <p>NT$24,800<span class="sale-icon">sale</span></p>
-            <div class="orign">NT$28,800</div>
-        </div>
-    </a><a href="#" class="swiper-slide" is="swiper-slide">
-        <div class="sale-pic pic-08"></div>
-        <div class="product-name">
-            <h5>層列咖啡桌 by Umbra Shift</h5>
-            <p>NT$21,500<span class="sale-icon">sale</span></p>
-            <div class="orign">NT$22,900</div>
-        </div>
-    </a>
-    <a href="#" class="swiper-slide" is="swiper-slide">
-        <div class="sale-pic pic-09"></div>
-        <div class="product-name">
-            <h5>層列邊桌 by Umbra Shift</h5>
-            <p>NT$15,000<span class="sale-icon">sale</span></p>
-            <div class="orign">NT$16,800</div>
-        </div>
-    </a>
-    <a href="#" class="swiper-slide" is="swiper-slide">
-        <div class="sale-pic pic-10"></div>
-        <div class="product-name">
-            <h5>Pacha 波恰休閒椅 by Gubi</h5>
-            <p>NT$98,800<span class="sale-icon">sale</span></p>
-            <div class="orign">NT$101,800</div>
-        </div>
-    </a>
     <div class="swiper-pagination" slot="pagination"></div>
   </div>
 </template>
@@ -123,7 +55,89 @@ export default {
             slidesPerView: 2
           }
         }
-      }
+      },
+      sales: [
+        {
+          id: '4QY1nmbEf3w4b7MUuMS0ywA2ukuAn7U8iZGJjODEk6B54DJDpmDXNi5mYyuI4VQe',
+          img: [
+            'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5d5bc7bfbd12c000141b520b/800x.webp?source_format=jpg',
+            'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5d5bc7bf0dcbd9003582d0bd/800x.webp?source_format=jpg'
+          ],
+          title: '夜巡桌燈',
+          price: 8500,
+          origin_price: 10000
+        },
+        {
+          id: '4WkmzLjWMgfQs45FTAQ3ovFFU3kW3j5y45Fu7GbBKJWJZ0CSbVm3mOe1c92yaXan',
+          img: [
+            'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5e65fa03d0b69120e5e04235/800x.webp?source_format=png',
+            'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5e662bed43eea134c86298bf/800x.webp?source_format=png'
+          ],
+          title: '花生全包覆鋼腳單椅',
+          price: 23800,
+          origin_price: 25800
+        },
+        {
+          id: 'x5X1Rc53uVKdGdr1fMxaSrvhg6oSO0bbVeKmxpHDMpRlx8Gw62jkwxfbexTbbFtL',
+          img: [
+            'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5d5bd61cb19ace003516567e/800x.webp?source_format=jpg',
+            'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5ce67f4c20eb69002f8d1624/800x.webp?source_format=jpg'
+          ],
+          title: '包圍咖啡桌',
+          price: 29800,
+          origin_price: 31800
+        },
+        {
+          id: 'VqUgrIQn2xduyroirqHVwbNEhArvZHFnyMwmdBLm2sgbSrIeJAGJNEIDrpJPHTov',
+          img: [
+            'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/vykOZbS2HbsT7Rym9N3vyBEUEPYGYfF5ll7EMY4W6Bw4xhXYMIXJ1XDlVFeLzTMToEkTnLPzvI0vy5tqllkBit9AihNXuQzlvv9wmUdmiBKnXxYOdgQLyIXfOmKZ8Ck4.png',
+            'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5eb20be2a47aa50033b40b8c/800x.webp?source_format=jpg'
+          ],
+          title: '原型雙人沙發',
+          price: 140100,
+          origin_price: 138000
+        },
+        {
+          id: 'X7KIKvGlTsEY5AJewFJJIfriyEkMFCo5bDo2AO59UsifrJN0NQMe8Loc9W4eIgXQ',
+          img: [
+            'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/HXofHl5l7E742fXcXtHxmSt9jASUcjqK0l04TZsIudlO1t4svMJrqLRgq7p13DAdUh2xd0i8JuZsi7c6eO3u878wlUNONABbugFQ3qbLEYLcHpNxAyFv9tputKdZ4hE4.png',
+            'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/6TvWSjMadY6fObd9VdSPQBpwLEHVx3Q82RtUj6ocEAk9fj2gaYmYVJbUqRSOeM9zVx6kXTI78nQgsF71ZqNCeUAWLGQNI8BqAAJCEOd7lg2LSFiOLOLHj58V0Lel3t90.png'
+          ],
+          title: '封光吊燈',
+          price: 10000,
+          origin_price: 11900
+        },
+        {
+          id: 'eQoKOCkszCMIRhRN3YAqpBnpMinvTAfzGgSQiKrZCMyhLlk3UR5QSipucPuXboDa',
+          img: [
+            'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5e9508fff2cf430018e17842/800x.webp?source_format=png',
+            'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5e950be2cc6a5736b8f98c35/800x.webp?source_format=png'
+          ],
+          title: '速寫椅凳',
+          price: 24800,
+          origin_price: 26800
+        },
+        {
+          id: 'lqfnX0MnUC0f6O9YvSt1FxjgKhP71kU8nQxu0DvzD2WsqDtWTEIVayDM80FehXCm',
+          img: [
+            'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5e62e85c4011b900159f8736/800x.webp?source_format=png',
+            'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5e62e8ba9fc5520024986aea/800x.webp?source_format=png'
+          ],
+          title: '層列邊桌',
+          price: 15000,
+          origin_price: 16800
+        },
+        {
+          id: 'aIDl5f2PAskhksJP5n09HF0u0qRnyDpovqxrwjIKE3qf7ozn8QwWeuVI6NLArc8J',
+          img: [
+            'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5e62e9c723cec15f9987ca85/800x.webp?source_format=png',
+            'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5e62e67bc546f40018202f7b/800x.webp?source_format=png'
+          ],
+          title: '層列咖啡桌',
+          price: 21500,
+          origin_price: 22900
+        }
+      ]
     }
   },
   computed: {

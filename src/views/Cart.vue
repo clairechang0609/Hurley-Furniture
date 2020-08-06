@@ -46,80 +46,62 @@
                     @shoppingcartclose ="shoppingCartClose"
                 ></div>
                 <ul class="top__main-menu">
-                <li>
-                    <a href="#">
-                    <span>HOME</span>
-                    <span>首頁</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" @click.prevent="getProducts('All'), openMainMenu = !openMainMenu">
-                    <span>ALL PRODUCTS</span>
-                    <span>所有商品</span>
-                    </a>
-                </li>
-                <li class="top__all-product">
-                    <a href="#" @click.prevent="openMenu = !openMenu">
-                    <span>PRODUCT CATEGORY ▸</span>
-                    <span>分類單品 ▸</span>
-                    </a>
-                    <ul class="top__all-product-list" :class="{ 'show': openMenu }">
                     <li>
-                        <a
-                        href="index.html"
-                        @click.prevent="getProducts('Sofa'), openMainMenu = !openMainMenu"
-                        >Sofa</a>
+                        <router-link to="/">
+                        <span>HOME</span>
+                        <span>首頁</span>
+                        </router-link>
+                    </li>
+                    <li @click="getProducts()">
+                        <router-link to="/products/All-Products">
+                        <span>ALL PRODUCTS</span>
+                        <span>所有商品</span>
+                        </router-link>
+                    </li>
+                    <li class="top__all-product">
+                        <a href="#" @click.prevent="openMenu = !openMenu">
+                        <span>PRODUCT CATEGORY ▸</span>
+                        <span>分類單品 ▸</span>
+                        </a>
+                        <ul class="top__all-product-list" :class="{ 'show': openMenu }">
+                        <li @click="getProducts(), openMainMenu = !openMainMenu">
+                            <router-link to="/products/Sofa">Sofa</router-link>
+                        </li>
+                        <li @click="getProducts(), openMainMenu = !openMainMenu">
+                            <router-link to="/products/Chair">Chair</router-link>
+                        </li>
+                        <li @click="getProducts(), openMainMenu = !openMainMenu">
+                            <router-link to="/products/Table">Table</router-link>
+                        </li>
+                        <li @click="getProducts(), openMainMenu = !openMainMenu">
+                            <router-link to="/products/Cabinet">Cabinet</router-link>
+                        </li>
+                        <li @click="getProducts(), openMainMenu = !openMainMenu">
+                            <router-link to="/products/Side Table">Side Table</router-link>
+                        </li>
+                        <li @click="getProducts(), openMainMenu = !openMainMenu">
+                            <router-link to="/products/Lighting">Lighting</router-link>
+                        </li>
+                        </ul>
+                    </li>
+                    <li @click="getProducts()">
+                        <router-link to="/products/Sale">
+                        <span>SALE</span>
+                        <span>限時特價</span>
+                        </router-link>
                     </li>
                     <li>
-                        <a
-                        href="index.html"
-                        @click.prevent="getProducts('Chair'), openMainMenu = !openMainMenu"
-                        >Chair</a>
+                        <router-link to="/guide">
+                        <span>SHIPPING GUIDE</span>
+                        <span>運送須知</span>
+                        </router-link>
                     </li>
                     <li>
-                        <a
-                        href="index.html"
-                        @click.prevent="getProducts('Table'), openMainMenu = !openMainMenu"
-                        >Table</a>
+                        <a href="#">
+                        <span>CONTACT</span>
+                        <span>聯絡我們</span>
+                        </a>
                     </li>
-                    <li>
-                        <a
-                        href="index.html"
-                        @click.prevent="getProducts('Cabinet'), openMainMenu = !openMainMenu"
-                        >Cabinet</a>
-                    </li>
-                    <li>
-                        <a
-                        href="index.html"
-                        @click.prevent="getProducts('Side Table'), openMainMenu = !openMainMenu"
-                        >Side Table</a>
-                    </li>
-                    <li>
-                        <a
-                        href="index.html"
-                        @click.prevent="getProducts('Lighting'), openMainMenu = !openMainMenu"
-                        >Lighting</a>
-                    </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="index.html" @click.prevent="getProducts('Sale'), openMainMenu = !openMainMenu">
-                    <span>SALE</span>
-                    <span>限時特價</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                    <span>SHIPPING GUIDE</span>
-                    <span>運送須知</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                    <span>CONTACT</span>
-                    <span>聯絡我們</span>
-                    </a>
-                </li>
                 </ul>
                 <div is="search" :search="opensearch" @changesearch="changeSearch"></div>
             </div>
@@ -127,7 +109,7 @@
         <div class="logo-wrap">
             <div class="logo-frame"></div>
             <h1>
-            <a href="#" class="logo">Hurley Furniture</a>
+                <router-link to="/" class="logo">Hurley Furniture</router-link>
             </h1>
         </div>
         <div class="header">
@@ -300,6 +282,7 @@
                             <div class="coupon-input">
                                 <input type="text" v-model="coupon_code" placeholder="請輸入優惠碼">
                                 <button type="button" @click="addCoupon">套用優惠碼</button>
+                                <span>{{ alert }}</span>
                             </div>
                             <div class="all-sum">
                                 <p>總金額</p>
@@ -395,7 +378,7 @@
                                 <td>{{ product.quantity }}</td>
                                 <td>NT${{ product.product.price | thousands }}</td>
                             </tr>
-                            <tr v-for="(product, key) in order.products" :key="product + key">
+                            <tr>
                                 <td></td>
                                 <td></td>
                                 <td>總價</td>
@@ -475,7 +458,8 @@ export default {
       orderId: '',
       order: {
         user: {}
-      }
+      },
+      alert: ''
     }
   },
   created () {
@@ -552,17 +536,18 @@ export default {
     },
     addCoupon () {
       this.isLoading = true
+      this.alert = ''
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/coupon/search`
       this.$http.post(url, { code: this.coupon_code })
         .then(response => {
           this.isLoading = false
           this.coupon = response.data.data
           this.form.coupon = response.data.data.code
-          console.log(this.coupon)
-          console.log(this.form)
         })
         .catch(error => {
           this.isLoading = false
+          this.alert = error.response.data.message
+          this.coupon_code = ''
           console.log(error.response.data)
         })
     },
@@ -576,8 +561,6 @@ export default {
             this.isLoading = false
             this.getCart()
             this.orderId = response.data.data.id
-            console.log(response.data.data)
-            console.log(this.orderId)
             this.getSingleOrder()
           }
         })

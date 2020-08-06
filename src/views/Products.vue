@@ -290,7 +290,6 @@ export default {
   },
   methods: {
     getProducts () {
-      console.log(this.$route.params.category)
       const category = this.$route.params.category
       this.showProducts = []
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/products?paged=40`
@@ -300,7 +299,6 @@ export default {
         .then(response => {
           this.isLoading = false
           this.products = response.data.data
-          console.log(response.data)
 
           this.products.forEach(product => {
             if (category === product.category) {
@@ -309,12 +307,11 @@ export default {
             } else if (category === 'All-Products') {
               this.showProducts = this.products
               this.category = 'All Products'
-              console.log(this.showProducts.length)
             } else if (category === 'Sale') {
               if (product.price < product.origin_price) {
                 this.showProducts.push(product)
-                this.category = category
               }
+              this.category = category
             }
           })
         })
@@ -358,7 +355,7 @@ export default {
         product: id,
         quantity: 1
       }
-      const judgment = this.cart.some(item => {
+      const judgment = this.cart.some(item => { // 檢查該商品是否已被加入購物車
         if (item.product.id === id) {
           this.qtyUpdate(id, item.quantity + 1)
           return true
