@@ -191,9 +191,68 @@
         </ul>
     </div>
     <div class="content content-guide">
-        <h2 style="font-size:25px; text-align:center">這裡是 Shopping Guide</h2>
+        <h3>SHIPPING GUIDE</h3>
+        <ul class="guide-wrap">
+            <li class="faq-list">
+                <div class="faq-title" @click="showAnswer()">
+                    <h4>如果我無法自己運送家具怎麼辦?</h4>
+                    <div class="icon"><i class="fas fa-angle-down"></i></div>
+                </div>
+                <div class="faq-answer">
+                    <p>IKEA 大部份的商品都是平整包裝，你可以在商品頁面找到包裝的尺寸大小、重量等相關資訊，方便你在購買後自己搬回家，同時省下更多費用。</p>
+                    <p>如果你購買的是大型家具且需要運送到府的服務，我們也有提供專業的運送服務。歡迎點選這裡查詢運送服務的相關詳情。</p>
+                </div>
+            </li>
+            <li class="faq-list">
+                <div class="faq-title" @click="showAnswer()">
+                    <h4>我購買的商品需要退換貨，該怎麼做呢?</h4>
+                    <div class="icon"><i class="fas fa-angle-down"></i></div>
+                </div>
+                <div class="faq-answer">
+                    <p>在 IKEA，如果你對於購買的產品不滿意，你可在 365 天內，攜帶完好的商品、原始包裝、統一發票及明細（刷卡購買者需信用卡與簽單）到 IKEA 分店退換貨。完整退換貨資訊請<a href="#">點選這裡</a>。
+                    或是你也可以與IKEA客服連繫確認，請<a href="#">點選這裡</a>確認各分店連絡方式。</p>
+                </div>
+            </li>
+            <li class="faq-list">
+                <div class="faq-title" @click="showAnswer()">
+                    <h4>如何知道我想購買的商品在 IKEA 店內有沒有貨?</h4>
+                    <div class="icon"><i class="fas fa-angle-down"></i></div>
+                </div>
+                <div class="faq-answer">
+                    <p>IKEA官網除了有數千種不同設計和價格的 IKEA 家具家飾商品供你瀏覽。在點入商品的詳細介紹頁面後，你可以使用查詢貨況功能確認想購買商品之貨況。</p>
+                    <p>不過因為貨況可能隨時變動，建議你來店之前，來電做最後確認。歡迎<a href="#">點選這裡</a>確認各分店連絡方式。</p>
+                </div>
+            </li>
+            <li class="faq-list">
+                <div class="faq-title" @click="showAnswer()">
+                    <h4>我購買 IKEA 家具後，IKEA 可以提供組裝服務嗎?</h4>
+                    <div class="icon"><i class="fas fa-angle-down"></i></div>
+                </div>
+                <div class="faq-answer">
+                    <p>我們的商品除了包裝平整，方便你購買後直接帶走，還有完整的組裝說明，讓你按步驟組裝。 當然，你也可以選擇我們專業的組裝服務，為你節省時間。組裝費用為產品售價的 6.5%，其費用未達 $400 者，最低以 $400 計算(廚具、洗手台及窗簾訂製施工費另計)。歡迎<a href="#">點選這裡</a>查詢組裝服務的相關詳情。</p>
+                </div>
+            </li>
+            <li class="faq-list">
+                <div class="faq-title" @click="showAnswer()">
+                    <h4>如何建立我的購物清單?</h4>
+                    <div class="icon"><i class="fas fa-angle-down"></i></div>
+                </div>
+                <div class="faq-answer">
+                    <p>只要四步驟，就能輕鬆建立專屬購物清單：</p>
+                    <ol>
+                        <li>將欲購買商品【加入購物車】</li>
+                        <li>點選【前往結帳】進入「我的購物車」頁面</li>
+                        <li>於「選擇運送方式」選項中點選【儲存購物清單】</li>
+                        <li>
+                            輸入電子郵件寄送購物清單或登入/註冊官網會員，將購物清單儲存至你的帳戶
+                            <br><span>特別提醒：以電子郵件方式寄送購物清單為一次性使用；如有未來查詢的需求，請選擇登入/註冊，將購物清單儲存至你的帳戶。</span>
+                        </li>
+                    </ol>
+                </div>
+            </li>
+          </ul>
     </div>
-    <div class="footer">
+    <div class="footer footer-white">
       <div class="text">
           <p>© Hurley Furniture 2020 All Rights Reserved.</p>
           <p>圖片為練習使用，無商業用途。</p>
@@ -228,16 +287,6 @@ export default {
   },
   created () {
     this.getCart()
-    // const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/shopping/all/product`
-    // this.$http.delete(url)
-    //   .then(response => {
-    //     console.log(response)
-    //     this.cart = ''
-    //   })
-    //   .catch(error => {
-    //     this.isLoading = false
-    //     console.log(error)
-    //   })
   },
   methods: {
     getCart () {
@@ -308,21 +357,8 @@ export default {
           })
       }
     },
-    createOrder () {
-      this.isLoading = true
-      const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/orders`
-      const editOrder = Object.assign({}, this.form)
-      this.$http.post(url, editOrder)
-        .then(response => {
-          if (response.data.data.id) {
-            this.isLoading = false
-            this.getCart()
-          }
-        })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error.response.data.errors)
-        })
+    showAnswer () {
+      event.target.parentNode.classList.toggle('show')
     },
     changeSearch () {
       this.opensearch = false

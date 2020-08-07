@@ -190,10 +190,76 @@
             </li>
         </ul>
     </div>
-    <div class="content content-guide">
-        <h2 style="font-size:25px; text-align:center">這裡是 Accout</h2>
+    <div class="content content-account">
+        <div class="form-wrap">
+          <ul>
+            <li><a href="#" class="signup-btn" :class="{ 'show': showSignup }" @click.prevent="showSignup = true">註冊會員</a></li>
+            <li><a href="#" class="login-btn" :class="{ 'show': !showSignup }" @click.prevent="showSignup = false">會員登入</a></li>
+          </ul>
+          <validation-observer v-slot="{ invalid }">
+            <form class="signup" :class="{ 'show': showSignup }">
+              <div class="form-group">
+                <validation-provider rules="required" v-slot="{ errors }">
+                  <label for="name">姓名 <span>*</span></label>
+                  <input type="text" id="name" name="姓名" v-model="form.name">
+                  <p>{{ errors[0] }}</p>
+                </validation-provider>
+              </div>
+              <div class="form-group">
+                <validation-provider rules="required|email" v-slot="{ errors }">
+                  <label for="email">電子信箱 <span>*</span></label>
+                  <input type="email" id="email" name="電子信箱" v-model="form.email">
+                  <p>{{ errors[0] }}</p>
+                </validation-provider>
+              </div>
+              <div class="form-group">
+                <validation-provider rules="required|min:8" v-slot="{ errors }">
+                  <label for="password">密碼 <span>*</span></label>
+                  <input type="password" id="password" name="密碼" v-model="form.password">
+                  <p>{{ errors[0] }}</p>
+                </validation-provider>
+              </div>
+              <div class="form-group">
+                <label for="payment">性別</label>
+                <select name="gender" id="">
+                  <option value="" selected disabled>請選擇</option>
+                  <option value="male">男</option>
+                  <option value="female">女</option>
+                  <option value="other">不透露</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="date">生日</label>
+                <input type="text" onfocus="(this.type='date')" id="date" name="生日" v-model="form.birth">
+              </div>
+              <div class="agree-check">
+                <validation-provider :rules="{ required: { allowFalse: false } }" v-slot="{ errors }">
+                  <label class="container" for="agree">
+                    <input type="checkbox" id="agree" v-model="form.check" name="同意條款">
+                    <span class="checkmark"></span>
+                    <p>我同意<a href="#">服務條款及隱私政策</a></p>
+                    <p class="error">{{ errors[0] }}</p>
+                  </label>
+                </validation-provider>
+              </div>
+              <button type="submit" class="submit-btn" :disabled="invalid">加入會員</button>
+            </form>
+          </validation-observer>
+          <form class="login" :class="{ 'show': !showSignup }">
+            <div class="form-group">
+              <label for="email-login">帳號（電子信箱）</label>
+              <input type="email" id="email-login">
+            </div>
+            <div class="form-group">
+              <label for="password-login">密碼</label>
+              <input type="password" id="password-login">
+              <a href="#">忘記密碼</a>
+            </div>
+            <button type="button">登入</button>
+          </form>
+        </div>
     </div>
-    <div class="footer">
+    <div class="footer footer-white">
       <div class="text">
           <p>© Hurley Furniture 2020 All Rights Reserved.</p>
           <p>圖片為練習使用，無商業用途。</p>
@@ -223,21 +289,19 @@ export default {
       opensearch: false,
       isLoading: false,
       shoppingCartOpen: false,
-      cart: []
+      cart: [],
+      showSignup: true,
+      form: {
+        name: '',
+        email: '',
+        password: '',
+        birth: '',
+        check: false
+      }
     }
   },
   created () {
     this.getCart()
-    // const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/shopping/all/product`
-    // this.$http.delete(url)
-    //   .then(response => {
-    //     console.log(response)
-    //     this.cart = ''
-    //   })
-    //   .catch(error => {
-    //     this.isLoading = false
-    //     console.log(error)
-    //   })
   },
   methods: {
     getCart () {
@@ -253,17 +317,6 @@ export default {
           this.isLoading = false
           console.log(error)
         })
-    },
-    getTotalPrice () {
-      this.totalPrice = 0
-      this.cart.forEach((item) => {
-        this.totalPrice += (item.product.price * item.quantity)
-      })
-      if (this.totalPrice > 3000) {
-        this.deliveryFee = 0
-      } else {
-        this.deliveryFee = 350
-      }
     },
     deleteCartItem (id) {
       this.isLoading = true
@@ -307,22 +360,6 @@ export default {
             console.log(error)
           })
       }
-    },
-    createOrder () {
-      this.isLoading = true
-      const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/orders`
-      const editOrder = Object.assign({}, this.form)
-      this.$http.post(url, editOrder)
-        .then(response => {
-          if (response.data.data.id) {
-            this.isLoading = false
-            this.getCart()
-          }
-        })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error.response.data.errors)
-        })
     },
     changeSearch () {
       this.opensearch = false

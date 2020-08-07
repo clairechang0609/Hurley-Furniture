@@ -382,7 +382,7 @@
                                 <td></td>
                                 <td></td>
                                 <td>總價</td>
-                                <td class="total-price">NT${{ order.amount | thousands }}</td>
+                                <td class="total-price">NT${{ parseInt(order.amount) | thousands }}</td>
                             </tr>
                         </table>
                         <table class="checkinfo-table">

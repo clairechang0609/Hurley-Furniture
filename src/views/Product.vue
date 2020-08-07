@@ -231,7 +231,7 @@
             </div>
             <div class="content">
               <h5><span>規格說明</span></h5>
-              <p>{{ showProduct.content }}</p>
+              <p v-html="showProduct.content"></p>
             </div>
           </div>
           <div class="related">

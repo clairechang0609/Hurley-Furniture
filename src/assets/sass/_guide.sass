@@ -1,0 +1,97 @@
+.content-guide
+    background: rgba($gray, 0.1)
+    border-top: 1px solid rgba($gray, 0.3)
+    border-bottom: 1px solid rgba($gray, 0.3)
+    padding: 60px 100px 70px
+    h3
+        position: relative
+        text-align: center
+        font-size: 35px
+        padding-bottom: 70px
+        &::before
+            content: ""
+            position: absolute
+            height: 1px
+            width: 40px
+            background: black
+            top: 50px
+            left: 50%
+            transform: translateX(-50%)
+.guide-wrap
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+.faq-list
+    display: flex
+    flex-direction: column
+    width: 700px
+    margin: 0 auto 15px
+    background: rgb(255,255,255)
+    border: 1px solid $gray
+    border-radius: 3px
+    transition: 0.3s ease-in-out
+    padding: 1px
+    &.show
+        border: 2px solid $dark-beige
+        background: $white
+        padding: 0
+        .faq-title
+            color: $black
+            .icon
+                transform: rotate(-180deg)
+        .faq-answer
+            display: block
+.faq-title
+    padding: 20px
+    width: 100%
+    display: flex
+    align-items: center
+    justify-content: space-between
+    color: $gray
+    h4
+        font-size: 16px
+        font-weight: 500
+        transition: 0.3s ease-in-out
+    .icon
+        font-size: 20px
+        transition: 0.3s ease-in-out
+    &:hover
+        cursor: pointer
+        h4
+            color: $black
+        .icon
+            color: $black
+.faq-answer
+    padding: 10px 20px 20px
+    display: none
+    color: $black
+    border-top: 1px solid rgb(200,200,200)
+    font-size: 14px
+    line-height: 1.5
+    text-align: justify
+.faq-answer p
+    margin-top: 10px
+.faq-answer li
+    margin-left: 15px
+    list-style-type: decimal
+.faq-answer li span
+    display: block
+    color: rgb(150,150,150)
+    font-size: 12px
+.faq-answer a
+    padding: 1px
+    color: rgb(50,150,250)
+    font-weight: bold
+    text-decoration: none
+    cursor: pointer
+.faq-answer a:hover
+    border-bottom: 1px solid rgb(50,150,250)
+.faq-list.open
+    border: 2px solid rgb(50,150,250)
+    background: rgb(255,255,255)
+    padding: 0
+.faq-title.open h4
+    color: rgb(0,0,0)
+.faq-title.open .icon
+    background: rgb(0,0,0)
+    transform: rotate(180deg)
