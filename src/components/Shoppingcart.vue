@@ -3,14 +3,14 @@
     <div>
       <table class="shopping-table">
         <tr class="table-title">
-          <th width="20%"></th>
-          <th width="22%">品名</th>
+          <th class="pic"></th>
+          <th width="30%">品名</th>
           <th width="20%">售價</th>
           <th width="28%">數量</th>
-          <th width="10%"></th>
+          <th width="5%"></th>
         </tr>
         <tr v-for="item in shoppingcart" :key="item.product.id + 'shopping'">
-          <td>
+          <td class="pic">
             <img :src="item.product.imageUrl[0]" alt />
           </td>
           <td>{{item.product.title}}</td>

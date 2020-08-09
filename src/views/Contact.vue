@@ -43,7 +43,7 @@
           :shoppingcartopen="shoppingCartOpen"
           @deleteproduct="deleteCartItem"
           @qtyupdate="qtyUpdate"
-          @shoppingcartclose ="shoppingCartClose"
+          @shoppingcartclose="shoppingCartClose"
         ></div>
         <ul class="top__main-menu">
           <li @click="openMainMenu = !openMainMenu">
@@ -52,7 +52,7 @@
               <span>首頁</span>
             </router-link>
           </li>
-          <li @click="getProducts(), openMainMenu = !openMainMenu">
+          <li @click="openMainMenu = !openMainMenu">
             <router-link to="/products/All-Products">
               <span>ALL PRODUCTS</span>
               <span>所有商品</span>
@@ -64,27 +64,27 @@
               <span>分類單品 ▸</span>
             </a>
             <ul class="top__all-product-list" :class="{ 'show': openMenu }">
-              <li @click="getProducts(), openMainMenu = !openMainMenu">
+              <li @click="openMainMenu = !openMainMenu">
                 <router-link to="/products/Sofa">Sofa</router-link>
               </li>
-              <li @click="getProducts(), openMainMenu = !openMainMenu">
+              <li @click="openMainMenu = !openMainMenu">
                 <router-link to="/products/Chair">Chair</router-link>
               </li>
-              <li @click="getProducts(), openMainMenu = !openMainMenu">
+              <li @click="openMainMenu = !openMainMenu">
                 <router-link to="/products/Table">Table</router-link>
               </li>
-              <li @click="getProducts(), openMainMenu = !openMainMenu">
+              <li @click="openMainMenu = !openMainMenu">
                 <router-link to="/products/Cabinet">Cabinet</router-link>
               </li>
-              <li @click="getProducts(), openMainMenu = !openMainMenu">
+              <li @click="openMainMenu = !openMainMenu">
                 <router-link to="/products/Side Table">Side Table</router-link>
               </li>
-              <li @click="getProducts(), openMainMenu = !openMainMenu">
+              <li @click="openMainMenu = !openMainMenu">
                 <router-link to="/products/Lighting">Lighting</router-link>
               </li>
             </ul>
           </li>
-          <li @click="getProducts(), openMainMenu = !openMainMenu">
+          <li @click="openMainMenu = !openMainMenu">
             <router-link to="/products/Sale">
               <span>SALE</span>
               <span>限時特價</span>
@@ -107,60 +107,20 @@
       </div>
     </div>
     <div class="logo-wrap">
-        <div class="logo-frame"></div>
-        <h1>
-          <router-link to="/" class="logo">Hurley Furniture</router-link>
-        </h1>
+      <div class="logo-frame"></div>
+      <h1>
+        <router-link to="/" class="logo">Hurley Furniture</router-link>
+      </h1>
     </div>
     <div class="header">
-      <div
-        class="header__banner-products"
-        v-if="category === 'All Products'"
-        :style="`background-image: url(https://shoplineimg.com/5cd8dc7015c0710001011ee2/5d567834662a0611dc105759/1400x.webp?source_format=jpg)`"
-      ></div>
-      <div
-        class="header__banner-products"
-        v-if="category === 'Sofa'"
-        :style="`background-image: url(https://shoplineimg.com/5cd8dc7015c0710001011ee2/5d567bcdd423dd01667248d2/1400x.webp?source_format=jpg)`"
-      ></div>
-      <div
-        class="header__banner-products"
-        v-if="category === 'Chair'"
-        :style="`background-image: url(https://shoplineimg.com/5cd8dc7015c0710001011ee2/5d6bea70b6574a7416f2001c/1400x.webp?source_format=jpg)`"
-      ></div>
-      <div
-        class="header__banner-products"
-        v-if="category === 'Table'"
-        :style="`background-image: url(https://shoplineimg.com/5cd8dc7015c0710001011ee2/5dc6ca47979b2900174c997d/1400x.webp?source_format=jpg)`"
-      ></div>
-      <div
-        class="header__banner-products"
-        v-if="category === 'Cabinet'"
-        :style="`background-image: url(https://shoplineimg.com/5cd8dc7015c0710001011ee2/5dbcdc42350d2e00232e256f/1400x.webp?source_format=jpg)`"
-      ></div>
-      <div
-        class="header__banner-products"
-        v-if="category === 'Side Table'"
-        :style="`background-image: url(https://shoplineimg.com/5cd8dc7015c0710001011ee2/5d647934f7aa34003e57f243/1400x.webp?source_format=jpg)`"
-      ></div>
-      <div
-        class="header__banner-products"
-        v-if="category === 'Lighting'"
-        :style="`background-image: url(https://shoplineimg.com/5cd8dc7015c0710001011ee2/5ddb90e29044fe001b6c198b/1400x.webp?source_format=jpg)`"
-      ></div>
-      <div
-        class="header__banner-products"
-        v-if="category === 'Sale'"
-        :style="`background-image: url(https://shoplineimg.com/5cd8dc7015c0710001011ee2/5cf8fdd4e33efe001a669719/1400x.webp?source_format=jpg)`"
-      ></div>
-      <ul class="header__main-menu">
+      <ul class="header__main-menu main-menu-nobanner">
         <li>
           <router-link to="/">
             <span>HOME</span>
             <span>首頁</span>
           </router-link>
         </li>
-        <li @click="getProducts()">
+        <li>
           <router-link to="/products/All-Products">
             <span>ALL PRODUCTS</span>
             <span>所有商品</span>
@@ -172,37 +132,37 @@
             <span>分類單品 ▾</span>
           </a>
           <ul class="header__all-product-list" :class="{ 'show': openMenu }">
-            <li @click="getProducts(), openMenu = !openMenu">
+            <li @click="openMenu = !openMenu">
               <router-link to="/products/Sofa">
                 <img src="../assets/img/sofa-04.png" alt />
                 <p>Sofa</p>
               </router-link>
             </li>
-            <li @click="getProducts(), openMenu = !openMenu">
+            <li @click="openMenu = !openMenu">
               <router-link to="/products/Chair">
                 <img src="../assets/img/chair-04.png" alt />
                 <p>Chair</p>
               </router-link>
             </li>
-            <li @click="getProducts(), openMenu = !openMenu">
+            <li @click="openMenu = !openMenu">
               <router-link to="/products/Table">
                 <img src="../assets/img/table-04.png" alt />
                 <p>Table</p>
               </router-link>
             </li>
-            <li @click="getProducts(), openMenu = !openMenu">
+            <li @click="openMenu = !openMenu">
               <router-link to="/products/Cabinet">
                 <img src="../assets/img/cabinet-04.png" alt />
                 <p>Cabinet</p>
               </router-link>
             </li>
-            <li @click="getProducts(), openMenu = !openMenu">
+            <li @click="openMenu = !openMenu">
               <router-link to="/products/Side Table">
                 <img src="../assets/img/sidetable-04.png" alt />
                 <p>Side Table</p>
               </router-link>
             </li>
-            <li @click="getProducts(), openMenu = !openMenu">
+            <li @click="openMenu = !openMenu">
               <router-link to="/products/Lighting">
                 <img src="../assets/img/lamp-04.png" alt />
                 <p>Lighting</p>
@@ -210,7 +170,7 @@
             </li>
           </ul>
         </li>
-        <li @click="getProducts()">
+        <li>
           <router-link to="/products/Sale">
             <span>SALE</span>
             <span>限時特價</span>
@@ -230,24 +190,26 @@
         </li>
       </ul>
     </div>
-    <div class="content contents-products">
-      <h4>{{ category }}</h4>
-      <ul class="items">
-        <li class="item" v-for="product in showProducts" :key="product.id">
-          <router-link :to="`/product/${product.id}`">
-            <div class="card-img" :style="`background-image: url(${product.imageUrl[0]})`">
-              <button type="button" class="add-btn" @click.prevent="addToCart(product.id)">Add to Cart</button>
-            </div>
-            <div class="card-text">
-              <h5 class="card-title">{{ product.title }}</h5>
-              <p class="sale-price">NT${{ product.price | thousands }}<span class="sale-icon" v-if="product.price !== product.origin_price">sale</span></p>
-              <p class="origin-price" v-if="product.price !== product.origin_price">NT${{ product.origin_price | thousands}}</p>
-            </div>
-          </router-link>
+    <div class="content content-contact">
+      <h3>CONTACT US</h3>
+      <p>關於商品及服務相關問題，<br>歡迎來電或來信詢問，我們將儘速提供協助。</p>
+      <ul>
+        <li>
+          <h4><span>客服專線</span></h4>
+          <a href="tel:+886-2-12345678">02-1234-5678</a>
+          <p>服務時間：週一至週五 09:00—18:00</p>
+        </li>
+        <li>
+          <h4><span>服務信箱</span></h4>
+          <a href="mailto:service@hurley.com">service@hurley.com</a>
+        </li>
+        <li>
+          <h4><span>常見問題</span></h4>
+          <p>需要協助或有任何疑問，可以參考<router-link to="/guide">運送相關問題</router-link></p>
         </li>
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer footer-white">
       <div class="text">
         <p>© Hurley Furniture 2020 All Rights Reserved.</p>
         <p>圖片為練習使用，無商業用途。</p>
@@ -272,59 +234,22 @@ export default {
   },
   data () {
     return {
-      products: [],
-      showProducts: [],
-      category: '',
       openMainMenu: false,
       openMenu: false,
       opensearch: false,
       isLoading: false,
       shoppingCartOpen: false,
-      cart: {},
-      totalPrice: 0
+      cart: []
     }
   },
   created () {
-    this.getProducts()
     this.getCart()
   },
   methods: {
-    getProducts () {
-      const category = this.$route.params.category
-      this.showProducts = []
-      const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/products?paged=40`
-      this.isLoading = true
-      this.$http
-        .get(url)
-        .then(response => {
-          this.isLoading = false
-          this.products = response.data.data
-
-          this.products.forEach(product => {
-            if (category === product.category) {
-              this.showProducts.push(product)
-              this.category = category
-            } else if (category === 'All-Products') {
-              this.showProducts = this.products
-              this.category = 'All Products'
-            } else if (category === 'Sale') {
-              if (product.price < product.origin_price) {
-                this.showProducts.push(product)
-              }
-              this.category = category
-            }
-          })
-        })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error)
-        })
-    },
     getCart () {
       this.isLoading = true
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/shopping`
-      this.$http
-        .get(url)
+      this.$http.get(url)
         .then(response => {
           this.isLoading = false
           this.cart = response.data.data
@@ -337,8 +262,7 @@ export default {
     deleteCartItem (id) {
       this.isLoading = true
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/shopping/${id}`
-      this.$http
-        .delete(url)
+      this.$http.delete(url)
         .then(() => {
           this.isLoading = false
           this.getCart()
@@ -348,32 +272,6 @@ export default {
           console.log(error)
         })
     },
-    addToCart (id) {
-      this.isLoading = true
-      const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/shopping`
-      const cart = {
-        product: id,
-        quantity: 1
-      }
-      const judgment = this.cart.some(item => { // 檢查該商品是否已被加入購物車
-        if (item.product.id === id) {
-          this.qtyUpdate(id, item.quantity + 1)
-          return true
-        }
-      })
-      if (!judgment) {
-        this.$http
-          .post(url, cart)
-          .then(() => {
-            this.isLoading = false
-            this.getCart()
-          })
-          .catch(error => {
-            this.isLoading = false
-            console.log(error.response.data.errors)
-          })
-      }
-    },
     qtyUpdate (id, num) {
       this.isLoading = true
       const data = {
@@ -382,8 +280,7 @@ export default {
       }
       if (num === 0) {
         const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/shopping/${id}`
-        this.$http
-          .delete(url)
+        this.$http.delete(url)
           .then(() => {
             this.isLoading = false
             this.getCart()
@@ -394,8 +291,7 @@ export default {
           })
       } else {
         const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/shopping`
-        this.$http
-          .patch(url, data)
+        this.$http.patch(url, data)
           .then(() => {
             this.isLoading = false
             this.getCart()

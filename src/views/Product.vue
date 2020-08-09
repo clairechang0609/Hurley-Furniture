@@ -46,13 +46,13 @@
             @shoppingcartclose ="shoppingCartClose"
           ></div>
           <ul class="top__main-menu">
-            <li>
+            <li @click="openMainMenu = !openMainMenu">
               <router-link to="/">
                 <span>HOME</span>
                 <span>首頁</span>
               </router-link>
             </li>
-            <li @click="getProducts()">
+            <li @click="openMainMenu = !openMainMenu">
               <router-link to="/products/All-Products">
                 <span>ALL PRODUCTS</span>
                 <span>所有商品</span>
@@ -84,23 +84,23 @@
                 </li>
               </ul>
             </li>
-            <li @click="getProducts()">
+            <li @click="openMainMenu = !openMainMenu">
               <router-link to="/products/Sale">
                 <span>SALE</span>
                 <span>限時特價</span>
               </router-link>
             </li>
-            <li>
+            <li @click="openMainMenu = !openMainMenu">
               <router-link to="/guide">
                 <span>SHIPPING GUIDE</span>
                 <span>運送須知</span>
               </router-link>
             </li>
-            <li>
-              <a href="#">
+            <li @click="openMainMenu = !openMainMenu">
+              <router-link to="/contact">
                 <span>CONTACT</span>
                 <span>聯絡我們</span>
-              </a>
+              </router-link>
             </li>
           </ul>
           <div is="search" :search="opensearch" @changesearch="changeSearch"></div>
@@ -183,10 +183,10 @@
             </router-link>
           </li>
           <li>
-            <a href="#">
+            <router-link to="/contact">
               <span>CONTACT</span>
               <span>聯絡我們</span>
-            </a>
+            </router-link>
           </li>
         </ul>
       </div>

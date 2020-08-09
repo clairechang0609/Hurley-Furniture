@@ -1,3 +1,22 @@
+a, button, input[type=button]
+    transition: 0.2s ease-in-out
+a:hover, button:hover, input[type=button]:hover
+	cursor: pointer
+input[type="email"], input[type="password"], input[type="text"], input[type="date"], input[type="time"],
+input[type="tel"],input[type="number"], select, textarea
+	width: 100%
+	font-size: 14px;
+	padding: 5px 10px
+	border: 1px solid $black
+	border-radius: 3px
+	&:focus
+		outline: none
+		box-shadow: 0 0 0 3px rgba($gray, 0.3)
+select
+	padding: 4px 10px
+img
+    max-width: 100%
+    height: auto
 .wrap
     max-width: 1024px
     position: relative
@@ -62,6 +81,8 @@
                     color: $gray
                 @include media-w667
                     margin: 15px 0
+                @include media-w414
+                    padding: 0 10px
                 span
                     font-size: 12px
                     padding-left: 3px      
@@ -222,6 +243,13 @@
         z-index: 2000
         overflow: hidden
         transition: 0.5s ease-in-out
+        @include media-w667
+            width: 400px
+        @include media-w568
+            width: 350px
+            padding: 0
+        @include media-w414
+            width: 300px
         &.show
             right: 0
         > div
@@ -262,13 +290,14 @@
                 border-top: 1px solid $beige
                 color: rgb(25,25,25)
                 font-size: 13px
-                img
-                    padding-left: 20px
                 &.delete
                     cursor: pointer
                     transition: 0.2s ease-in-out
                     &:hover
                         color: $dark-beige
+            .pic
+                @include media-w667
+                    display: none
         .select_qty
             display: flex
             justify-content: center
@@ -282,6 +311,8 @@
                     font-size: 12px
                     color: $black
                     padding: 5px 8px
+                    @include media-w568
+                        padding: 5px
                     &:focus
                         outline: none
                 input
@@ -296,6 +327,8 @@
                     font-size: 12px
                     color: $black
                     padding: 4px
+                    @include media-w667
+                        width: 30px
                     &:focus
                         outline: none
                 input[type='number']
@@ -420,16 +453,13 @@
 @include keyframes(rotateLogo)
     0% 
         transform: rotate(0)
-
     100% 
         transform: rotate(360deg)
 @include keyframes(scaleChange)
     0%
         transform: scaleX(1)
-
     50% 
         transform: scaleX(0)
-
     100% 
         transform: scaleX(1)
 .footer
@@ -451,6 +481,8 @@
         p
             font-weight: 100
             padding: 10px 5px
+            @include media-w568
+                padding: 5px
 .go-top
     position: fixed
     right: 25px
@@ -468,6 +500,9 @@
     z-index: 1100
     opacity: 0
     transition: 0.5s ease-in-out
+    @include media-w568
+        right: 15px
+        bottom: 15px
     &.show
         opacity: 1
     svg

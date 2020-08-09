@@ -2,7 +2,9 @@
     background: rgba($gray, 0.1)
     border-top: 1px solid rgba($gray, 0.3)
     border-bottom: 1px solid rgba($gray, 0.3)
-    padding: 100px
+    padding: 100px 0
+    @include media-w568
+        padding: 120px 0 100px
     .form-wrap
         width: 500px
         margin: 0 auto
@@ -10,6 +12,10 @@
         background: $white
         border-radius: 5px
         overflow: hidden
+        @include media-w667
+            width: 450px
+        @include media-w568
+            width: 80%
         ul
             display: flex
             li
@@ -34,6 +40,10 @@
             flex-direction: column
             justify-content: center
             padding: 50px 30px
+            @include media-w568
+                padding: 50px 15px
+            @include media-w414
+                padding: 50px 0
             &.show
                 display: flex
             .form-group

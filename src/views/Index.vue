@@ -46,13 +46,13 @@
           @shoppingcartclose ="shoppingCartClose"
         ></div>
         <ul class="top__main-menu">
-          <li>
+          <li @click="openMainMenu = !openMainMenu">
             <router-link to="/">
               <span>HOME</span>
               <span>首頁</span>
             </router-link>
           </li>
-          <li>
+          <li @click="openMainMenu = !openMainMenu">
             <router-link to="/products/All-Products">
               <span>ALL PRODUCTS</span>
               <span>所有商品</span>
@@ -84,23 +84,23 @@
               </li>
             </ul>
           </li>
-          <li @click="getProducts()">
+          <li @click="openMainMenu = !openMainMenu">
             <router-link to="/products/Sale">
               <span>SALE</span>
               <span>限時特價</span>
             </router-link>
           </li>
-          <li>
+          <li @click="openMainMenu = !openMainMenu">
             <router-link to="/guide">
               <span>SHIPPING GUIDE</span>
               <span>運送須知</span>
             </router-link>
           </li>
-          <li>
-            <a href="#">
+          <li @click="openMainMenu = !openMainMenu">
+            <router-link to="/contact">
               <span>CONTACT</span>
               <span>聯絡我們</span>
-            </a>
+            </router-link>
           </li>
         </ul>
         <div is="search" :search="opensearch" @changesearch="changeSearch"></div>
@@ -184,10 +184,10 @@
           </router-link>
         </li>
         <li>
-          <a href="#">
+          <router-link to="/contact">
             <span>CONTACT</span>
             <span>聯絡我們</span>
-          </a>
+          </router-link>
         </li>
       </ul>
     </div>
@@ -357,6 +357,11 @@ export default {
   created () {
     this.getCart()
     window.addEventListener('scroll', this.showTitle, true)
+    // const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/shopping/all/product`
+    // this.$http.delete(url)
+    //   .then(response => {
+    //     this.cart = ''
+    //   })
   },
   methods: {
     showTitle () {
@@ -376,23 +381,11 @@ export default {
         .then(response => {
           this.isLoading = false
           this.cart = response.data.data
-          this.getTotalPrice()
         })
         .catch(error => {
           this.isLoading = false
           console.log(error)
         })
-    },
-    getTotalPrice () {
-      this.totalPrice = 0
-      this.cart.forEach((item) => {
-        this.totalPrice += (item.product.price * item.quantity)
-      })
-      if (this.totalPrice > 3000) {
-        this.deliveryFee = 0
-      } else {
-        this.deliveryFee = 350
-      }
     },
     deleteCartItem (id) {
       this.isLoading = true

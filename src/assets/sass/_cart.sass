@@ -3,6 +3,12 @@
     border-top: 1px solid rgba($gray, 0.3)
     border-bottom: 1px solid rgba($gray, 0.3)
     padding: 60px 100px 70px
+    @include media-w896
+        padding: 60px 50px 70px
+    @include media-w667
+        padding: 60px 30px 70px
+    @include media-w568
+        padding: 110px 20px 70px
     h3
         position: relative
         text-align: center
@@ -60,6 +66,10 @@
     display: none
     padding: 50px
     text-align: center
+    @include media-w568
+        padding: 50px 20px
+    @include media-w375
+        padding: 50px 0
     &.show
         display: block
     h4
@@ -97,11 +107,22 @@
             font-size: 13px
             img
                 padding-left: 20px
+                @include media-w568
+                    padding-left: 10px
             &.delete
                 cursor: pointer
                 transition: 0.2s ease-in-out
                 &:hover
                     color: $dark-beige
+        .unit
+            @include media-w896
+                display: none
+        .subtotal
+            @include media-w568
+                display: none
+        .pic
+            @include media-w414
+                display: none
     .select_qty
         display: flex
         justify-content: center
@@ -115,6 +136,10 @@
                 font-size: 12px
                 color: $black
                 padding: 6px 10px
+                @include media-w667
+                    padding: 6px 8px
+                @include media-w568
+                    padding: 4px 6px
                 &:focus
                     outline: none
             input
@@ -129,6 +154,12 @@
                 font-size: 12px
                 color: $black
                 padding: 6px
+                @include media-w767
+                    width: 50px
+                @include media-w667
+                    width: 40px
+                @include media-w568
+                    padding: 4px
                 &:focus
                     outline: none
             input[type='number']
@@ -145,6 +176,8 @@
     width: 100%
     display: flex
     justify-content: space-between
+    @include media-w767
+        flex-direction: column
     h4
         width: 100%
         align-self: flex-start
@@ -160,6 +193,9 @@
         flex-direction: column
         align-items: center
         background: $white
+        @include media-w767
+            width: 100%
+            margin-bottom: 30px
         .input-wrap
             width: 80%
             display: flex
@@ -187,9 +223,13 @@
         flex-direction: column
         align-items: center
         background: $white
+        @include media-w767
+            width: 100%
         .sum-wrap
             width: 70%
             padding: 30px 0
+            @include media-w414
+                width: 80%
             div
                 display: flex
                 justify-content: space-between
@@ -257,6 +297,8 @@
         justify-content: space-between
         width: 80%
         margin: 0 auto
+        @include media-w667
+            flex-direction: column
     p
         width: 80%
         margin: 0 auto
@@ -269,6 +311,10 @@
         justify-content: space-between
         align-items: center
         padding: 30px 0 10px
+        @include media-w667
+            width: 100%
+            &:nth-child(2)
+                padding: 0
         .form-group
             position: relative
             width: 100%
@@ -317,6 +363,8 @@
     background: $white
     border: 1px solid $beige
     margin: 0 auto 30px
+    @include media-w667
+        width: 100%
     tr
         margin: 0 20px
         th, td
@@ -336,12 +384,14 @@
                 font-size: 15px
             img
                 padding-left: 20px
-                width: 100px;
+                width: 100px
 .checkinfo-table
     width: 85%
     background: $white
     border: 1px solid $beige
     margin: 0 auto 30px
+    @include media-w667
+        width: 100%
     tr
         margin: 0 20px
         th, td
@@ -360,6 +410,8 @@
 .pay-btn
     width: 85%
     padding: 7px 12px
+    @include media-w667
+        width: 100%
 
 
 

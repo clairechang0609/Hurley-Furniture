@@ -1,0 +1,51 @@
+.content-contact
+    background: rgba($gray, 0.1)
+    border-top: 1px solid rgba($gray, 0.3)
+    border-bottom: 1px solid rgba($gray, 0.3)
+    padding: 60px 0 70px
+    @include media-w568
+        padding: 110px 20px 70px
+    h3
+        position: relative
+        text-align: center
+        font-size: 35px
+        padding-bottom: 60px
+        &::before
+            content: ""
+            position: absolute
+            height: 1px
+            width: 40px
+            background: black
+            top: 50px
+            left: 50%
+            transform: translateX(-50%)
+    > p
+        text-align: center
+        font-size: 15px
+        line-height: 1.5
+        padding-bottom: 10px
+    ul
+        text-align: center
+        li
+            padding-top: 25px
+            line-height: 1.5
+        h4
+            font-size: 17px
+            font-weight: 500
+            padding-bottom: 15px
+            span
+                display: inline-block;
+                padding-bottom: 3px;
+                border-bottom: 1px solid $black;
+        a
+            display: inline-block
+            font-size: 15px
+            text-decoration: none
+            color: $dark-beige
+            padding-bottom: 5px
+            &:hover
+                text-decoration: underline
+                
+        p
+            font-size: 15px
+            padding-bottom: 5px
