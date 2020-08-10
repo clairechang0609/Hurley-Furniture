@@ -1,30 +1,54 @@
 .contents-product
     display: flex
     flex-direction: column
-    padding: 50px 100px;
+    padding: 50px 100px
     margin: 0 auto
+    @include media-w767
+        padding: 100px 70px 50px
+    @include media-w667
+        padding: 100px 40px 50px
+    @include media-w568
+        padding: 110px 40px 50px
 .product-main
     display: flex
     justify-content: space-between
     align-items: center
     margin-bottom: 50px
+    @include media-w568
+        flex-direction: column
     .pics
         width: 53%
         display: flex
         justify-content: space-between
+        @include media-w896
+            flex-direction: column
+        @include media-w568
+            width: 100%
+            padding-bottom: 50px
         .show-pic
-            width: 83% 
+            width: 83%
+            @include media-w896
+                width: 100%
+                margin-bottom: 10px
         .other-pic
             width: 15%
             display: flex
             flex-direction: column
             justify-content: space-between
+            @include media-w896
+                width: 100%
+                flex-direction: row
+                justify-content: space-between
             img
                 cursor: pointer
-    .discription
+                @include media-w896
+                    width: 18%
+    .info
         width: 40%
         display: flex
         flex-direction: column
+        @include media-w568
+            width: 100%
         .title
             font-size: 30px
             padding-bottom: 25px
@@ -71,6 +95,8 @@
             width: 70%
             display: flex
             justify-content: center
+            @include media-w414
+                width: 100%
             button
                 border-radius: 0
                 border: 1px solid $black
@@ -122,12 +148,23 @@
     border-top: 1px solid rgba($gray, 0.3)
     border-bottom: 1px solid rgba($gray, 0.3)
     padding: 50px
+    @include media-w767
+        flex-direction: column
+    @include media-w414
+        padding: 30px
     div
         white-space: pre-wrap;
         &.description
             width: 52%
+            @include media-w767
+                width: 100%
+                padding-bottom: 40px
+            @include media-w414
+                padding-bottom: 30px
         &.content
             width: 42%
+            @include media-w767
+                width: 100%
     h5
         font-size: 16px
         font-weight: 500
@@ -190,7 +227,7 @@
             height: 150px
             background-size: cover
             background-position: center
-            @include media-w568
+            @include media-w667
                 height: 200px
             .add-btn
                 position: absolute

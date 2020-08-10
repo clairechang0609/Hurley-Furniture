@@ -448,11 +448,7 @@
     </div>
     <div is="gotop"></div>
     <loading :active.sync="isLoading"></loading>
-    <div
-      class="mask"
-      :class="{ 'open': shoppingCartOpen }"
-      @click.prevent="shoppingCartOpen = !shoppingCartOpen"
-    ></div>
+    <div class="mask" :class="{ 'open': shoppingCartOpen }" @click.prevent="shoppingCartOpen = !shoppingCartOpen"></div>
   </div>
 </template>
 
@@ -485,7 +481,6 @@ export default {
         tel: '',
         address: '',
         payment: '',
-        coupon: '',
         message: ''
       },
       coupon_code: '',
@@ -591,8 +586,11 @@ export default {
       this.isLoading = true
       console.log(this.form)
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/orders`
-      const editOrder = Object.assign({}, this.form)
-      this.$http.post(url, editOrder)
+      const order = Object.assign({}, this.form)
+      if (this.coupon.enabled) {
+        order.coupon = this.coupon.code
+      }
+      this.$http.post(url, order)
         .then(response => {
           if (response.data.data.id) {
             this.isLoading = false

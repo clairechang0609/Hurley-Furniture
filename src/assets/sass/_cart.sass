@@ -76,9 +76,13 @@
         font-size: 27px
         font-weight: 300
         padding-bottom: 20px
+        @include media-w375
+            font-size: 25px
     .pay-completed
         width: 300px
         margin: 0 auto
+        @include media-w375
+            width: 275px
         a
             font-size: 15px
             color: $black

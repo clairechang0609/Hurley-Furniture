@@ -7,9 +7,9 @@
           <img :src="`${sale.img[1]}`" alt="">
         </div>
         <div class="product-name">
-            <h5>{{ sale.title }}</h5>
-            <p>NT${{ sale.price | thousands }}<span class="sale-icon">sale</span></p>
-            <div class="orign">NT${{ sale.origin_price | thousands }}</div>
+          <h5>{{ sale.title }}</h5>
+          <p>NT${{ sale.price | thousands }}<span class="sale-icon">sale</span></p>
+          <div class="orign">NT${{ sale.origin_price | thousands }}</div>
         </div>
       </router-link>
     </div>

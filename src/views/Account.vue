@@ -194,20 +194,10 @@
       <div class="form-wrap">
         <ul>
           <li>
-            <a
-              href="#"
-              class="signup-btn"
-              :class="{ 'show': showSignup }"
-              @click.prevent="showSignup = true"
-            >註冊會員</a>
+            <a href="#" class="signup-btn" :class="{ 'show': showSignup }" @click.prevent="showSignup = true">註冊會員</a>
           </li>
           <li>
-            <a
-              href="#"
-              class="login-btn"
-              :class="{ 'show': !showSignup }"
-              @click.prevent="showSignup = false"
-            >會員登入</a>
+            <a href="#" class="login-btn" :class="{ 'show': !showSignup }" @click.prevent="showSignup = false">會員登入</a>
           </li>
         </ul>
         <validation-observer v-slot="{ invalid }">
@@ -299,11 +289,7 @@
     </div>
     <div is="gotop"></div>
     <loading :active.sync="isLoading"></loading>
-    <div
-      class="mask"
-      :class="{ 'open': shoppingCartOpen }"
-      @click.prevent="shoppingCartOpen = !shoppingCartOpen"
-    ></div>
+    <div class="mask" :class="{ 'open': shoppingCartOpen }" @click.prevent="shoppingCartOpen = !shoppingCartOpen"></div>
   </div>
 </template>
 

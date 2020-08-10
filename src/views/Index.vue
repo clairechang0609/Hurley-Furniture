@@ -15,26 +15,26 @@
         </ul>
         <ul class="top__menu" :class="{ 'hide': opensearch }">
           <li>
-              <router-link to="/admin">ADMIN LOGIN</router-link>
+            <router-link to="/admin">ADMIN LOGIN</router-link>
           </li>
           <li>
-              <router-link to="/account">ACCOUNT</router-link>
+            <router-link to="/account">ACCOUNT</router-link>
           </li>
           <li>
-              <a href="#" @click.prevent="shoppingCartOpen = true">
+            <a href="#" @click.prevent="shoppingCartOpen = true">
               CART
               <span>({{cart.length}})</span>
-              </a>
+            </a>
           </li>
           <li>
-              <a href="#" @click="opensearch = true">
+            <a href="#" @click="opensearch = true">
               <i class="fas fa-search search-icon"></i>
-              </a>
+            </a>
           </li>
           <li class="ham-btn" @click.prevent="openMainMenu = !openMainMenu">
-              <span></span>
-              <span></span>
-              <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
           </li>
         </ul>
         <div
@@ -357,11 +357,6 @@ export default {
   created () {
     this.getCart()
     window.addEventListener('scroll', this.showTitle, true)
-    // const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/shopping/all/product`
-    // this.$http.delete(url)
-    //   .then(response => {
-    //     this.cart = ''
-    //   })
   },
   methods: {
     showTitle () {

@@ -64,22 +64,22 @@
                 <span>分類單品 ▸</span>
               </a>
               <ul class="top__all-product-list" :class="{ 'show': openMenu }">
-                <li @click="getProducts(), openMainMenu = !openMainMenu">
+                <li @click="openMainMenu = !openMainMenu">
                   <router-link to="/products/Sofa">Sofa</router-link>
                 </li>
-                <li @click="getProducts(), openMainMenu = !openMainMenu">
+                <li @click="openMainMenu = !openMainMenu">
                   <router-link to="/products/Chair">Chair</router-link>
                 </li>
-                <li @click="getProducts(), openMainMenu = !openMainMenu">
+                <li @click="openMainMenu = !openMainMenu">
                   <router-link to="/products/Table">Table</router-link>
                 </li>
-                <li @click="getProducts(), openMainMenu = !openMainMenu">
+                <li @click="openMainMenu = !openMainMenu">
                   <router-link to="/products/Cabinet">Cabinet</router-link>
                 </li>
-                <li @click="getProducts(), openMainMenu = !openMainMenu">
+                <li @click="openMainMenu = !openMainMenu">
                   <router-link to="/products/Side Table">Side Table</router-link>
                 </li>
-                <li @click="getProducts(), openMainMenu = !openMainMenu">
+                <li @click="openMainMenu = !openMainMenu">
                   <router-link to="/products/Lighting">Lighting</router-link>
                 </li>
               </ul>
@@ -198,7 +198,7 @@
                 <img v-for="(img, key) in showProduct.imageUrl" :key="showProduct.id + key" :src="img" @click="selectPic = img">
               </div>
             </div>
-            <div class="discription">
+            <div class="info">
               <h3 class="title">{{ showProduct.title }} <span>design by {{ brand }}</span></h3>
               <p class="sale-price">NT${{ price | thousands }}
                 <span class="sale-icon" v-if="showProduct.price !== showProduct.origin_price">sale</span>

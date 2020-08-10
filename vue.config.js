@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: '/0724-week6/'
+  publicPath: '/Hurley-Furniture/'
 }

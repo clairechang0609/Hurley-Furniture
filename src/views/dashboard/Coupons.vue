@@ -31,8 +31,8 @@
       </table>
       <div class="form-wrap" :class="{ 'show': formShow }">
         <div class="title-bar">
-            <h5>{{ newCoupon?"新增產品":"編輯產品" }}</h5>
-            <button type="button" class="close" @click="closeForm()"><i class="fas fa-times"></i></button>
+          <h5>{{ newCoupon?"新增產品":"編輯產品" }}</h5>
+          <button type="button" class="close" @click="closeForm()"><i class="fas fa-times"></i></button>
         </div>
         <div class="form">
           <div class="content">
