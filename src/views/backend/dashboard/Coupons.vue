@@ -83,7 +83,7 @@
 </template>
 
 <script>
-import pagination from '../../components/Pagination.vue'
+import pagination from '../../../components/Pagination.vue'
 
 export default {
   components: {
@@ -120,10 +120,7 @@ export default {
           this.coupons = response.data.data
           this.pagination = response.data.meta.pagination
         })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error)
-        })
+        .catch(() => {})
     },
     openModal (mode, item) {
       this.due_date = ''
@@ -177,10 +174,7 @@ export default {
           this.isLoading = false
           this.getCoupons()
         })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error)
-        })
+        .catch(() => {})
 
       this.formShow = false
       this.shadowOpen = false
@@ -193,10 +187,7 @@ export default {
           this.isLoading = false
           this.getCoupons()
         })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error)
-        })
+        .catch(() => {})
 
       this.deleteShow = false
       this.shadowOpen = false

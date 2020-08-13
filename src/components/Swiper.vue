@@ -146,12 +146,7 @@ export default {
     }
   },
   mounted () {
-    console.log('Current Swiper instance object', this.swiper)
     this.swiper.slideTo(1, 2000, true)
   }
 }
 </script>
-
-<style lang="sass" scoped>
-  @import '../assets/sass/all.sass'
-</style>

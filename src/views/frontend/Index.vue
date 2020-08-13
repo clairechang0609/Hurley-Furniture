@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap">
+  <div class="index">
     <div class="top-menu">
       <div class="top" :class="{ 'show': openMainMenu }">
         <ul class="top__icon">
@@ -23,7 +23,7 @@
           <li>
             <a href="#" @click.prevent="shoppingCartOpen = true">
               CART
-              <span>({{cart.length}})</span>
+              <span>({{ cart.length }})</span>
             </a>
           </li>
           <li>
@@ -38,9 +38,10 @@
           </li>
         </ul>
         <div
-          is="shopping"
+          is="shoppingcart"
           :shoppingcart="cart"
           :shoppingcartopen="shoppingCartOpen"
+          :totalprice="totalPrice"
           @deleteproduct="deleteCartItem"
           @qtyupdate="qtyUpdate"
           @shoppingcartclose ="shoppingCartClose"
@@ -103,7 +104,7 @@
             </router-link>
           </li>
         </ul>
-        <div is="search" :search="opensearch" @changesearch="changeSearch"></div>
+        <div is="searchbox" :search="opensearch" @changesearch="changeSearch"></div>
       </div>
     </div>
     <div class="logo-wrap">
@@ -135,37 +136,37 @@
           <ul class="header__all-product-list" :class="{ 'show': openMenu }">
             <li @click="openMenu = !openMenu">
               <router-link to="/products/Sofa">
-                <img src="../assets/img/sofa-04.png" alt />
+                <img src="../../assets/img/sofa-04.png" alt />
                 <p>Sofa</p>
               </router-link>
             </li>
             <li @click="openMenu = !openMenu">
               <router-link to="/products/Chair">
-                <img src="../assets/img/chair-04.png" alt />
+                <img src="../../assets/img/chair-04.png" alt />
                 <p>Chair</p>
               </router-link>
             </li>
             <li @click="openMenu = !openMenu">
               <router-link to="/products/Table">
-                <img src="../assets/img/table-04.png" alt />
+                <img src="../../assets/img/table-04.png" alt />
                 <p>Table</p>
               </router-link>
             </li>
             <li @click="openMenu = !openMenu">
               <router-link to="/products/Cabinet">
-                <img src="../assets/img/cabinet-04.png" alt />
+                <img src="../../assets/img/cabinet-04.png" alt />
                 <p>Cabinet</p>
               </router-link>
             </li>
             <li @click="openMenu = !openMenu">
               <router-link to="/products/Side Table">
-                <img src="../assets/img/sidetable-04.png" alt />
+                <img src="../../assets/img/sidetable-04.png" alt />
                 <p>Side Table</p>
               </router-link>
             </li>
             <li @click="openMenu = !openMenu">
               <router-link to="/products/Lighting">
-                <img src="../assets/img/lamp-04.png" alt />
+                <img src="../../assets/img/lamp-04.png" alt />
                 <p>Lighting</p>
               </router-link>
             </li>
@@ -294,17 +295,17 @@
 </template>
 
 <script>
-import shopping from '../components/Shoppingcart.vue'
-import search from '../components/Searchbox.vue'
-import gotop from '../components/Gotop.vue'
-import swiper from '../components/Swiper.vue'
+import Shoppingcart from '../../components/Shoppingcart.vue'
+import Searchbox from '../../components/Searchbox.vue'
+import Gotop from '../../components/Gotop.vue'
+import Swiper from '../../components/Swiper.vue'
 
 export default {
   components: {
-    shopping,
-    search,
-    gotop,
-    swiper
+    Shoppingcart,
+    Searchbox,
+    Gotop,
+    Swiper
   },
   data () {
     return {
@@ -314,6 +315,7 @@ export default {
       isLoading: false,
       shoppingCartOpen: false,
       cart: [],
+      totalPrice: 0,
       selections: [
         {
           id: '245gs6DQBUCDJnwqMGFj7xzCTFxHlILMBj76zL8UqqtITuVBGqKzPnC7CDywdMHL',
@@ -376,11 +378,20 @@ export default {
         .then(response => {
           this.isLoading = false
           this.cart = response.data.data
+          this.getTotalPrice()
         })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error)
-        })
+        .catch(() => {})
+    },
+    getTotalPrice () {
+      this.totalPrice = 0
+      this.cart.forEach((item) => {
+        this.totalPrice += (item.product.price * item.quantity)
+      })
+      if (this.totalPrice > 3000) {
+        this.deliveryFee = 0
+      } else {
+        this.deliveryFee = 350
+      }
     },
     deleteCartItem (id) {
       this.isLoading = true
@@ -390,10 +401,7 @@ export default {
           this.isLoading = false
           this.getCart()
         })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error)
-        })
+        .catch(() => {})
     },
     qtyUpdate (id, num) {
       this.isLoading = true
@@ -408,10 +416,7 @@ export default {
             this.isLoading = false
             this.getCart()
           })
-          .catch(error => {
-            this.isLoading = false
-            console.log(error)
-          })
+          .catch(() => {})
       } else {
         const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/shopping`
         this.$http.patch(url, data)
@@ -419,10 +424,7 @@ export default {
             this.isLoading = false
             this.getCart()
           })
-          .catch(error => {
-            this.isLoading = false
-            console.log(error)
-          })
+          .catch(() => {})
       }
     },
     createOrder () {
@@ -436,10 +438,7 @@ export default {
             this.getCart()
           }
         })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error.response.data.errors)
-        })
+        .catch(() => {})
     },
     changeSearch () {
       this.opensearch = false

@@ -23,7 +23,7 @@
           <li>
             <a href="#" @click.prevent="shoppingCartOpen = true">
               CART
-              <span>({{cart.length}})</span>
+              <span>({{ cart.length }})</span>
             </a>
           </li>
           <li>
@@ -38,9 +38,10 @@
           </li>
         </ul>
         <div
-          is="shopping"
+          is="shoppingcart"
           :shoppingcart="cart"
           :shoppingcartopen="shoppingCartOpen"
+          :totalprice="totalPrice"
           @deleteproduct="deleteCartItem"
           @qtyupdate="qtyUpdate"
           @shoppingcartclose="shoppingCartClose"
@@ -103,7 +104,7 @@
             </router-link>
           </li>
         </ul>
-        <div is="search" :search="opensearch" @changesearch="changeSearch"></div>
+        <div is="searchbox" :search="opensearch" @changesearch="changeSearch"></div>
       </div>
     </div>
     <div class="logo-wrap">
@@ -134,37 +135,37 @@
           <ul class="header__all-product-list" :class="{ 'show': openMenu }">
             <li @click="openMenu = !openMenu">
               <router-link to="/products/Sofa">
-                <img src="../assets/img/sofa-04.png" alt />
+                <img src="../../assets/img/sofa-04.png" alt />
                 <p>Sofa</p>
               </router-link>
             </li>
             <li @click="openMenu = !openMenu">
               <router-link to="/products/Chair">
-                <img src="../assets/img/chair-04.png" alt />
+                <img src="../../assets/img/chair-04.png" alt />
                 <p>Chair</p>
               </router-link>
             </li>
             <li @click="openMenu = !openMenu">
               <router-link to="/products/Table">
-                <img src="../assets/img/table-04.png" alt />
+                <img src="../../assets/img/table-04.png" alt />
                 <p>Table</p>
               </router-link>
             </li>
             <li @click="openMenu = !openMenu">
               <router-link to="/products/Cabinet">
-                <img src="../assets/img/cabinet-04.png" alt />
+                <img src="../../assets/img/cabinet-04.png" alt />
                 <p>Cabinet</p>
               </router-link>
             </li>
             <li @click="openMenu = !openMenu">
               <router-link to="/products/Side Table">
-                <img src="../assets/img/sidetable-04.png" alt />
+                <img src="../../assets/img/sidetable-04.png" alt />
                 <p>Side Table</p>
               </router-link>
             </li>
             <li @click="openMenu = !openMenu">
               <router-link to="/products/Lighting">
-                <img src="../assets/img/lamp-04.png" alt />
+                <img src="../../assets/img/lamp-04.png" alt />
                 <p>Lighting</p>
               </router-link>
             </li>
@@ -190,96 +191,24 @@
         </li>
       </ul>
     </div>
-    <div class="content content-account">
-      <div class="form-wrap">
-        <ul>
-          <li>
-            <a href="#" class="signup-btn" :class="{ 'show': showSignup }" @click.prevent="showSignup = true">註冊會員</a>
-          </li>
-          <li>
-            <a href="#" class="login-btn" :class="{ 'show': !showSignup }" @click.prevent="showSignup = false">會員登入</a>
-          </li>
-        </ul>
-        <validation-observer v-slot="{ invalid }">
-          <form class="signup" :class="{ 'show': showSignup }">
-            <div class="form-group">
-              <validation-provider rules="required" v-slot="{ errors }">
-                <label for="name">
-                  姓名
-                  <span>*</span>
-                </label>
-                <input type="text" id="name" name="姓名" v-model="form.name" />
-                <p>{{ errors[0] }}</p>
-              </validation-provider>
-            </div>
-            <div class="form-group">
-              <validation-provider rules="required|email" v-slot="{ errors }">
-                <label for="email">
-                  電子信箱
-                  <span>*</span>
-                </label>
-                <input type="email" id="email" name="電子信箱" v-model="form.email" />
-                <p>{{ errors[0] }}</p>
-              </validation-provider>
-            </div>
-            <div class="form-group">
-              <validation-provider rules="required|min:8" v-slot="{ errors }">
-                <label for="password">
-                  密碼
-                  <span>*</span>
-                </label>
-                <input type="password" id="password" name="密碼" v-model="form.password" />
-                <p>{{ errors[0] }}</p>
-              </validation-provider>
-            </div>
-            <div class="form-group">
-              <label for="payment">性別</label>
-              <select name="gender" id>
-                <option value selected disabled>請選擇</option>
-                <option value="male">男</option>
-                <option value="female">女</option>
-                <option value="other">不透露</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="date">生日</label>
-              <input
-                type="text"
-                onfocus="(this.type='date')"
-                id="date"
-                name="生日"
-                v-model="form.birth"
-              />
-            </div>
-            <div class="agree-check">
-              <validation-provider :rules="{ required: { allowFalse: false } }" v-slot="{ errors }">
-                <label class="container" for="agree">
-                  <input type="checkbox" id="agree" v-model="form.check" name="同意條款" />
-                  <span class="checkmark"></span>
-                  <p>
-                    我同意
-                    <a href="#">服務條款及隱私政策</a>
-                  </p>
-                  <p class="error">{{ errors[0] }}</p>
-                </label>
-              </validation-provider>
-            </div>
-            <button type="submit" class="submit-btn" :disabled="invalid">加入會員</button>
-          </form>
-        </validation-observer>
-        <form class="login" :class="{ 'show': !showSignup }">
-          <div class="form-group">
-            <label for="email-login">帳號（電子信箱）</label>
-            <input type="email" id="email-login" />
-          </div>
-          <div class="form-group">
-            <label for="password-login">密碼</label>
-            <input type="password" id="password-login" />
-            <a href="#">忘記密碼</a>
-          </div>
-          <button type="button">登入</button>
-        </form>
-      </div>
+    <div class="content content-contact">
+      <h3>CONTACT US</h3>
+      <p>關於商品及服務相關問題，<br>歡迎來電或來信詢問，我們將儘速提供協助。</p>
+      <ul>
+        <li>
+          <h4><span>客服專線</span></h4>
+          <a href="tel:+886-2-12345678">02-1234-5678</a>
+          <p>服務時間：週一至週五 09:00—18:00</p>
+        </li>
+        <li>
+          <h4><span>服務信箱</span></h4>
+          <a href="mailto:service@hurley.com">service@hurley.com</a>
+        </li>
+        <li>
+          <h4><span>常見問題</span></h4>
+          <p>需要協助或有任何疑問，可以參考<router-link to="/guide">運送相關問題</router-link></p>
+        </li>
+      </ul>
     </div>
     <div class="footer footer-white">
       <div class="text">
@@ -294,15 +223,15 @@
 </template>
 
 <script>
-import shopping from '../components/Shoppingcart.vue'
-import search from '../components/Searchbox.vue'
-import gotop from '../components/Gotop.vue'
+import Shoppingcart from '../../components/Shoppingcart.vue'
+import Searchbox from '../../components/Searchbox.vue'
+import Gotop from '../../components/Gotop.vue'
 
 export default {
   components: {
-    shopping,
-    search,
-    gotop
+    Shoppingcart,
+    Searchbox,
+    Gotop
   },
   data () {
     return {
@@ -312,14 +241,7 @@ export default {
       isLoading: false,
       shoppingCartOpen: false,
       cart: [],
-      showSignup: true,
-      form: {
-        name: '',
-        email: '',
-        password: '',
-        birth: '',
-        check: false
-      }
+      totalPrice: 0
     }
   },
   created () {
@@ -333,11 +255,12 @@ export default {
         .then(response => {
           this.isLoading = false
           this.cart = response.data.data
+          this.totalPrice = 0
+          this.cart.forEach((item) => {
+            this.totalPrice += (item.product.price * item.quantity)
+          })
         })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error)
-        })
+        .catch(() => {})
     },
     deleteCartItem (id) {
       this.isLoading = true
@@ -347,10 +270,7 @@ export default {
           this.isLoading = false
           this.getCart()
         })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error)
-        })
+        .catch(() => {})
     },
     qtyUpdate (id, num) {
       this.isLoading = true
@@ -365,10 +285,7 @@ export default {
             this.isLoading = false
             this.getCart()
           })
-          .catch(error => {
-            this.isLoading = false
-            console.log(error)
-          })
+          .catch(() => {})
       } else {
         const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/shopping`
         this.$http.patch(url, data)
@@ -376,10 +293,7 @@ export default {
             this.isLoading = false
             this.getCart()
           })
-          .catch(error => {
-            this.isLoading = false
-            console.log(error)
-          })
+          .catch(() => {})
       }
     },
     changeSearch () {

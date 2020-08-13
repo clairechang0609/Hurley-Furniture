@@ -23,7 +23,7 @@
           <li>
             <a href="#" @click.prevent="shoppingCartOpen = true">
               CART
-              <span>({{cart.length}})</span>
+              <span>({{ cart.length }})</span>
             </a>
           </li>
           <li>
@@ -38,9 +38,10 @@
           </li>
         </ul>
         <div
-          is="shopping"
+          is="shoppingcart"
           :shoppingcart="cart"
           :shoppingcartopen="shoppingCartOpen"
+          :totalprice="totalPrice"
           @deleteproduct="deleteCartItem"
           @qtyupdate="qtyUpdate"
           @shoppingcartclose="shoppingCartClose"
@@ -103,7 +104,7 @@
             </router-link>
           </li>
         </ul>
-        <div is="search" :search="opensearch" @changesearch="changeSearch"></div>
+        <div is="searchbox" :search="opensearch" @changesearch="changeSearch"></div>
       </div>
     </div>
     <div class="logo-wrap">
@@ -134,37 +135,37 @@
           <ul class="header__all-product-list" :class="{ 'show': openMenu }">
             <li @click="openMenu = !openMenu">
               <router-link to="/products/Sofa">
-                <img src="../assets/img/sofa-04.png" alt />
+                <img src="../../assets/img/sofa-04.png" alt />
                 <p>Sofa</p>
               </router-link>
             </li>
             <li @click="openMenu = !openMenu">
               <router-link to="/products/Chair">
-                <img src="../assets/img/chair-04.png" alt />
+                <img src="../../assets/img/chair-04.png" alt />
                 <p>Chair</p>
               </router-link>
             </li>
             <li @click="openMenu = !openMenu">
               <router-link to="/products/Table">
-                <img src="../assets/img/table-04.png" alt />
+                <img src="../../assets/img/table-04.png" alt />
                 <p>Table</p>
               </router-link>
             </li>
             <li @click="openMenu = !openMenu">
               <router-link to="/products/Cabinet">
-                <img src="../assets/img/cabinet-04.png" alt />
+                <img src="../../assets/img/cabinet-04.png" alt />
                 <p>Cabinet</p>
               </router-link>
             </li>
             <li @click="openMenu = !openMenu">
               <router-link to="/products/Side Table">
-                <img src="../assets/img/sidetable-04.png" alt />
+                <img src="../../assets/img/sidetable-04.png" alt />
                 <p>Side Table</p>
               </router-link>
             </li>
             <li @click="openMenu = !openMenu">
               <router-link to="/products/Lighting">
-                <img src="../assets/img/lamp-04.png" alt />
+                <img src="../../assets/img/lamp-04.png" alt />
                 <p>Lighting</p>
               </router-link>
             </li>
@@ -242,7 +243,8 @@
                     type="number"
                     class="product-number"
                     :value="item.quantity"
-                    @input="qtyUpdate(item.product.id, $event.target.value)"
+                    @keyup.enter="qtyUpdate(item.product.id, $event.target.value)"
+                    onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')"
                   />
                   <button
                     type="button"
@@ -376,7 +378,7 @@
                   <label for="remark">訂單備註</label>
                   <textarea id="remark" v-model="form.message" placeholder="有什麼想告訴我們的嗎？"></textarea>
                 </div>
-                <button type="submit" class="submit-btn" @click="page = 3" :disabled="invalid">提交訂單</button>
+                <button type="submit" class="submit-btn" @click="page = 3" :disabled="invalid" :class="{ 'disabled': invalid }">提交訂單</button>
               </div>
             </form>
           </validation-observer>
@@ -453,15 +455,15 @@
 </template>
 
 <script>
-import shopping from '../components/Shoppingcart.vue'
-import search from '../components/Searchbox.vue'
-import gotop from '../components/Gotop.vue'
+import Shoppingcart from '../../components/Shoppingcart.vue'
+import Searchbox from '../../components/Searchbox.vue'
+import Gotop from '../../components/Gotop.vue'
 
 export default {
   components: {
-    shopping,
-    search,
-    gotop
+    Shoppingcart,
+    Searchbox,
+    Gotop
   },
   data () {
     return {
@@ -506,10 +508,7 @@ export default {
           this.cart = response.data.data
           this.getTotalPrice()
         })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error)
-        })
+        .catch(() => {})
     },
     getTotalPrice () {
       this.totalPrice = 0
@@ -530,10 +529,7 @@ export default {
           this.isLoading = false
           this.getCart()
         })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error)
-        })
+        .catch(() => {})
     },
     qtyUpdate (id, num) {
       this.isLoading = true
@@ -548,10 +544,7 @@ export default {
             this.isLoading = false
             this.getCart()
           })
-          .catch(error => {
-            this.isLoading = false
-            console.log(error)
-          })
+          .catch(() => {})
       } else {
         const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/shopping`
         this.$http.patch(url, data)
@@ -559,10 +552,7 @@ export default {
             this.isLoading = false
             this.getCart()
           })
-          .catch(error => {
-            this.isLoading = false
-            console.log(error)
-          })
+          .catch(() => {})
       }
     },
     addCoupon () {
@@ -579,12 +569,10 @@ export default {
           this.isLoading = false
           this.alert = error.response.data.message
           this.coupon_code = ''
-          console.log(error.response.data)
         })
     },
     createOrder () {
       this.isLoading = true
-      console.log(this.form)
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/orders`
       const order = Object.assign({}, this.form)
       if (this.coupon.enabled) {
@@ -599,10 +587,7 @@ export default {
             this.getSingleOrder()
           }
         })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error.response.data.errors)
-        })
+        .catch(() => {})
     },
     getSingleOrder () {
       this.isLoading = true
@@ -611,12 +596,8 @@ export default {
         .then((response) => {
           this.isLoading = false
           this.order = response.data.data
-          console.log(this.order)
         })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error)
-        })
+        .catch(() => {})
     },
     payOrder () {
       this.isLoading = true
@@ -626,10 +607,7 @@ export default {
           this.getSingleOrder()
           this.completed = true
         })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error.response.data.errors)
-        })
+        .catch(() => {})
     },
     changeSearch () {
       this.opensearch = false

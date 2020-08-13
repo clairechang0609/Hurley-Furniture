@@ -23,7 +23,7 @@
           <li>
             <a href="#" @click.prevent="shoppingCartOpen = true">
               CART
-              <span>({{cart.length}})</span>
+              <span>({{ cart.length }})</span>
             </a>
           </li>
           <li>
@@ -38,9 +38,10 @@
           </li>
         </ul>
         <div
-          is="shopping"
+          is="shoppingcart"
           :shoppingcart="cart"
           :shoppingcartopen="shoppingCartOpen"
+          :totalprice="totalPrice"
           @deleteproduct="deleteCartItem"
           @qtyupdate="qtyUpdate"
           @shoppingcartclose ="shoppingCartClose"
@@ -103,7 +104,7 @@
             </router-link>
           </li>
         </ul>
-        <div is="search" :search="opensearch" @changesearch="changeSearch"></div>
+        <div is="searchbox" :search="opensearch" @changesearch="changeSearch"></div>
       </div>
     </div>
     <div class="logo-wrap">
@@ -174,37 +175,37 @@
           <ul class="header__all-product-list" :class="{ 'show': openMenu }">
             <li @click="getProducts(), openMenu = !openMenu">
               <router-link to="/products/Sofa">
-                <img src="../assets/img/sofa-04.png" alt />
+                <img src="../../assets/img/sofa-04.png" alt />
                 <p>Sofa</p>
               </router-link>
             </li>
             <li @click="getProducts(), openMenu = !openMenu">
               <router-link to="/products/Chair">
-                <img src="../assets/img/chair-04.png" alt />
+                <img src="../../assets/img/chair-04.png" alt />
                 <p>Chair</p>
               </router-link>
             </li>
             <li @click="getProducts(), openMenu = !openMenu">
               <router-link to="/products/Table">
-                <img src="../assets/img/table-04.png" alt />
+                <img src="../../assets/img/table-04.png" alt />
                 <p>Table</p>
               </router-link>
             </li>
             <li @click="getProducts(), openMenu = !openMenu">
               <router-link to="/products/Cabinet">
-                <img src="../assets/img/cabinet-04.png" alt />
+                <img src="../../assets/img/cabinet-04.png" alt />
                 <p>Cabinet</p>
               </router-link>
             </li>
             <li @click="getProducts(), openMenu = !openMenu">
               <router-link to="/products/Side Table">
-                <img src="../assets/img/sidetable-04.png" alt />
+                <img src="../../assets/img/sidetable-04.png" alt />
                 <p>Side Table</p>
               </router-link>
             </li>
             <li @click="getProducts(), openMenu = !openMenu">
               <router-link to="/products/Lighting">
-                <img src="../assets/img/lamp-04.png" alt />
+                <img src="../../assets/img/lamp-04.png" alt />
                 <p>Lighting</p>
               </router-link>
             </li>
@@ -241,7 +242,7 @@
             <div class="card-text">
               <h5 class="card-title">{{ product.title }}</h5>
               <p class="sale-price">NT${{ product.price | thousands }}<span class="sale-icon" v-if="product.price !== product.origin_price">sale</span></p>
-              <p class="origin-price" v-if="product.price !== product.origin_price">NT${{ product.origin_price | thousands}}</p>
+              <p class="origin-price" v-if="product.price !== product.origin_price">NT${{ product.origin_price | thousands }}</p>
             </div>
           </router-link>
         </li>
@@ -260,15 +261,15 @@
 </template>
 
 <script>
-import shopping from '../components/Shoppingcart.vue'
-import search from '../components/Searchbox.vue'
-import gotop from '../components/Gotop.vue'
+import Shoppingcart from '../../components/Shoppingcart.vue'
+import Searchbox from '../../components/Searchbox.vue'
+import Gotop from '../../components/Gotop.vue'
 
 export default {
   components: {
-    shopping,
-    search,
-    gotop
+    Shoppingcart,
+    Searchbox,
+    Gotop
   },
   data () {
     return {
@@ -280,7 +281,7 @@ export default {
       opensearch: false,
       isLoading: false,
       shoppingCartOpen: false,
-      cart: {},
+      cart: [],
       totalPrice: 0
     }
   },
@@ -315,10 +316,7 @@ export default {
             }
           })
         })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error)
-        })
+        .catch(() => {})
     },
     getCart () {
       this.isLoading = true
@@ -328,11 +326,12 @@ export default {
         .then(response => {
           this.isLoading = false
           this.cart = response.data.data
+          this.totalPrice = 0
+          this.cart.forEach((item) => {
+            this.totalPrice += (item.product.price * item.quantity)
+          })
         })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error)
-        })
+        .catch(() => {})
     },
     deleteCartItem (id) {
       this.isLoading = true
@@ -343,10 +342,7 @@ export default {
           this.isLoading = false
           this.getCart()
         })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error)
-        })
+        .catch(() => {})
     },
     addToCart (id) {
       this.isLoading = true
@@ -368,10 +364,7 @@ export default {
             this.isLoading = false
             this.getCart()
           })
-          .catch(error => {
-            this.isLoading = false
-            console.log(error.response.data.errors)
-          })
+          .catch(() => {})
       }
     },
     qtyUpdate (id, num) {
@@ -388,10 +381,7 @@ export default {
             this.isLoading = false
             this.getCart()
           })
-          .catch(error => {
-            this.isLoading = false
-            console.log(error)
-          })
+          .catch(() => {})
       } else {
         const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/shopping`
         this.$http
@@ -400,10 +390,7 @@ export default {
             this.isLoading = false
             this.getCart()
           })
-          .catch(error => {
-            this.isLoading = false
-            console.log(error)
-          })
+          .catch(() => {})
       }
     },
     changeSearch () {

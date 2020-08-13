@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from '../views/frontend/Home.vue'
 
 Vue.use(VueRouter)
 
@@ -12,69 +12,69 @@ const routes = [
       {
         path: '',
         name: 'index',
-        component: () => import('../views/Index.vue')
+        component: () => import('../views/frontend/Index.vue')
       },
       {
         path: '/products/:category',
         name: 'products',
-        component: () => import('../views/Products.vue')
+        component: () => import('../views/frontend/Products.vue')
       },
       {
         path: '/product/:id',
         name: 'product',
-        component: () => import('../views/Product.vue')
+        component: () => import('../views/frontend/Product.vue')
       },
       {
         path: '/cart',
         name: 'cart',
-        component: () => import('../views/Cart.vue')
+        component: () => import('../views/frontend/Cart.vue')
       },
       {
         path: '/guide',
         name: 'guide',
-        component: () => import('../views/Guide.vue')
+        component: () => import('../views/frontend/Guide.vue')
       },
       {
         path: '/account',
         name: 'account',
-        component: () => import('../views/Account.vue')
+        component: () => import('../views/frontend/Account.vue')
       },
       {
         path: '/contact',
         name: 'contact',
-        component: () => import('../views/Contact.vue')
+        component: () => import('../views/frontend/Contact.vue')
       }
     ]
   },
   {
     path: '/signin',
     name: 'signin',
-    component: () => import('../views/Signin.vue')
+    component: () => import('../views/backend/Signin.vue')
   },
   {
     path: '/admin',
     name: 'admin',
-    component: () => import('../views/Dashboard.vue'),
+    component: () => import('../views/backend/Dashboard.vue'),
     children: [
       {
         path: 'products',
         name: 'back-products',
-        component: () => import('../views/dashboard/Products.vue')
+        component: () => import('../views/backend/dashboard/Products.vue')
       },
       {
         path: 'orders',
         name: 'orders',
-        component: () => import('../views/dashboard/Orders.vue')
+        component: () => import('../views/backend/dashboard/Orders.vue')
       },
       {
         path: 'coupons',
         name: 'coupons',
-        component: () => import('../views/dashboard/Coupons.vue')
+        component: () => import('../views/backend/dashboard/Coupons.vue')
       },
       {
         path: 'pictures',
         name: 'pictures',
-        component: () => import('../views/dashboard/Pictures.vue')
+        component: () => import('../views/backend/dashboard/Pictures.vue')
       }
     ]
   }

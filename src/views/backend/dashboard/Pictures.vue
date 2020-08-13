@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import pagination from '../../components/Pagination.vue'
+import pagination from '../../../components/Pagination.vue'
 
 export default {
   components: {
@@ -61,10 +61,7 @@ export default {
           this.pictures = response.data.data
           this.pagination = response.data.meta.pagination
         })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error)
-        })
+        .catch(() => {})
     },
     openModal (item) {
       this.editPicture = Object.assign({}, item)
@@ -79,10 +76,7 @@ export default {
           this.isLoading = false
           this.getPics()
         })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error)
-        })
+        .catch(() => {})
       this.deleteShow = false
       this.shadowOpen = false
     },

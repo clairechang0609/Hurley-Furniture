@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import gotop from '../components/Gotop.vue'
+import gotop from '../../components/Gotop.vue'
 
 export default {
   components: {
@@ -66,5 +66,5 @@ export default {
 </script>
 
 <style lang="sass">
-    @import '../assets/sass/all.sass'
+  @import '../../assets/sass/all.sass'
 </style>

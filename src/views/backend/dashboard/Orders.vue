@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import pagination from '../../components/Pagination.vue'
+import pagination from '../../../components/Pagination.vue'
 
 export default {
   components: {
@@ -64,10 +64,7 @@ export default {
           this.orders = response.data.data
           this.pagination = response.data.meta.pagination
         })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error)
-        })
+        .catch(() => {})
     },
     editPaid (item) {
       this.editOrder = Object.assign({}, item)
@@ -87,10 +84,7 @@ export default {
           this.isLoading = false
           this.getOrders()
         })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error)
-        })
+        .catch(() => {})
       this.editOrder = {}
     }
   }

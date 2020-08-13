@@ -23,7 +23,7 @@
             <li>
               <a href="#" @click.prevent="shoppingCartOpen = true">
                 CART
-                <span>({{cart.length}})</span>
+                <span>({{ cart.length }})</span>
               </a>
             </li>
             <li>
@@ -38,9 +38,10 @@
             </li>
           </ul>
           <div
-            is="shopping"
+            is="shoppingcart"
             :shoppingcart="cart"
             :shoppingcartopen="shoppingCartOpen"
+            :totalprice="totalPrice"
             @deleteproduct="deleteCartItem"
             @qtyupdate="qtyUpdate"
             @shoppingcartclose ="shoppingCartClose"
@@ -103,7 +104,7 @@
               </router-link>
             </li>
           </ul>
-          <div is="search" :search="opensearch" @changesearch="changeSearch"></div>
+          <div is="searchbox" :search="opensearch" @changesearch="changeSearch"></div>
         </div>
       </div>
       <div class="logo-wrap">
@@ -134,37 +135,37 @@
             <ul class="header__all-product-list" :class="{ 'show': openMenu }">
               <li @click="openMenu = !openMenu">
                 <router-link to="/products/Sofa">
-                  <img src="../assets/img/sofa-04.png" alt />
+                  <img src="../../assets/img/sofa-04.png" alt />
                   <p>Sofa</p>
                 </router-link>
               </li>
               <li @click="openMenu = !openMenu">
                 <router-link to="/products/Chair">
-                  <img src="../assets/img/chair-04.png" alt />
+                  <img src="../../assets/img/chair-04.png" alt />
                   <p>Chair</p>
                 </router-link>
               </li>
               <li @click="openMenu = !openMenu">
                 <router-link to="/products/Table">
-                  <img src="../assets/img/table-04.png" alt />
+                  <img src="../../assets/img/table-04.png" alt />
                   <p>Table</p>
                 </router-link>
               </li>
               <li @click="openMenu = !openMenu">
                 <router-link to="/products/Cabinet">
-                  <img src="../assets/img/cabinet-04.png" alt />
+                  <img src="../../assets/img/cabinet-04.png" alt />
                   <p>Cabinet</p>
                 </router-link>
               </li>
               <li @click="openMenu = !openMenu">
                 <router-link to="/products/Side Table">
-                  <img src="../assets/img/sidetable-04.png" alt />
+                  <img src="../../assets/img/sidetable-04.png" alt />
                   <p>Side Table</p>
                 </router-link>
               </li>
               <li @click="openMenu = !openMenu">
                 <router-link to="/products/Lighting">
-                  <img src="../assets/img/lamp-04.png" alt />
+                  <img src="../../assets/img/lamp-04.png" alt />
                   <p>Lighting</p>
                 </router-link>
               </li>
@@ -214,8 +215,7 @@
                     :disabled="productQty === 1">
                     <i class="fa fa-minus"></i>
                   </button>
-                  <input type="number" class="product-number" :value="productQty"
-                    @input="productQty = parseInt($event.target.value)">
+                  <input type="number" class="product-number" :value="productQty" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')">
                   <button type="button" class="add-btn" @click="productQty = (productQty + 1)">
                     <i class="fa fa-plus"></i>
                   </button>
@@ -266,15 +266,15 @@
 </template>
 
 <script>
-import shopping from '../components/Shoppingcart.vue'
-import search from '../components/Searchbox.vue'
-import gotop from '../components/Gotop.vue'
+import Shoppingcart from '../../components/Shoppingcart.vue'
+import Searchbox from '../../components/Searchbox.vue'
+import Gotop from '../../components/Gotop.vue'
 
 export default {
   components: {
-    shopping,
-    search,
-    gotop
+    Shoppingcart,
+    Searchbox,
+    Gotop
   },
   data () {
     return {
@@ -291,7 +291,8 @@ export default {
       opensearch: false,
       isLoading: false,
       shoppingCartOpen: false,
-      cart: {},
+      cart: [],
+      totalPrice: 0,
       productQty: 1
     }
   },
@@ -306,10 +307,7 @@ export default {
         this.isLoading = false
         this.products = response.data.data
       })
-      .catch(error => {
-        this.isLoading = false
-        console.log(error)
-      })
+      .catch(() => {})
   },
   methods: {
     getRelatedProducts () {
@@ -337,10 +335,7 @@ export default {
           }
           this.isLoading = false
         })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error)
-        })
+        .catch(() => {})
     },
     getSingleProduct () {
       const id = this.$route.params.id
@@ -357,10 +352,7 @@ export default {
           this.brand = this.showProduct.options.brand
           this.price = this.showProduct.price
         })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error)
-        })
+        .catch(() => {})
     },
     getCart () {
       this.isLoading = true
@@ -369,11 +361,12 @@ export default {
         .then(response => {
           this.isLoading = false
           this.cart = response.data.data
+          this.totalPrice = 0
+          this.cart.forEach((item) => {
+            this.totalPrice += (item.product.price * item.quantity)
+          })
         })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error)
-        })
+        .catch(() => {})
     },
     deleteCartItem (id) {
       this.isLoading = true
@@ -384,10 +377,7 @@ export default {
           this.isLoading = false
           this.getCart()
         })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error)
-        })
+        .catch(() => {})
     },
     addToCart (id, num) {
       this.isLoading = true
@@ -409,10 +399,7 @@ export default {
             this.isLoading = false
             this.getCart()
           })
-          .catch(error => {
-            this.isLoading = false
-            console.log(error.response.data.errors)
-          })
+          .catch(() => {})
       }
     },
     qtyUpdate (id, num) {
@@ -429,10 +416,7 @@ export default {
             this.isLoading = false
             this.getCart()
           })
-          .catch(error => {
-            this.isLoading = false
-            console.log(error)
-          })
+          .catch(() => {})
       } else {
         const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/shopping`
         this.$http
@@ -441,10 +425,7 @@ export default {
             this.isLoading = false
             this.getCart()
           })
-          .catch(error => {
-            this.isLoading = false
-            console.log(error)
-          })
+          .catch(() => {})
       }
     },
     changeSearch () {

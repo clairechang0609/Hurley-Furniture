@@ -111,7 +111,7 @@
 </template>
 
 <script>
-import pagination from '../../components/Pagination.vue'
+import pagination from '../../../components/Pagination.vue'
 import { VueEditor } from 'vue2-editor/dist/vue2-editor.core.js'
 
 export default {
@@ -149,10 +149,7 @@ export default {
           this.products = response.data.data
           this.pagination = response.data.meta.pagination
         })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error)
-        })
+        .catch(() => {})
     },
     openModal (mode, item) {
       switch (mode) {
@@ -193,10 +190,7 @@ export default {
           this.isLoading = false
           this.editProduct = response.data.data
         })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error)
-        })
+        .catch(() => {})
     },
     updateProduct () {
       this.isLoading = true
@@ -216,10 +210,7 @@ export default {
           this.isLoading = false
           this.getProducts()
         })
-        .catch((error) => {
-          this.isLoading = false
-          console.log(error)
-        })
+        .catch(() => {})
 
       this.editProduct = { options: {}, imageUrl: [] }
       this.formShow = false
@@ -234,10 +225,7 @@ export default {
           this.isLoading = false
           this.getProducts()
         })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error)
-        })
+        .catch(() => {})
 
       this.editProduct = { options: {}, imageUrl: [] }
       this.deleteShow = false
@@ -271,10 +259,7 @@ export default {
           this.editProduct.imageUrl.push(response.data.data.path)
           document.querySelector('#customPic').value = ''
         })
-        .catch(error => {
-          this.isLoading = false
-          console.log(error)
-        })
+        .catch(() => {})
     }
   }
 }

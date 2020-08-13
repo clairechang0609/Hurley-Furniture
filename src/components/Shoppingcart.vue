@@ -13,7 +13,7 @@
           <td class="pic">
             <img :src="item.product.imageUrl[0]" alt />
           </td>
-          <td>{{item.product.title}}</td>
+          <td>{{ item.product.title }}</td>
           <td>NT$ {{ item.product.price | thousands }}</td>
           <td>
             <form class="select_qty">
@@ -30,7 +30,8 @@
                   type="number"
                   class="product-number"
                   :value="item.quantity"
-                  @input="quantityUpdate(item.product.id, $event.target.value)"
+                  @keyup.enter="quantityUpdate(item.product.id, $event.target.value)"
+                  onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')"
                 />
                 <button
                   type="button"
@@ -47,8 +48,10 @@
           </td>
         </tr>
       </table>
+      <div class="totalprice"><span>總價</span> NT$ {{ totalprice | thousands }}</div>
       <div @click="shoppingCartClose()">
-        <router-link to="/cart" class="btn">訂單結帳</router-link>
+        <router-link v-if="shoppingcart.length" to="/cart" class="btn">訂單結帳</router-link>
+        <router-link v-else to="/products/All-Products" class="btn">繼續購物</router-link>
       </div>
     </div>
   </div>
@@ -56,7 +59,7 @@
 
 <script>
 export default {
-  props: ['shoppingcart', 'shoppingcartopen'],
+  props: ['shoppingcart', 'shoppingcartopen', 'totalprice'],
   methods: {
     deleteProduct (id) {
       this.$emit('deleteproduct', id)

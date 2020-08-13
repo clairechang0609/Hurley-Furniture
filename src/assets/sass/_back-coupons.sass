@@ -2,10 +2,10 @@
     display: flex
     flex-direction: column
     width: 1000px
-    background: rgb(255,255,255)
+    background: $white
     margin: 0 auto 50px
     padding: 50px
-    border: 1px solid rgb(196,172,138)
+    border: 1px solid $dark-beige
     border-radius: 5px
     .add-coupon
         align-self: flex-end
@@ -24,13 +24,13 @@
             th
                 padding: 10px 5px
                 background: $black
-                color: rgb(255,255,255)
+                color: $white
                 font-size: 13px
                 border-radius: 4px
             td
                 padding: 15px 0
-                background: rgb(255,255,255)
-                border-bottom: 1px solid #000
+                background: $white
+                border-bottom: 1px solid $black
                 color: rgb(25,25,25)
                 font-size: 13px
                 &.title
@@ -93,10 +93,10 @@
         left: 50%
         transform: translateX(-50%)
         width: 450px
-        background: rgb(255,255,255)
+        background: $white
         padding: 40px
         margin-bottom: 50px
-        border: 1px solid rgb(196,172,138)
+        border: 1px solid $dark-beige
         border-radius: 5px
         z-index: 2000
         &.show
@@ -115,7 +115,7 @@
                 background: transparent
                 font-size: 15px
                 &:hover
-                    color: rgb(150,150,150)
+                    color: $gray
                 &:focus
                     outline: none
         .form
@@ -158,9 +158,9 @@
         top: 50%
         left: 50%
         transform: translate(-50%, -50%)
-        background: rgb(255,255,255)
+        background: $white
         padding: 20px
-        border: 1px solid rgb(196,172,138)
+        border: 1px solid $dark-beige
         border-radius: 5px
         z-index: 2000
         &.show

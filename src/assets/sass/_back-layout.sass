@@ -7,7 +7,7 @@ button
 		margin: 0 5px
 	&:hover
 		background: $dark-beige
-		color: rgb(255,255,255)
+		color: $white
 .add-background
     position: fixed
     top: 0
@@ -16,7 +16,7 @@ button
     bottom: 0
     width: auto
     height: auto
-    background: rgb(218,205,186)
+    background: rgba($gray, 0.2)
     padding-bottom: 50px
     z-index: -1
 .topbar
@@ -28,7 +28,7 @@ button
         display: block
         width: 85px
         height: 85px
-        background: url(../assets/img/hurley-furniture-01.svg) no-repeat
+        background: url(../../assets/img/hurley-furniture-01.svg) no-repeat
         text-indent: 101%
         overflow: hidden
         white-space: nowrap
@@ -47,8 +47,10 @@ button
             button
                 margin-left: 10px
                 border: 1px solid $black
+                background: transparent
                 &:hover
                     border: 1px solid $dark-beige
+                    background: $dark-beige
 .pagination
     display: flex
     justify-content: center
