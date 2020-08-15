@@ -60,8 +60,8 @@ export default {
         {
           id: '4QY1nmbEf3w4b7MUuMS0ywA2ukuAn7U8iZGJjODEk6B54DJDpmDXNi5mYyuI4VQe',
           img: [
-            'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5d5bc7bfbd12c000141b520b/800x.webp?source_format=jpg',
-            'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5d5bc7bf0dcbd9003582d0bd/800x.webp?source_format=jpg'
+            'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/lKeLgLb5MIwauBtoV0O1fm3DVZuqg1iMf05XOZha3yUAIvg31zowboD4nmnIepZJz2sAfgD2PfhCrYcYkcHn2xmrRkx8ZeuX6L3VJq4a7kmD3JgpEaX6g0rhFran51NJ.png',
+            'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/0XrIsufyTK5bRa5tJm05V5lICieiGY1GNpQq5Msb9f5lkmqqSaIqpfI7O7IDIHZec1YOSkRh9A7Q9jaCmwRS1dVAsYM0jmLrXjtyhmJKv271Em6R4TybAdoyACeuvyIH.png'
           ],
           title: '夜巡桌燈',
           price: 8500,
@@ -91,7 +91,7 @@ export default {
           id: 'VqUgrIQn2xduyroirqHVwbNEhArvZHFnyMwmdBLm2sgbSrIeJAGJNEIDrpJPHTov',
           img: [
             'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/vykOZbS2HbsT7Rym9N3vyBEUEPYGYfF5ll7EMY4W6Bw4xhXYMIXJ1XDlVFeLzTMToEkTnLPzvI0vy5tqllkBit9AihNXuQzlvv9wmUdmiBKnXxYOdgQLyIXfOmKZ8Ck4.png',
-            'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5eb20be2a47aa50033b40b8c/800x.webp?source_format=jpg'
+            'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/Y5bRu7BEb8jEWPzInHbMDeYKwNa5deaQy19FMzgWG5yRb71K4ukFUBB0RTKFJC0fAZdV9av2BTMKwY1beWihMpbbymJ4hK1WNpmrAf6ZAD4r9CGCV0blQrbiFkbeHCTx.png'
           ],
           title: '原型雙人沙發',
           price: 140100,
@@ -120,8 +120,8 @@ export default {
         {
           id: 'lqfnX0MnUC0f6O9YvSt1FxjgKhP71kU8nQxu0DvzD2WsqDtWTEIVayDM80FehXCm',
           img: [
-            'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5e62e85c4011b900159f8736/800x.webp?source_format=png',
-            'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5e62e8ba9fc5520024986aea/800x.webp?source_format=png'
+            'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/UJUDCt3z4gELMrjPd66J265q2gk11xWtorhDf0Ee6xb8dDO2cs3YbCujF75AWetr5zMz9CthAYW6ChVjGpb1yLJ8WDe37gQa7ajgySWSr3Cz0zQiJqJXBO8iA7ijHbgg.png',
+            'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/6Khh5S9lOOaUf57nOHQWIacfKMMQcNGmTA9bucy0m3NkBxwlm9pHWfa76jrnsPmGKcr5hlGfFVsvGAzWr2OwLFab607VVIF1dIHMfwj5Iy0aN7b8Enz6qV5g7n9Xi2q7.png'
           ],
           title: '層列邊桌',
           price: 15000,

@@ -50,19 +50,16 @@
           <li @click="openMainMenu = !openMainMenu">
             <router-link to="/">
               <span>HOME</span>
-              <span>首頁</span>
             </router-link>
           </li>
           <li @click="openMainMenu = !openMainMenu">
             <router-link to="/products/All-Products">
               <span>ALL PRODUCTS</span>
-              <span>所有商品</span>
             </router-link>
           </li>
           <li class="top__all-product">
             <a href="#" @click.prevent="openMenu = !openMenu">
               <span>PRODUCT CATEGORY ▸</span>
-              <span>分類單品 ▸</span>
             </a>
             <ul class="top__all-product-list" :class="{ 'show': openMenu }">
               <li @click="openMainMenu = !openMainMenu">
@@ -88,19 +85,16 @@
           <li @click="openMainMenu = !openMainMenu">
             <router-link to="/products/Sale">
               <span>SALE</span>
-              <span>限時特價</span>
             </router-link>
           </li>
           <li @click="openMainMenu = !openMainMenu">
             <router-link to="/guide">
               <span>SHIPPING GUIDE</span>
-              <span>運送須知</span>
             </router-link>
           </li>
           <li @click="openMainMenu = !openMainMenu">
             <router-link to="/contact">
               <span>CONTACT</span>
-              <span>聯絡我們</span>
             </router-link>
           </li>
         </ul>
@@ -116,13 +110,13 @@
     <div class="header">
       <div class="header__banner-home"></div>
       <ul class="header__main-menu">
-        <li>
+        <li @click="openMenu = false">
           <router-link to="/">
             <span>HOME</span>
             <span>首頁</span>
           </router-link>
         </li>
-        <li>
+        <li @click="openMenu = false">
           <router-link to="/products/All-Products">
             <span>ALL PRODUCTS</span>
             <span>所有商品</span>
@@ -172,19 +166,19 @@
             </li>
           </ul>
         </li>
-        <li>
+        <li @click="openMenu = false">
           <router-link to="/products/Sale">
             <span>SALE</span>
             <span>限時特價</span>
           </router-link>
         </li>
-        <li>
+        <li @click="openMenu = false">
           <router-link to="/guide">
             <span>SHIPPING GUIDE</span>
             <span>運送須知</span>
           </router-link>
         </li>
-        <li>
+        <li @click="openMenu = false">
           <router-link to="/contact">
             <span>CONTACT</span>
             <span>聯絡我們</span>
@@ -206,7 +200,7 @@
             <img class="new-item-01"
                 src="https://shoplineimg.com/5cd8dc7015c0710001011ee2/5da59c48f9754b002c475ffd/800x.webp?source_format=jpg" alt="">
             <img class="new-item-02"
-                src="https://shoplineimg.com/5cd8dc7015c0710001011ee2/5ecb8c55bc187e363d31f67a/800x.webp?source_format=jpg" alt="">
+                src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/V50w1zjWVDHth5tKdxSHoyb5WOZpW5m7Km2UseJQwHVAo13ItIlpWBsegTrI9BRGfTBAT6lMjxjvArgoc1H3TIt5vNsSFVMPjMTDsuEq5UFjXRRQMVpviVdUlYVrQElB.png" alt="">
         </div>
         <ul class="new__content">
             <li>
@@ -251,7 +245,7 @@
               src="https://shoplineimg.com/5cd8dc7015c0710001011ee2/5d5bea50e9b3ee0038a9d219/800x.webp?source_format=jpg"
               alt="">
             <img class="new-item-04"
-              src="https://shoplineimg.com/5cd8dc7015c0710001011ee2/5d5bc7beb19ace0014165345/800x.webp?source_format=jpg"
+              src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/d6ipCgdbf5rCfnTNWkN80Efv0DgcB8TGpP9hbBbK67S8xN7AVqSVHtZztneJntWRP8oqd7BqvX7MHjq1OHJk8NAjmP5XltgVtNiAmtkaNGElH3UcvLEfCrRmre8ZNaYX.png"
               alt="">
         </div>
         <div is="swiper"></div>

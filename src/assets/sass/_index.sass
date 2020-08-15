@@ -99,6 +99,10 @@
         margin-top: 20px
         @include media-w896
             width: 140px
+        @include media-w767
+            background: $dark-beige
+            color: $white
+            border: 1px solid rgb(57,83,70)
         &::after
             content: '⇀'
             position: absolute
@@ -112,7 +116,7 @@
             position: absolute
             top: 0
             left: 0
-            background: $main-yellow
+            background: $dark-beige
             width: 0
             height: 100px
             transition: 0.3s ease-in-out
@@ -124,6 +128,8 @@
             width: 100px
             text-align: center
         &:hover
+            color: $white
+            border: 1px solid rgb(57,83,70)
             &::after
                 right: 15px
             span
@@ -177,6 +183,7 @@
                     position: relative
                     height: 49.3%
                     overflow: hidden
+                    background: $black
                     @include media-w767
                         height: 200px
                         margin: 2px 0
@@ -184,6 +191,7 @@
                     position: relative
                     height: 100%
                     overflow: hidden
+                    background: $black
                     @include media-w767
                         height: 200px
                         margin: 2px 0
@@ -195,34 +203,40 @@
                     background-size: cover
                     background-position: center
                     transition: transform 0.5s ease-in-out
-                    &::after
+                    opacity: 0.8
+                    @include media-w767
+                        opacity: 1
+                    &::before
                         content: ''
-                        position: absolute
                         display: block
-                        top: 0
+                        position: absolute
                         left: 0
+                        top: 0
                         width: 100%
                         height: 100%
-                        background: rgba($white, 0.35)
-                        transition: 0.2s ease-in-out
-                        opacity: 1
+                        background: linear-gradient(transparent,transparent 60%, rgba(0,0,0,0.5))
+                        transition: 0.3s ease-in-out
+                        opacity: 0.5
+                        @include media-w767
+                            opacity: 1
                     &:hover
                         transform: scale(1.1)
-                        &::after
-                            opacity: 0
+                        opacity: 1
+                        &::before
+                            opacity: 1
                     &.pic01
                         background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/i1VQ9MOLVNFMR61Xgs7SpBFDcApSY1uFIi6FBUkM8g4GfnWltgtrfWB0VzFN7NSYMU2jyZJhBlHvJ6UynoxZjtWxPMLkGwNZ6zYWa2QJIZbncv7fNCIP8Bw2S4NFzqgG.png)
                     &.pic02
                         background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/VyVlRO5TTthWcFBE4SEmg1yP5K2a1dvx1pWSVqrNZtQyorTl9wdt8MiG2JKeoaqfoMm6M8uDQKIEBVSqX2Dsu9oewaaGWIfHaX45XLB4KpkZuEgAzsIWJUBWuSOH4xkN.png)
                     &.pic03
-                        background-image: url(https://shoplineimg.com/5cd8dc7015c0710001011ee2/5dbcdd60aa6d69001479fd50/1600x.webp?source_format=jpg)
+                        background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/2B76YUB6fM040pyR7YdW0sqYfpfncdbVhNNZBzoKHavZPfyKuEqXArCdnOnpYHSGLSKBAndwRmJ5TPQKuhAuhw7sX0infgflsLqyRBqviWUKSSB84ggD58F0lbU6GqK9.png)
                         background-position: bottom right
                         @media (max-width: 767px)
                             background-position: bottom 25% center
                     &.pic04
                         background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/JtGklatcqE5PVxK2bwOoQMY5bGaMAEwrQr898DUkzx2gCp6TO72YtVRCI3wAfiUSyi7XIm4l7RKcsDFd6nJrDa3s9JZzcBSEIqY2iezfsMHUnQRBWdMPohWSLvMq78Kh.png)
                     &.pic05
-                        background-image: url(https://shoplineimg.com/5cd8dc7015c0710001011ee2/5de9acd58e9a78001bd124ee/800x.webp?source_format=png)
+                        background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/f0Rb0H1hXkoWNq1Czr8TqgEicBnjNBbF403deCBbnZs5bWAU5h1mqNRakQvruNJxk5fqWYtsvExTvpglnIJ3dOGGgsE3PLhDS5GIlYjt4mx5N029D51h8QDokVKpKH9G.png)
                         background-position: bottom center
                         @media (max-width: 767px)
                             background-position: bottom 10% center
@@ -234,26 +248,15 @@
                     color: $white
                     text-shadow: 0 0 5px rgba($black, 0.5)
                     pointer-events: none
-                    &.text01
-                        left: 20px
-                        top: 15px
-                    &.text02
+                    &.text01, &.text02, &.text04, &.text05
                         right: 20px
                         bottom: 15px
                     &.text03
                         left: 20px
                         bottom: 15px
-                    &.text04
-                        right: 20px
-                        bottom: 15px
-                    &.text05
-                        right: 20px
-                        bottom: 15px
 
 .sale
-    padding-bottom: 30px
-    @include media-w568
-        padding-bottom: 20px
+    padding-bottom: 50px
     &__title
         img
             &.new-item-03

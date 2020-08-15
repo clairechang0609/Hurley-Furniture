@@ -138,6 +138,9 @@
         border: none
         border-radius: 3px
         outline: none
+        @include media-w767
+            background: $dark-beige
+            color: $white
         &:hover
             background: $dark-beige
             color: $white
@@ -242,6 +245,8 @@
                 border: none
                 border-radius: 0
                 transition: 0.3 ease-in-out
+                @include media-w767
+                    display: block
                 &:focus
                     outline: none
         &:hover

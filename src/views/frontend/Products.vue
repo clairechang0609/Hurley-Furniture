@@ -50,19 +50,16 @@
           <li @click="openMainMenu = !openMainMenu">
             <router-link to="/">
               <span>HOME</span>
-              <span>首頁</span>
             </router-link>
           </li>
           <li @click="getProducts(), openMainMenu = !openMainMenu">
             <router-link to="/products/All-Products">
               <span>ALL PRODUCTS</span>
-              <span>所有商品</span>
             </router-link>
           </li>
           <li class="top__all-product">
             <a href="#" @click.prevent="openMenu = !openMenu">
               <span>PRODUCT CATEGORY ▸</span>
-              <span>分類單品 ▸</span>
             </a>
             <ul class="top__all-product-list" :class="{ 'show': openMenu }">
               <li @click="getProducts(), openMainMenu = !openMainMenu">
@@ -88,19 +85,16 @@
           <li @click="getProducts(), openMainMenu = !openMainMenu">
             <router-link to="/products/Sale">
               <span>SALE</span>
-              <span>限時特價</span>
             </router-link>
           </li>
           <li @click="openMainMenu = !openMainMenu">
             <router-link to="/guide">
               <span>SHIPPING GUIDE</span>
-              <span>運送須知</span>
             </router-link>
           </li>
           <li @click="openMainMenu = !openMainMenu">
             <router-link to="/contact">
               <span>CONTACT</span>
-              <span>聯絡我們</span>
             </router-link>
           </li>
         </ul>
@@ -117,51 +111,51 @@
       <div
         class="header__banner-products"
         v-if="category === 'All Products'"
-        :style="`background-image: url(https://shoplineimg.com/5cd8dc7015c0710001011ee2/5d567834662a0611dc105759/1400x.webp?source_format=jpg)`"
+        :style="`background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/RicPuejiLodrHaduVFdQc5v78XYm6yFvsm1GxlPWhXqZsCFVwFP72PpC7om2awvVWdNelSoIXvDd2wUyyi6cL1mRukYFkDGUjUa6upf8AVuF3COH5scojPZclsoZSJ28.png)`"
       ></div>
       <div
         class="header__banner-products"
         v-if="category === 'Sofa'"
-        :style="`background-image: url(https://shoplineimg.com/5cd8dc7015c0710001011ee2/5d567bcdd423dd01667248d2/1400x.webp?source_format=jpg)`"
+        :style="`background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/QX5PwspL4EOfN31jH6CaeBZw0z02SL2k6Xpz5sFL3slupCLC0MiLaQMv8GA4RGXDekdDLbkbYo3YWIi7gaQ4Z69iDGD7JJaVULahtozTK5mMJjcD7pu1Y7gZEtdfA7JA.png)`"
       ></div>
       <div
         class="header__banner-products"
         v-if="category === 'Chair'"
-        :style="`background-image: url(https://shoplineimg.com/5cd8dc7015c0710001011ee2/5d6bea70b6574a7416f2001c/1400x.webp?source_format=jpg)`"
+        :style="`background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/WPmmZqeGhI9sc1miP8sZZl6ctmwk2BBElca8glts2IEYxJBWjtirGV88FIOrmjhepKrgbhtNToKOWWkd7IPIspciw10D1jXsJKqlBQXDML6bQUdivcjEjOlUHty1JoxJ.png)`"
       ></div>
       <div
         class="header__banner-products"
         v-if="category === 'Table'"
-        :style="`background-image: url(https://shoplineimg.com/5cd8dc7015c0710001011ee2/5dc6ca47979b2900174c997d/1400x.webp?source_format=jpg)`"
+        :style="`background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/4ZfMR8ZJlsFMzYRxtWYbvxH22wLSh3MwH1MAi80qOvaeguW8mESyG3YIhSj0GrvqmLmI2KYFRN7laJvauope71JoXkREPpPOfo8gwJVDBhwvoNf9lofADUSFC5gyAykQ.png)`"
       ></div>
       <div
         class="header__banner-products"
         v-if="category === 'Cabinet'"
-        :style="`background-image: url(https://shoplineimg.com/5cd8dc7015c0710001011ee2/5dbcdc42350d2e00232e256f/1400x.webp?source_format=jpg)`"
+        :style="`background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/yadCEP0C3ZuMPF71NAkDkrxGW0bpsAPUm1R8MsZ6EFoxql68vK0m5Z76PvqBjhRTxgxuNJbSd4QEpYBGXlzm7FrnuvoHZGb8PV9VqG4FFHciY7uRgY1DHaiMdM8jj24t.png)`"
       ></div>
       <div
         class="header__banner-products"
         v-if="category === 'Side Table'"
-        :style="`background-image: url(https://shoplineimg.com/5cd8dc7015c0710001011ee2/5d647934f7aa34003e57f243/1400x.webp?source_format=jpg)`"
+        :style="`background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/BjER2FoqTXryiLcfFaxHykPBXmA04nW8ruVWzNKvwS5StQFQYDvQL5B95zJg8LqyZ5tlh3sZdMvNvh0cI6mJ4DKToAww2wATKiMXOYeeolClxdGdkXNQP3p2zdAQY8DJ.png)`"
       ></div>
       <div
         class="header__banner-products"
         v-if="category === 'Lighting'"
-        :style="`background-image: url(https://shoplineimg.com/5cd8dc7015c0710001011ee2/5ddb90e29044fe001b6c198b/1400x.webp?source_format=jpg)`"
+        :style="`background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/qNxWrR8xT5oIazVQxFVaJjk7ZXVaTSXaipNRKpqznJpNZDKNhp9Lr5HFTvlCfUX1RdVKAtiW75sssLPy3nlWQZKA2xdxp5kVTEPe7x33EK4NCWp2Oj44jJUXN12I3FdB.png)`"
       ></div>
       <div
         class="header__banner-products"
         v-if="category === 'Sale'"
-        :style="`background-image: url(https://shoplineimg.com/5cd8dc7015c0710001011ee2/5cf8fdd4e33efe001a669719/1400x.webp?source_format=jpg)`"
+        :style="`background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/Kh7FD1D2iVZTBZ8lbyse8nTU3TYjWvMGz3ETQ9UnDiT33BJarorP8LdfZ7IrvU7d90ghasCwWLvZqxmywbMtGi6oOHAko1ZCSiAJzn1iAbw5FZbPlrTpMfPwWdabPCbo.png)`"
       ></div>
       <ul class="header__main-menu">
-        <li>
+        <li @click="openMenu = false">
           <router-link to="/">
             <span>HOME</span>
             <span>首頁</span>
           </router-link>
         </li>
-        <li @click="getProducts()">
+        <li @click="getProducts(), openMenu = false">
           <router-link to="/products/All-Products">
             <span>ALL PRODUCTS</span>
             <span>所有商品</span>
@@ -211,19 +205,19 @@
             </li>
           </ul>
         </li>
-        <li @click="getProducts()">
+        <li @click="getProducts(), openMenu = false">
           <router-link to="/products/Sale">
             <span>SALE</span>
             <span>限時特價</span>
           </router-link>
         </li>
-        <li>
+        <li @click="openMenu = false">
           <router-link to="/guide">
             <span>SHIPPING GUIDE</span>
             <span>運送須知</span>
           </router-link>
         </li>
-        <li>
+        <li @click="openMenu = false">
           <router-link to="/contact">
             <span>CONTACT</span>
             <span>聯絡我們</span>

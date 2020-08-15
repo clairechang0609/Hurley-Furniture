@@ -50,19 +50,16 @@
           <li @click="openMainMenu = !openMainMenu">
             <router-link to="/">
               <span>HOME</span>
-              <span>首頁</span>
             </router-link>
           </li>
           <li @click="openMainMenu = !openMainMenu">
             <router-link to="/products/All-Products">
               <span>ALL PRODUCTS</span>
-              <span>所有商品</span>
             </router-link>
           </li>
           <li class="top__all-product">
             <a href="#" @click.prevent="openMenu = !openMenu">
               <span>PRODUCT CATEGORY ▸</span>
-              <span>分類單品 ▸</span>
             </a>
             <ul class="top__all-product-list" :class="{ 'show': openMenu }">
               <li @click="openMainMenu = !openMainMenu">
@@ -88,19 +85,16 @@
           <li @click="openMainMenu = !openMainMenu">
             <router-link to="/products/Sale">
               <span>SALE</span>
-              <span>限時特價</span>
             </router-link>
           </li>
           <li @click="openMainMenu = !openMainMenu">
             <router-link to="/guide">
               <span>SHIPPING GUIDE</span>
-              <span>運送須知</span>
             </router-link>
           </li>
           <li @click="openMainMenu = !openMainMenu">
             <router-link to="/contact">
               <span>CONTACT</span>
-              <span>聯絡我們</span>
             </router-link>
           </li>
         </ul>
@@ -115,13 +109,13 @@
     </div>
     <div class="header">
       <ul class="header__main-menu main-menu-nobanner">
-        <li>
+        <li @click="openMenu = false">
           <router-link to="/">
             <span>HOME</span>
             <span>首頁</span>
           </router-link>
         </li>
-        <li>
+        <li @click="openMenu = false">
           <router-link to="/products/All-Products">
             <span>ALL PRODUCTS</span>
             <span>所有商品</span>
@@ -171,19 +165,19 @@
             </li>
           </ul>
         </li>
-        <li>
+        <li @click="openMenu = false">
           <router-link to="/products/Sale">
             <span>SALE</span>
             <span>限時特價</span>
           </router-link>
         </li>
-        <li>
+        <li @click="openMenu = false">
           <router-link to="/guide">
             <span>SHIPPING GUIDE</span>
             <span>運送須知</span>
           </router-link>
         </li>
-        <li>
+        <li @click="openMenu = false">
           <router-link to="/contact">
             <span>CONTACT</span>
             <span>聯絡我們</span>
@@ -265,7 +259,7 @@
                 </label>
               </validation-provider>
             </div>
-            <button type="submit" class="submit-btn" :disabled="invalid">加入會員</button>
+            <button type="submit" class="submit-btn" :disabled="invalid" :class="{ 'disabled': invalid }">加入會員</button>
           </form>
         </validation-observer>
         <form class="login" :class="{ 'show': !showSignup }">
