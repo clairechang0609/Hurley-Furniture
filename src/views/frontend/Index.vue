@@ -47,12 +47,12 @@
           @shoppingcartclose ="shoppingCartClose"
         ></div>
         <ul class="top__main-menu">
-          <li @click="openMainMenu = !openMainMenu">
+          <li @click="openMainMenu = !openMainMenu, openMenu = false">
             <router-link to="/">
               <span>HOME</span>
             </router-link>
           </li>
-          <li @click="openMainMenu = !openMainMenu">
+          <li @click="openMainMenu = !openMainMenu, openMenu = false">
             <router-link to="/products/All-Products">
               <span>ALL PRODUCTS</span>
             </router-link>
@@ -62,37 +62,37 @@
               <span>PRODUCT CATEGORY ▸</span>
             </a>
             <ul class="top__all-product-list" :class="{ 'show': openMenu }">
-              <li @click="openMainMenu = !openMainMenu">
+              <li @click="openMainMenu = !openMainMenu, openMenu = false">
                 <router-link to="/products/Sofa">Sofa</router-link>
               </li>
-              <li @click="openMainMenu = !openMainMenu">
+              <li @click="openMainMenu = !openMainMenu, openMenu = false">
                 <router-link to="/products/Chair">Chair</router-link>
               </li>
-              <li @click="openMainMenu = !openMainMenu">
+              <li @click="openMainMenu = !openMainMenu, openMenu = false">
                 <router-link to="/products/Table">Table</router-link>
               </li>
-              <li @click="openMainMenu = !openMainMenu">
+              <li @click="openMainMenu = !openMainMenu, openMenu = false">
                 <router-link to="/products/Cabinet">Cabinet</router-link>
               </li>
-              <li @click="openMainMenu = !openMainMenu">
+              <li @click="openMainMenu = !openMainMenu, openMenu = false">
                 <router-link to="/products/Side Table">Side Table</router-link>
               </li>
-              <li @click="openMainMenu = !openMainMenu">
+              <li @click="openMainMenu = !openMainMenu, openMenu = false">
                 <router-link to="/products/Lighting">Lighting</router-link>
               </li>
             </ul>
           </li>
-          <li @click="openMainMenu = !openMainMenu">
+          <li @click="openMainMenu = !openMainMenu, openMenu = false">
             <router-link to="/products/Sale">
               <span>SALE</span>
             </router-link>
           </li>
-          <li @click="openMainMenu = !openMainMenu">
+          <li @click="openMainMenu = !openMainMenu, openMenu = false">
             <router-link to="/guide">
               <span>SHIPPING GUIDE</span>
             </router-link>
           </li>
-          <li @click="openMainMenu = !openMainMenu">
+          <li @click="openMainMenu = !openMainMenu, openMenu = false">
             <router-link to="/contact">
               <span>CONTACT</span>
             </router-link>
@@ -198,7 +198,7 @@
               <p>view more</p>
             </router-link>
             <img class="new-item-01"
-                src="https://shoplineimg.com/5cd8dc7015c0710001011ee2/5da59c48f9754b002c475ffd/800x.webp?source_format=jpg" alt="">
+                src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/UejXkVTo79C3PFOi9JQi1jWXnmn7pY5J8lCTspNKduzdXZ5LC3FYZB8gvWvUxkxfspdOuvVU95s0C22uXcFQWUB6KyT18NG6YW8UzW66CdSCwnNUrHMiQ7L0FkkE7yZf.png" alt="">
             <img class="new-item-02"
                 src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/V50w1zjWVDHth5tKdxSHoyb5WOZpW5m7Km2UseJQwHVAo13ItIlpWBsegTrI9BRGfTBAT6lMjxjvArgoc1H3TIt5vNsSFVMPjMTDsuEq5UFjXRRQMVpviVdUlYVrQElB.png" alt="">
         </div>
@@ -315,37 +315,37 @@ export default {
           id: '245gs6DQBUCDJnwqMGFj7xzCTFxHlILMBj76zL8UqqtITuVBGqKzPnC7CDywdMHL',
           name: '梯形椅凳',
           brand: 'Esaila',
-          pic: 'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5e7dcb1c58b3f50021c81959/800x.webp?source_format=png'
+          pic: 'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/pTOmv0OnIOtQzwxBGKz5FHtmdwQTEAvZFhxNbykUhxagOeLhb3nKCwfsr1UMqwIdyqBGzqTmFa4I1wmpWosX8Ql3n1jdUfexdUY6gP5KcZZQcTlBBu2NOJh0ie7I4DDE.png'
         },
         {
           id: 'eQoKOCkszCMIRhRN3YAqpBnpMinvTAfzGgSQiKrZCMyhLlk3UR5QSipucPuXboDa',
           name: '速寫椅凳',
           brand: 'FRAMA',
-          pic: 'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5e917ad1034ea4000f53d701/800x.webp?source_format=png'
+          pic: 'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/8uBdWbM2DC0dl3iK31lSxWylWytDqW2n4H9xF1WdqtPlLcLBUKf3GLbpaATgQRSGB7H8ASsTdGevsEGPAV12BnUikQ6DqCx8mgQup2IFLpp8K6IuK2WTrLayAMoCvVqr.png'
         },
         {
           id: '1wilj863g1saV5DbIc6EArqZU1xGfp5i2UF4MqCDF4ezhdIQGW4EkT1U5OOz9mdJ',
           name: '包覆單椅',
           brand: 'Muuto',
-          pic: 'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5e54eaf92aa3bd01c47b6626/800x.webp?source_format=png'
+          pic: 'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/0NlSOW7JUSBHCLtTjhvCnmQpa0J5WtvM06m9qcBaptX1b0XHU6N24Q5HamnTgIHqj0IcwAN3TkdNATrIHQl8ePA4FIZ8RVm25TvjR6qUzWTkO9j8GQiBlxVTZYhW6JTD.png'
         },
         {
           id: '4WkmzLjWMgfQs45FTAQ3ovFFU3kW3j5y45Fu7GbBKJWJZ0CSbVm3mOe1c92yaXan',
           name: '花生全包覆鋼腳單椅',
           brand: 'Normann Copenhagen',
-          pic: 'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5e64c3332cb11000186905cf/800x.webp?source_format=png'
+          pic: 'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/e6pvWhnqJG7J2MOudnFAOMZDWSQ32L8F1aQHWL6rsH0xOFskZDEXT2HlH5lssTtUtzqVYGS7DnqfjKp5jINUamMfMSOhme2P9VF1cHc8Ujr0VC6XV90vei8QUPWFLYFR.png'
         },
         {
           id: 'eQoKOCkszCMIRhRN3YAqpBnpMinvTAfzGgSQiKrZCMyhLlk3UR5QSipucPuXboDa',
           name: '甲蟲塑面單椅',
           brand: 'GUBI',
-          pic: 'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5edf2d433ab8650036956ce7/800x.webp?source_format=jpg'
+          pic: 'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/NAiPCgIQ0WPd5Xd6NzboH1n89VeVyBU1hb8MixIOXlxbosct2AVV0OfQ8GG3FGw3OAcGgoxZR0DdYAQLpkyJvQB3NvL3ovqyCOKiP6UZwPPPdsXYnYXVHK2BxCoANi2q.png'
         },
         {
           id: 'zciMzn7p64mMcDuYr67b6f2d91tGcaBloYz4L4Uy3szUFBLFDvHoUuG12WCvunoL',
           name: '條理戶外扶手椅',
           brand: 'HAY',
-          pic: 'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5d1e20adab8e7b0017e99b37/800x.webp?source_format=jpg'
+          pic: 'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/2CTcOBVjyi4VLiKr6xhzytirbFbon29z0P3jn0jdn7JiJ1kwYCT7z5jhMD3JXrVfBt8jfUMeWEZfhzy8W0KXJAkkIMHvRzTRUZ8kXE9wZjqpJH5InlFwxxoIlUeUjxpF.png'
         }
       ]
     }

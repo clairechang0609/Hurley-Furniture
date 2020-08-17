@@ -47,12 +47,12 @@
           @shoppingcartclose ="shoppingCartClose"
         ></div>
         <ul class="top__main-menu">
-          <li @click="openMainMenu = !openMainMenu">
+          <li @click="openMainMenu = !openMainMenu, openMenu = false">
             <router-link to="/">
               <span>HOME</span>
             </router-link>
           </li>
-          <li @click="getProducts(), openMainMenu = !openMainMenu">
+          <li @click="getProducts(), openMainMenu = !openMainMenu, openMenu = false">
             <router-link to="/products/All-Products">
               <span>ALL PRODUCTS</span>
             </router-link>
@@ -62,37 +62,37 @@
               <span>PRODUCT CATEGORY ▸</span>
             </a>
             <ul class="top__all-product-list" :class="{ 'show': openMenu }">
-              <li @click="getProducts(), openMainMenu = !openMainMenu">
+              <li @click="getProducts(), openMainMenu = !openMainMenu, openMenu = false">
                 <router-link to="/products/Sofa">Sofa</router-link>
               </li>
-              <li @click="getProducts(), openMainMenu = !openMainMenu">
+              <li @click="getProducts(), openMainMenu = !openMainMenu, openMenu = false">
                 <router-link to="/products/Chair">Chair</router-link>
               </li>
-              <li @click="getProducts(), openMainMenu = !openMainMenu">
+              <li @click="getProducts(), openMainMenu = !openMainMenu, openMenu = false">
                 <router-link to="/products/Table">Table</router-link>
               </li>
-              <li @click="getProducts(), openMainMenu = !openMainMenu">
+              <li @click="getProducts(), openMainMenu = !openMainMenu, openMenu = false">
                 <router-link to="/products/Cabinet">Cabinet</router-link>
               </li>
-              <li @click="getProducts(), openMainMenu = !openMainMenu">
+              <li @click="getProducts(), openMainMenu = !openMainMenu, openMenu = false">
                 <router-link to="/products/Side Table">Side Table</router-link>
               </li>
-              <li @click="getProducts(), openMainMenu = !openMainMenu">
+              <li @click="getProducts(), openMainMenu = !openMainMenu, openMenu = false">
                 <router-link to="/products/Lighting">Lighting</router-link>
               </li>
             </ul>
           </li>
-          <li @click="getProducts(), openMainMenu = !openMainMenu">
+          <li @click="getProducts(), openMainMenu = !openMainMenu, openMenu = false">
             <router-link to="/products/Sale">
               <span>SALE</span>
             </router-link>
           </li>
-          <li @click="openMainMenu = !openMainMenu">
+          <li @click="openMainMenu = !openMainMenu, openMenu = false">
             <router-link to="/guide">
               <span>SHIPPING GUIDE</span>
             </router-link>
           </li>
-          <li @click="openMainMenu = !openMainMenu">
+          <li @click="openMainMenu = !openMainMenu, openMenu = false">
             <router-link to="/contact">
               <span>CONTACT</span>
             </router-link>

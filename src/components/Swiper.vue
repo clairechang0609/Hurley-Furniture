@@ -20,6 +20,7 @@
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
+
 export default {
   components: {
     Swiper,
@@ -70,8 +71,8 @@ export default {
         {
           id: '4WkmzLjWMgfQs45FTAQ3ovFFU3kW3j5y45Fu7GbBKJWJZ0CSbVm3mOe1c92yaXan',
           img: [
-            'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5e65fa03d0b69120e5e04235/800x.webp?source_format=png',
-            'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5e662bed43eea134c86298bf/800x.webp?source_format=png'
+            'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/UDCGegfiTcwdGtGRbXbyEOR1x0QYYdyvyLTjJMwo5xo0HitvS6ddfzbeurI63XrRvS5EnDkTPFE6wLK9pSpei9BjLuoI7ZAQQcxLSehqHmeZsJwHOsD2CmiAmKBuZxU2.png',
+            'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/3kLxeiFbh7pWiVW15wdjFf5yXAQUsw6HUwx7jGQgEkJuO02GuidCtijOqXl0Uwk9xUT4Sr0UclFkvR04M9dr0v0U1giVXaI5Xndzgv3hZ41EQ9R8iVL5di6UUAa5AKbN.png'
           ],
           title: '花生全包覆鋼腳單椅',
           price: 23800,
@@ -80,8 +81,8 @@ export default {
         {
           id: 'x5X1Rc53uVKdGdr1fMxaSrvhg6oSO0bbVeKmxpHDMpRlx8Gw62jkwxfbexTbbFtL',
           img: [
-            'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5d5bd61cb19ace003516567e/800x.webp?source_format=jpg',
-            'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5ce67f4c20eb69002f8d1624/800x.webp?source_format=jpg'
+            'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/HZMcOk77L64q3ay2K2jj0ah77Nvg3crPiGuhwdfDQgmlJNDsUcNlMHbCqv9Ww2cHcAoqdvrIUuB34ZLmIAK57VQLjyKA1SLydNS6DGpuywGPRv3RvVDIvcsx8thdolCC.png',
+            'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/XQafsQMfBDdwlXaDDBT7t73igdRSSaZX8XPgZLQOPGdifRx2SFSKZrsyTdveOjo68PVfjSA80xEaNAQvwBZKo5cuRrfBeuBilSYFI1u5pvvEQODYptuVgencYKCbCHsk.png'
           ],
           title: '包圍咖啡桌',
           price: 29800,
@@ -110,8 +111,8 @@ export default {
         {
           id: 'eQoKOCkszCMIRhRN3YAqpBnpMinvTAfzGgSQiKrZCMyhLlk3UR5QSipucPuXboDa',
           img: [
-            'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5e9508fff2cf430018e17842/800x.webp?source_format=png',
-            'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5e950be2cc6a5736b8f98c35/800x.webp?source_format=png'
+            'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/k7QLOd1LkjF1Znan5N7nuN9SqzbdrXtZaM11xvmuE8JjmZqHAzfD11yHYwqFtW5aew99cQhgUDtW1u2epfUwuoZzqlxJF4dXqWtau7eVisG6F8SmFLBHJ9d3uEa7lAtc.png',
+            'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/4AHGLMmycAH0MxRGvcsEY5dxhKY6HI7b0Dqa3IdHJcaaAX7nDsP4RnXrO4jA91MSwj8iMJy5iQmNCrovUgNaeWDYajqqBB8Qh3uSgHv5P0Mg85RbsOOrySTdDQvJ83SC.png'
           ],
           title: '速寫椅凳',
           price: 24800,
@@ -130,8 +131,8 @@ export default {
         {
           id: 'aIDl5f2PAskhksJP5n09HF0u0qRnyDpovqxrwjIKE3qf7ozn8QwWeuVI6NLArc8J',
           img: [
-            'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5e62e9c723cec15f9987ca85/800x.webp?source_format=png',
-            'https://shoplineimg.com/5cd8dc7015c0710001011ee2/5e62e67bc546f40018202f7b/800x.webp?source_format=png'
+            'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/PnEfRj3QrQODQSBxoeRcq37yhSBN9MkTZuDKmguqggQFadsk1tBD3Zj1XeUkS7MiCaw1enHibrHoW3qerIYOrHmt4saA8cUDX9sO5RjqoDaVpQoA22RJYY1bf7Kfp5BQ.png',
+            'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/XdIAQzWrYMPcJmovkLpp7Dt3zbCtezzpL9sRpzG4Hmi0N4fnmTAkv2nIHwJKwEo0comvJ58dqJxSFlpPC49fzK9VH8BWLsO2ibX6FjnUZxnBMv8k4scfZSo6KTMGuhfx.png'
           ],
           title: '層列咖啡桌',
           price: 21500,
