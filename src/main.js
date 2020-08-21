@@ -25,6 +25,7 @@ Vue.filter('thousands', thousandsFilter)
 Vue.component('ValidationObserver', ValidationObserver)
 Vue.component('ValidationProvider', ValidationProvider)
 Vue.use(VueAwesomeSwiper)
+Vue.prototype.$bus = new Vue()
 
 new Vue({
   router,

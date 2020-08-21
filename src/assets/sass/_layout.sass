@@ -1,19 +1,19 @@
 a, button, input[type=button]
     transition: 0.2s ease-in-out
 a:hover, button:hover, input[type=button]:hover
-	cursor: pointer
+    cursor: pointer
 input[type="email"], input[type="password"], input[type="text"], input[type="date"], input[type="time"],
 input[type="tel"],input[type="number"], select, textarea
-	width: 100%
-	font-size: 14px;
-	padding: 5px 10px
-	border: 1px solid $black
-	border-radius: 3px
-	&:focus
-		outline: none
-		box-shadow: 0 0 0 3px rgba($gray, 0.3)
+    width: 100%
+    font-size: 14px
+    padding: 5px 10px
+    border: 1px solid $black
+    border-radius: 3px
+    &:focus
+        outline: none
+        box-shadow: 0 0 0 3px rgba($gray, 0.3)
 select
-	padding: 4px 10px
+    padding: 4px 10px
 img
     max-width: 100%
     height: auto
@@ -218,6 +218,8 @@ img
                 width: 220px
             &:focus
                 outline: none
+            &::-webkit-search-cancel-button
+                -webkit-appearance: none
         .search-btn
             padding: 6px 10px 5px
             border: 1px solid $black
@@ -309,7 +311,7 @@ img
                     color: $black
                     padding: 5px 8px
                     @include media-w568
-                        padding: 5px
+                        display: none
                     &:focus
                         outline: none
                 input
@@ -326,6 +328,9 @@ img
                     padding: 4px
                     @include media-w667
                         width: 30px
+                    @include media-w568
+                        width: 80%
+                        border: 1px solid $black
                     &:focus
                         outline: none
                 input[type='number']
@@ -532,7 +537,7 @@ img
     bottom: 0
     left: 0
     right: 0
-    background: rgba($black, 0.5);
+    background: rgba($black, 0.5)
     z-index: 1999
     &.open
         display: block

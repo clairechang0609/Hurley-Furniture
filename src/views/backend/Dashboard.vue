@@ -1,5 +1,6 @@
 <template>
   <div class="wrap">
+    <loading :active.sync="isLoading"></loading>
     <div :class="{'add-background': bgShow}"></div>
     <div class="topbar">
       <h1>Hurley Furniture</h1>
@@ -14,14 +15,13 @@
         </li>
       </ul>
     </div>
-    <loading :active.sync="isLoading"></loading>
     <router-view v-if="isLogin"></router-view>
     <div is="gotop"></div>
   </div>
 </template>
 
 <script>
-import gotop from '../../components/Gotop.vue'
+import gotop from '@/components/Gotop.vue'
 
 export default {
   components: {
@@ -46,11 +46,11 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}auth/check`
       this.$http.post(url, { api_token: this.token })
         .then(response => {
-          this.isLoading = false
           if (response.data.success) {
             this.isLogin = true
             this.$router.push('/admin/products').catch(() => {})
           }
+          this.isLoading = false
         })
         .catch(() => {
           this.isLoading = false
@@ -66,5 +66,5 @@ export default {
 </script>
 
 <style lang="sass">
-  @import '../../assets/sass/all.sass'
+  @import '@/assets/sass/all.sass'
 </style>

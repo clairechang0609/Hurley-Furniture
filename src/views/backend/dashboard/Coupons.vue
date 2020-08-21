@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading :active.sync="isLoading"></loading>
     <div class="coupon">
       <button type="button" class="add-coupon" @click="openModal('new')">新增優惠券</button>
       <table>
@@ -76,14 +77,13 @@
         </div>
       </div>
     </div>
-    <loading :active.sync="isLoading"></loading>
     <div class="mask" :class="{ 'open': shadowOpen }"></div>
     <div is="pagination" :pages="pagination" @changepage="getCoupons"></div>
   </div>
 </template>
 
 <script>
-import pagination from '../../../components/Pagination.vue'
+import pagination from '@/components/Pagination.vue'
 
 export default {
   components: {
@@ -116,11 +116,10 @@ export default {
       this.$http.defaults.headers.common.Authorization = `Bearer ${this.token}`
       this.$http.get(url)
         .then(response => {
-          this.isLoading = false
           this.coupons = response.data.data
           this.pagination = response.data.meta.pagination
+          this.isLoading = false
         })
-        .catch(() => {})
     },
     openModal (mode, item) {
       this.due_date = ''
@@ -134,7 +133,7 @@ export default {
           break
         case 'edit': {
           this.newCoupon = false
-          this.editCoupon = Object.assign({}, item)
+          this.editCoupon = Object.assign({ ...item })
           this.formShow = true
           this.shadowOpen = true
 
@@ -145,11 +144,11 @@ export default {
         }
         case 'enabled':
           this.newCoupon = false
-          this.editCoupon = Object.assign({}, item)
+          this.editCoupon = Object.assign({ ...item })
           this.editCoupon.enabled = !this.editCoupon.enabled
           break
         case 'delete':
-          this.editCoupon = Object.assign({}, item)
+          this.editCoupon = Object.assign({ ...item })
           this.deleteShow = true
           this.shadowOpen = true
       }
@@ -171,10 +170,9 @@ export default {
 
       this.$http[method](url, this.editCoupon)
         .then(() => {
-          this.isLoading = false
           this.getCoupons()
+          this.isLoading = false
         })
-        .catch(() => {})
 
       this.formShow = false
       this.shadowOpen = false
@@ -184,10 +182,9 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/coupon/${this.editProduct.id}`
       this.$http.delete(url)
         .then(response => {
-          this.isLoading = false
           this.getCoupons()
+          this.isLoading = false
         })
-        .catch(() => {})
 
       this.deleteShow = false
       this.shadowOpen = false

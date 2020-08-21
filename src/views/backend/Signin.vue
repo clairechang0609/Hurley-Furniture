@@ -1,5 +1,6 @@
 <template>
   <div class="wrap">
+    <loading :active.sync="isLoading"></loading>
     <div :class="{ 'add-background': bgShow }"></div>
     <div class="signin" @keyup.enter="signin()">
       <h3>登入後台</h3>
@@ -8,7 +9,6 @@
       <button type="submit" @click.prevent="signin()">登入</button>
       <p>© Hurley Furniture 2020</p>
     </div>
-    <loading :active.sync="isLoading"></loading>
   </div>
 </template>
 
@@ -30,18 +30,17 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}auth/login`
       this.$http.post(url, this.user)
         .then(response => {
-          this.isLoading = false
           const token = response.data.token
           const expired = response.data.expired
           document.cookie = `HurleyHomeToken = ${token}; expires = ${new Date(expired * 1000)}; path=/`
           this.$router.push('/admin/products')
+          this.isLoading = false
         })
-        .catch(() => {})
     }
   }
 }
 </script>
 
 <style lang="sass">
-  @import '../../assets/sass/all.sass'
+  @import '@/assets/sass/all.sass'
 </style>

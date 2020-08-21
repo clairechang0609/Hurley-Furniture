@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading :active.sync="isLoading"></loading>
     <div class="picture">
       <table>
         <tr class="table-title">
@@ -24,14 +25,13 @@
         </div>
       </div>
     </div>
-    <loading :active.sync="isLoading"></loading>
     <div class="mask" :class="{ 'open': shadowOpen }"></div>
     <div is="pagination" :pages="pagination" @changepage="getPics"></div>
   </div>
 </template>
 
 <script>
-import pagination from '../../../components/Pagination.vue'
+import pagination from '@/components/Pagination.vue'
 
 export default {
   components: {
@@ -57,14 +57,13 @@ export default {
       this.$http.defaults.headers.common.Authorization = `Bearer ${this.token}`
       this.$http.get(url)
         .then(response => {
-          this.isLoading = false
           this.pictures = response.data.data
           this.pagination = response.data.meta.pagination
+          this.isLoading = false
         })
-        .catch(() => {})
     },
     openModal (item) {
-      this.editPicture = Object.assign({}, item)
+      this.editPicture = Object.assign({ ...item })
       this.deleteShow = true
       this.shadowOpen = true
     },
@@ -73,10 +72,9 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/storage/${this.editPicture.id}`
       this.$http.delete(url)
         .then(response => {
-          this.isLoading = false
           this.getPics()
+          this.isLoading = false
         })
-        .catch(() => {})
       this.deleteShow = false
       this.shadowOpen = false
     },

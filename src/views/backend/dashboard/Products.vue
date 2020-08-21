@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading :active.sync="isLoading"></loading>
     <div class="product">
       <button type="button" class="add-product" @click="openModal('new')">新增產品</button>
         <table>
@@ -104,14 +105,13 @@
           </div>
         </div>
     </div>
-    <loading :active.sync="isLoading"></loading>
     <div class="mask" :class="{ 'open': shadowOpen }"></div>
     <div is="pagination" :pages="pagination" @changepage="getProducts"></div>
   </div>
 </template>
 
 <script>
-import pagination from '../../../components/Pagination.vue'
+import pagination from '@/components/Pagination.vue'
 import { VueEditor } from 'vue2-editor/dist/vue2-editor.core.js'
 
 export default {
@@ -145,11 +145,10 @@ export default {
       this.$http.defaults.headers.common.Authorization = `Bearer ${this.token}`
       this.$http.get(url)
         .then(response => {
-          this.isLoading = false
           this.products = response.data.data
           this.pagination = response.data.meta.pagination
+          this.isLoading = false
         })
-        .catch(() => {})
     },
     openModal (mode, item) {
       switch (mode) {
@@ -173,11 +172,11 @@ export default {
           break
         case 'enabled':
           this.newProduct = false
-          this.editProduct = Object.assign({}, item)
+          this.editProduct = Object.assign({ ...item })
           this.editProduct.enabled = !this.editProduct.enabled
           break
         case 'delete':
-          this.editProduct = Object.assign({}, item)
+          this.editProduct = Object.assign({ ...item })
           this.deleteShow = true
           this.shadowOpen = true
       }
@@ -187,10 +186,9 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/product/${id}`
       this.$http.get(url)
         .then(response => {
-          this.isLoading = false
           this.editProduct = response.data.data
+          this.isLoading = false
         })
-        .catch(() => {})
     },
     updateProduct () {
       this.isLoading = true
@@ -207,10 +205,9 @@ export default {
 
       this.$http[method](url, this.editProduct)
         .then(() => {
-          this.isLoading = false
           this.getProducts()
+          this.isLoading = false
         })
-        .catch(() => {})
 
       this.editProduct = { options: {}, imageUrl: [] }
       this.formShow = false
@@ -222,10 +219,9 @@ export default {
 
       this.$http.delete(url)
         .then(response => {
-          this.isLoading = false
           this.getProducts()
+          this.isLoading = false
         })
-        .catch(() => {})
 
       this.editProduct = { options: {}, imageUrl: [] }
       this.deleteShow = false
@@ -259,7 +255,6 @@ export default {
           this.editProduct.imageUrl.push(response.data.data.path)
           document.querySelector('#customPic').value = ''
         })
-        .catch(() => {})
     }
   }
 }

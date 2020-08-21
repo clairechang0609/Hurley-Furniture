@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading :active.sync="isLoading"></loading>
     <div class="order">
       <table>
         <tr class="table-title">
@@ -36,7 +37,7 @@
 </template>
 
 <script>
-import pagination from '../../../components/Pagination.vue'
+import pagination from '@/components/Pagination.vue'
 
 export default {
   components: {
@@ -60,11 +61,10 @@ export default {
       this.$http.defaults.headers.common.Authorization = `Bearer ${this.token}`
       this.$http.get(url)
         .then(response => {
-          this.isLoading = false
           this.orders = response.data.data
           this.pagination = response.data.meta.pagination
+          this.isLoading = false
         })
-        .catch(() => {})
     },
     editPaid (item) {
       this.editOrder = Object.assign({}, item)
@@ -81,10 +81,9 @@ export default {
       }
       this.$http.patch(url)
         .then(() => {
-          this.isLoading = false
           this.getOrders()
+          this.isLoading = false
         })
-        .catch(() => {})
       this.editOrder = {}
     }
   }

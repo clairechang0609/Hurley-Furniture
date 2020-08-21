@@ -1,112 +1,7 @@
 <template>
   <div class="wrap">
-    <div class="top-menu">
-      <div class="top" :class="{ 'show': openMainMenu }">
-        <ul class="top__icon">
-          <li>
-            <a href="#" class="fab fa-twitter twitter"></a>
-          </li>
-          <li>
-            <a href="#" class="fab fa-facebook-f facebook"></a>
-          </li>
-          <li>
-            <a href="#" class="fab fa-instagram ig"></a>
-          </li>
-        </ul>
-        <ul class="top__menu" :class="{ 'hide': opensearch }">
-          <li>
-            <router-link to="/admin">ADMIN LOGIN</router-link>
-          </li>
-          <li>
-            <router-link to="/account">ACCOUNT</router-link>
-          </li>
-          <li>
-            <a href="#" @click.prevent="shoppingCartOpen = true">
-              CART
-              <span>({{ cart.length }})</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" @click="opensearch = true">
-              <i class="fas fa-search search-icon"></i>
-            </a>
-          </li>
-          <li class="ham-btn" @click.prevent="openMainMenu = !openMainMenu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </li>
-        </ul>
-        <div
-          is="shoppingcart"
-          :shoppingcart="cart"
-          :shoppingcartopen="shoppingCartOpen"
-          :totalprice="totalPrice"
-          @deleteproduct="deleteCartItem"
-          @qtyupdate="qtyUpdate"
-          @shoppingcartclose="shoppingCartClose"
-        ></div>
-        <ul class="top__main-menu">
-          <li @click="openMainMenu = !openMainMenu, openMenu = false">
-            <router-link to="/">
-              <span>HOME</span>
-            </router-link>
-          </li>
-          <li @click="openMainMenu = !openMainMenu, openMenu = false">
-            <router-link to="/products/All-Products">
-              <span>ALL PRODUCTS</span>
-            </router-link>
-          </li>
-          <li class="top__all-product">
-            <a href="#" @click.prevent="openMenu = !openMenu">
-              <span>PRODUCT CATEGORY ▸</span>
-            </a>
-            <ul class="top__all-product-list" :class="{ 'show': openMenu }">
-              <li @click="openMainMenu = !openMainMenu, openMenu = false">
-                <router-link to="/products/Sofa">Sofa</router-link>
-              </li>
-              <li @click="openMainMenu = !openMainMenu, openMenu = false">
-                <router-link to="/products/Chair">Chair</router-link>
-              </li>
-              <li @click="openMainMenu = !openMainMenu, openMenu = false">
-                <router-link to="/products/Table">Table</router-link>
-              </li>
-              <li @click="openMainMenu = !openMainMenu, openMenu = false">
-                <router-link to="/products/Cabinet">Cabinet</router-link>
-              </li>
-              <li @click="openMainMenu = !openMainMenu, openMenu = false">
-                <router-link to="/products/Side Table">Side Table</router-link>
-              </li>
-              <li @click="openMainMenu = !openMainMenu, openMenu = false">
-                <router-link to="/products/Lighting">Lighting</router-link>
-              </li>
-            </ul>
-          </li>
-          <li @click="openMainMenu = !openMainMenu, openMenu = false">
-            <router-link to="/products/Sale">
-              <span>SALE</span>
-            </router-link>
-          </li>
-          <li @click="openMainMenu = !openMainMenu, openMenu = false">
-            <router-link to="/guide">
-              <span>SHIPPING GUIDE</span>
-            </router-link>
-          </li>
-          <li @click="openMainMenu = !openMainMenu, openMenu = false">
-            <router-link to="/contact">
-              <span>CONTACT</span>
-            </router-link>
-          </li>
-        </ul>
-        <div is="searchbox" :search="opensearch" @changesearch="changeSearch"></div>
-      </div>
-    </div>
-    <div class="logo-wrap">
-      <div class="logo-frame"></div>
-      <h1>
-        <router-link to="/" class="logo">Hurley Furniture</router-link>
-      </h1>
-    </div>
+    <loading :active.sync="isLoading"></loading>
+    <div is="navbar" :router='router'></div>
     <div class="header">
       <ul class="header__main-menu main-menu-nobanner">
         <li @click="openMenu = false">
@@ -442,30 +337,20 @@
         <p>圖片為練習使用，無商業用途。</p>
       </div>
     </div>
-    <div is="gotop"></div>
-    <loading :active.sync="isLoading"></loading>
-    <div class="mask" :class="{ 'open': shoppingCartOpen }" @click.prevent="shoppingCartOpen = !shoppingCartOpen"></div>
   </div>
 </template>
 
 <script>
-import Shoppingcart from '../../components/Shoppingcart.vue'
-import Searchbox from '../../components/Searchbox.vue'
-import Gotop from '../../components/Gotop.vue'
+import Navbar from '@/components/Navbar.vue'
 
 export default {
   components: {
-    Shoppingcart,
-    Searchbox,
-    Gotop
+    Navbar
   },
   data () {
     return {
-      openMainMenu: false,
       openMenu: false,
-      opensearch: false,
       isLoading: false,
-      shoppingCartOpen: false,
       cart: [],
       totalPrice: 0,
       deliveryFee: 350,
@@ -486,11 +371,13 @@ export default {
       order: {
         user: {}
       },
-      alert: ''
+      alert: '',
+      router: ''
     }
   },
   created () {
     this.getCart()
+    this.router = this.$router.history.current.name
   },
   methods: {
     getCart () {
@@ -498,15 +385,14 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/shopping`
       this.$http.get(url)
         .then(response => {
-          this.isLoading = false
           this.cart = response.data.data
           this.getTotalPrice()
+          this.isLoading = false
         })
-        .catch(() => {})
     },
     getTotalPrice () {
       this.totalPrice = 0
-      this.cart.forEach((item) => {
+      this.cart.forEach(item => {
         this.totalPrice += (item.product.price * item.quantity)
       })
       if (this.totalPrice > 3000) {
@@ -520,10 +406,9 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/shopping/${id}`
       this.$http.delete(url)
         .then(() => {
-          this.isLoading = false
           this.getCart()
+          this.isLoading = false
         })
-        .catch(() => {})
     },
     qtyUpdate (id, num) {
       this.isLoading = true
@@ -535,18 +420,16 @@ export default {
         const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/shopping/${id}`
         this.$http.delete(url)
           .then(() => {
-            this.isLoading = false
             this.getCart()
+            this.isLoading = false
           })
-          .catch(() => {})
       } else {
         const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/shopping`
         this.$http.patch(url, data)
           .then(() => {
-            this.isLoading = false
             this.getCart()
+            this.isLoading = false
           })
-          .catch(() => {})
       }
     },
     addCoupon () {
@@ -555,43 +438,41 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/coupon/search`
       this.$http.post(url, { code: this.coupon_code })
         .then(response => {
-          this.isLoading = false
           this.coupon = response.data.data
           this.form.coupon = response.data.data.code
+          this.isLoading = false
         })
         .catch(error => {
-          this.isLoading = false
           this.alert = error.response.data.message
           this.coupon_code = ''
+          this.isLoading = false
         })
     },
     createOrder () {
       this.isLoading = true
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/orders`
-      const order = Object.assign({}, this.form)
+      const order = Object.assign({ ...this.form })
       if (this.coupon.enabled) {
         order.coupon = this.coupon.code
       }
       this.$http.post(url, order)
         .then(response => {
           if (response.data.data.id) {
-            this.isLoading = false
             this.getCart()
             this.orderId = response.data.data.id
             this.getSingleOrder()
+            this.isLoading = false
           }
         })
-        .catch(() => {})
     },
     getSingleOrder () {
       this.isLoading = true
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/orders/${this.orderId}`
       this.$http.get(url)
         .then((response) => {
-          this.isLoading = false
           this.order = response.data.data
+          this.isLoading = false
         })
-        .catch(() => {})
     },
     payOrder () {
       this.isLoading = true
@@ -601,7 +482,6 @@ export default {
           this.getSingleOrder()
           this.completed = true
         })
-        .catch(() => {})
     },
     changeSearch () {
       this.opensearch = false
