@@ -461,6 +461,7 @@ export default {
             this.getCart()
             this.orderId = response.data.data.id
             this.getSingleOrder()
+            this.$bus.$emit('get-cart')
             this.isLoading = false
           }
         })
