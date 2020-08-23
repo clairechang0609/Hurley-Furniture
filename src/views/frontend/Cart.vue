@@ -483,12 +483,6 @@ export default {
           this.getSingleOrder()
           this.completed = true
         })
-    },
-    changeSearch () {
-      this.opensearch = false
-    },
-    shoppingCartClose () {
-      this.shoppingCartOpen = false
     }
   }
 }
