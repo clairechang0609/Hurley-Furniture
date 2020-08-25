@@ -63,7 +63,7 @@ export default {
         })
     },
     openModal (item) {
-      this.editPicture = Object.assign({ ...item })
+      this.editPicture = { ...item }
       this.deleteShow = true
       this.shadowOpen = true
     },

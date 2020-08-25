@@ -172,11 +172,11 @@ export default {
           break
         case 'enabled':
           this.newProduct = false
-          this.editProduct = Object.assign({ ...item })
+          this.editProduct = { ...item }
           this.editProduct.enabled = !this.editProduct.enabled
           break
         case 'delete':
-          this.editProduct = Object.assign({ ...item })
+          this.editProduct = { ...item }
           this.deleteShow = true
           this.shadowOpen = true
       }

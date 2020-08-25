@@ -451,7 +451,7 @@ export default {
     createOrder () {
       this.isLoading = true
       const url = `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/orders`
-      const order = Object.assign({ ...this.form })
+      const order = { ...this.form }
       if (this.coupon.enabled) {
         order.coupon = this.coupon.code
       }

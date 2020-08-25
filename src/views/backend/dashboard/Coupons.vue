@@ -133,7 +133,7 @@ export default {
           break
         case 'edit': {
           this.newCoupon = false
-          this.editCoupon = Object.assign({ ...item })
+          this.editCoupon = { ...item }
           this.formShow = true
           this.shadowOpen = true
 
@@ -144,11 +144,11 @@ export default {
         }
         case 'enabled':
           this.newCoupon = false
-          this.editCoupon = Object.assign({ ...item })
+          this.editCoupon = { ...item }
           this.editCoupon.enabled = !this.editCoupon.enabled
           break
         case 'delete':
-          this.editCoupon = Object.assign({ ...item })
+          this.editCoupon = { ...item }
           this.deleteShow = true
           this.shadowOpen = true
       }

@@ -67,7 +67,7 @@ export default {
         })
     },
     editPaid (item) {
-      this.editOrder = Object.assign({}, item)
+      this.editOrder = { ...item }
       this.editOrder.paid = !this.editOrder.paid
       this.updateOrder()
     },
