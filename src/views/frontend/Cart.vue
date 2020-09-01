@@ -395,7 +395,7 @@ export default {
       this.cart.forEach(item => {
         this.totalPrice += (item.product.price * item.quantity)
       })
-      if (this.totalPrice > 3000) {
+      if (this.totalPrice > 10000) {
         this.deliveryFee = 0
       } else {
         this.deliveryFee = 350
