@@ -454,6 +454,8 @@ export default {
       const order = { ...this.form }
       if (this.coupon.enabled) {
         order.coupon = this.coupon.code
+      } else {
+        order.coupon = ''
       }
       this.$http.post(url, order)
         .then(response => {
