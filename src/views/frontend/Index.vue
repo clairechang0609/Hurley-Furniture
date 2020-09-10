@@ -137,7 +137,7 @@
               <p>view more</p>
             </router-link>
             <img class="new-item-03"
-              src="https://shoplineimg.com/5cd8dc7015c0710001011ee2/5d5bea50e9b3ee0038a9d219/800x.webp?source_format=jpg"
+              src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/4cntkjs21Tlz15QQHa2YBXmrPsRluoRy81DMlfT75nwSpFICSmH0BSD3MZs7ISvZ3KKEX5CTtMiMQRH3VgXOWjGlINAAz2GMx8x5by5OXKSs1DMNWzH3XG6Nvyt0sIxW.jpg"
               alt="">
             <img class="new-item-04"
               src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/d6ipCgdbf5rCfnTNWkN80Efv0DgcB8TGpP9hbBbK67S8xN7AVqSVHtZztneJntWRP8oqd7BqvX7MHjq1OHJk8NAjmP5XltgVtNiAmtkaNGElH3UcvLEfCrRmre8ZNaYX.png"

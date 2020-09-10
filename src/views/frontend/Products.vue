@@ -6,42 +6,42 @@
       <div
         class="header__banner-products"
         v-if="category === 'All Products'"
-        :style="`background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/RicPuejiLodrHaduVFdQc5v78XYm6yFvsm1GxlPWhXqZsCFVwFP72PpC7om2awvVWdNelSoIXvDd2wUyyi6cL1mRukYFkDGUjUa6upf8AVuF3COH5scojPZclsoZSJ28.png)`"
+        :style="`background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/HzXptYyxgN3ZYOu7oC83Z6A9mmJkbJf7OsxJ4RMuJJJsCMmNLr4D66116JW4sBYUmOHJ5X7WInNTxNyinjIE1sKmwj4NPTLA7ehiRDeEDEEtBkzWoyTAIYTl9fwGO91S.jpg)`"
       ></div>
       <div
         class="header__banner-products"
         v-if="category === 'Sofa'"
-        :style="`background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/QX5PwspL4EOfN31jH6CaeBZw0z02SL2k6Xpz5sFL3slupCLC0MiLaQMv8GA4RGXDekdDLbkbYo3YWIi7gaQ4Z69iDGD7JJaVULahtozTK5mMJjcD7pu1Y7gZEtdfA7JA.png)`"
+        :style="`background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/87MKhyLZmjmQLSAcfUhwFG8IXAa3STAV7oOwY0palmh1tY2ZULIV1FRvNkEp2cMbFRnzbAZt8e6GeUqraLHnk1ecu8uHq5ekEFOVaBPhVJdCI2nMRHS7hfl37dsFoIGh.jpg)`"
       ></div>
       <div
         class="header__banner-products"
         v-if="category === 'Chair'"
-        :style="`background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/WPmmZqeGhI9sc1miP8sZZl6ctmwk2BBElca8glts2IEYxJBWjtirGV88FIOrmjhepKrgbhtNToKOWWkd7IPIspciw10D1jXsJKqlBQXDML6bQUdivcjEjOlUHty1JoxJ.png)`"
+        :style="`background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/udE6lxHHveCdXRRJBuCNCeqvF79gMu1M7WdTFu6FcmFfhz8jM0UF3VU5IAEl7B4txyK4Mi4I0I5cqaAMUiIagaZt34XLBQoooJuYRGkWEYaV1GuwVccShXWIS1SIkTTy.jpg)`"
       ></div>
       <div
         class="header__banner-products"
         v-if="category === 'Table'"
-        :style="`background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/4ZfMR8ZJlsFMzYRxtWYbvxH22wLSh3MwH1MAi80qOvaeguW8mESyG3YIhSj0GrvqmLmI2KYFRN7laJvauope71JoXkREPpPOfo8gwJVDBhwvoNf9lofADUSFC5gyAykQ.png)`"
+        :style="`background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/Dse7xWc7qSACcDIjUubtmHEs8iqay1uaU9BTrqt5WNw6IJfTBii9XFCAHoo2MHaRZaZM7Gnb22IEvgeXtHJndKhjrIBnL3DwH83LHzN7z8r06A7cFvLqR6MeMM0Xf7bP.jpg)`"
       ></div>
       <div
         class="header__banner-products"
         v-if="category === 'Cabinet'"
-        :style="`background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/yadCEP0C3ZuMPF71NAkDkrxGW0bpsAPUm1R8MsZ6EFoxql68vK0m5Z76PvqBjhRTxgxuNJbSd4QEpYBGXlzm7FrnuvoHZGb8PV9VqG4FFHciY7uRgY1DHaiMdM8jj24t.png)`"
+        :style="`background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/NCfrAFX3jnqVp8EmY9XAhOCGyT5pxY8Hf6k8HXqLR2feWtkq7lv6GoECsSAt06anGgubqCAOCO9bYXoU9vDtG6eyXQyatUNb79diGrZ80yi7qkq8b7rmxTUvOkq8VzCo.jpg)`"
       ></div>
       <div
         class="header__banner-products"
         v-if="category === 'Side Table'"
-        :style="`background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/BjER2FoqTXryiLcfFaxHykPBXmA04nW8ruVWzNKvwS5StQFQYDvQL5B95zJg8LqyZ5tlh3sZdMvNvh0cI6mJ4DKToAww2wATKiMXOYeeolClxdGdkXNQP3p2zdAQY8DJ.png)`"
+        :style="`background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/FA8OtQ71Ok3jjHpx4xGleDDEViuTU8iSYrkc91tkcRoSdHIB4qXIPOi6GHA1M2BlIY1Lq6nzTGlvVeO3vnY8OXyCJ2T9VPyKAq6DOAQZd44gloFjQWhQ6gM7g4O4bg4z.jpg)`"
       ></div>
       <div
         class="header__banner-products"
         v-if="category === 'Lighting'"
-        :style="`background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/qNxWrR8xT5oIazVQxFVaJjk7ZXVaTSXaipNRKpqznJpNZDKNhp9Lr5HFTvlCfUX1RdVKAtiW75sssLPy3nlWQZKA2xdxp5kVTEPe7x33EK4NCWp2Oj44jJUXN12I3FdB.png)`"
+        :style="`background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/3G77snGeN7i1YPiDYoHdK535mxMxYLRReDEy8RAMowp6BJAsO4h336GEGjFvFesf9Vahd1QFjHUUm4BOd6eXjxb0jROkewuEM3jX5NC8LuhYdtk2hyBd2HaNO336gYsJ.jpg)`"
       ></div>
       <div
         class="header__banner-products"
         v-if="category === 'Sale'"
-        :style="`background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/Kh7FD1D2iVZTBZ8lbyse8nTU3TYjWvMGz3ETQ9UnDiT33BJarorP8LdfZ7IrvU7d90ghasCwWLvZqxmywbMtGi6oOHAko1ZCSiAJzn1iAbw5FZbPlrTpMfPwWdabPCbo.png)`"
+        :style="`background-image: url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/FyzOhf6flDI62JcIkPmN25aVp1CWsBzcO5pczl4goDLO2CYGQKGgj4eaHTUu7YCTeC1jdpFcVtzfPIZiTWnRvnrCjLraYz3SShCNlWzz7ZVHm6dHfbuH4orJRoa8eMYc.jpg)`"
       ></div>
       <ul class="header__main-menu">
         <li @click="openMenu = false">

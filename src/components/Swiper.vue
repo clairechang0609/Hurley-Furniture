@@ -81,8 +81,8 @@ export default {
         {
           id: 'x5X1Rc53uVKdGdr1fMxaSrvhg6oSO0bbVeKmxpHDMpRlx8Gw62jkwxfbexTbbFtL',
           img: [
-            'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/HZMcOk77L64q3ay2K2jj0ah77Nvg3crPiGuhwdfDQgmlJNDsUcNlMHbCqv9Ww2cHcAoqdvrIUuB34ZLmIAK57VQLjyKA1SLydNS6DGpuywGPRv3RvVDIvcsx8thdolCC.png',
-            'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/XQafsQMfBDdwlXaDDBT7t73igdRSSaZX8XPgZLQOPGdifRx2SFSKZrsyTdveOjo68PVfjSA80xEaNAQvwBZKo5cuRrfBeuBilSYFI1u5pvvEQODYptuVgencYKCbCHsk.png'
+            'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/quYCOJcb9OwchW7VtMKVX77f1c2WiajLknVmXb9YhoQlL08JGdngSYsvZ33Th3y4s9ua6QRqQSUqfRSloUXRy1YPyBDJyywJtXtjhuX4QbONb53OPxnllfpwXEooZ3uB.jpg',
+            'https://hexschool-api.s3.us-west-2.amazonaws.com/custom/MpMQVs4joILFaqRvXQlQRM4fA6NbC8zeG4TedUxWcLEmZQStYc1RC8T7eH3u6mxUvJWu2Kml5EvV2V8iDyuNKCkZ4xfQYaIFdI8alzv3SrGu2IDULTCLWzHs0R83NbhI.jpg'
           ],
           title: '包圍咖啡桌',
           price: 29800,
